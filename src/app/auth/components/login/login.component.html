@@ -5,23 +5,25 @@
             <div class="login-card p-5">
                 <span class="sp">welcome to PMS</span>
                 <h2><span class="sp2">L</span>ogin</h2>
-                <form action="" class="mt-4">
+                <form action="" class="mt-4" [formGroup]="loginForm" (ngSubmit)="hanldeLogin()">
                     <mat-form-field class="w-100">
-                        <input type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
+                        <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
                         <mat-label class="lable">E-mail</mat-label>
+                        <mat-error>Email is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-100">
                         <mat-label class="lable">Password</mat-label>
-                        <input class="inp text-white" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+                        <input formControlName="password" class="inp text-white" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
                         <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           <mat-icon class="text-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error>Password is required</mat-error>
                       </mat-form-field>  
                       <div class="d-flex justify-content-between">
                         <a class="text-decoration-none text-white cursor-pointer">Register Now ?</a>
                         <a class="text-decoration-none text-white cursor-pointer">Forget Password ?</a>
                       </div>
-                      <button class="btn log-btn btn-warning rounded-pill text-white w-75 py-3 d-block mx-auto mt-5">Login</button>                  
+                      <button class="btn log-btn btn-warning rounded-pill text-white w-75 py-3 d-block mx-auto mt-5">Login <i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>                  
                 </form>
             </div>
         </div>
