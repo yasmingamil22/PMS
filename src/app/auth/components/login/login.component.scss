@@ -1,0 +1,48 @@
+.main{
+    background-image: url('../../../../assets/images/bg3.png');
+    height: 100vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent !important;
+}
+.inp{
+    &::placeholder{
+        color: white !important;
+    }
+    background-color: transparent !important;
+}
+.log-btn{
+    background-color: rgba(239, 155, 40, 1) !important;
+}
+.lable{
+    color: rgba(239, 155, 40, 1)  ;
+}
+.login-card{
+    background-color: rgba(49, 89, 81, 0.9);
+    border-radius: 16px;
+    .sp{
+        color: rgba(255, 255, 255, 1) !important;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    h2{
+        color: rgba(239, 155, 40, 1);
+        font-size: 40px;
+        font-weight: 600;
+    }
+    .sp2 {
+        position: relative;
+        &::after{
+        content: '';
+        background-color:rgba(239, 155, 40, 1) ;
+        position: absolute;
+        inset-inline-start: 2px;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+    }
+    }
+}
