@@ -1,4 +1,4 @@
-// import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -34,7 +34,7 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
     ReactiveFormsModule,
     RxReactiveFormsModule,
     MatDialogModule,
-    // NgxDropzoneModule
+    NgxDropzoneModule
     
   ],
   exports: [
@@ -48,6 +48,7 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
     MatFormFieldModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
+    NgxDropzoneModule
   ]
 })
 export class SharedModule { }
