@@ -1,4 +1,4 @@
-// import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { HomeComponent } from './components/home/home.component';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 
@@ -35,7 +34,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     RxReactiveFormsModule,
     MatDialogModule,
     NgxDropzoneModule
-
   ],
   exports: [
     MatDialogModule,
