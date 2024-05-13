@@ -1,0 +1,24 @@
+#sidebar{
+    .arrow{
+        background-color: #EF9B28;
+        width: 10px;
+        right: 0px;
+        top: 10px;
+       border-radius: 8px 0px 0px 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem;
+        cursor: pointer;
+    }
+    .side-links{
+        li{
+            padding: 0.5rem;
+            a{
+                color: #FFF;
+                display: block;
+                padding: 0.3rem;
+            }
+        }
+    }
+}

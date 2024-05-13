@@ -1,0 +1,46 @@
+nav{
+    .bell-icon{
+       margin-right: 35px;
+       .bell{
+        right: -6px;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    padding: 0.4rem;
+    background-color: #EF9B28;
+    border: 2px solid #fff;
+    }
+    sup {
+        font-size: 10px;
+        top: -0.6rem;
+        margin: 0px -3px;
+    }
+    }
+    .profile-img{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+    .nav-link{
+        font-size: 14px;
+    }
+    span{
+        font-size: 12px;
+        color: #0000005E;
+    }
+    .dropdown-content::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -18px;
+        width: 1px;
+        height: 100%;
+        background-color: #9A9A9A;
+    }
+    .dropdown-menu[data-bs-popper]{
+        left: -33px;
+    }
+    .dropdown-toggle::after{
+        display: none;
+    }
+}

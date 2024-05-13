@@ -1,1 +1,21 @@
-<p>sidebar works!</p>
+<section id="sidebar" class="bg-main position-sticky top-0 z-2 vh-100">
+<div class="container-fluid">
+    <div class="row">
+        <div class="arrow position-absolute">
+            <i class="fa-solid fa-angle-left text-white"></i>
+        </div>
+        <div class="side-links pt-5">
+            <ul class="ps-0">
+                    <ng-container *ngFor="let item of menu">
+                    <li *ngIf="item.isActive">
+                        <a [routerLink]="item.link" routerLinkActive="active-ul" class="">
+                            <i [class]="item.icon" class="me-2"></i>
+                            <span class="">{{item.text}}</span>
+                        </a>
+                    </li>
+                </ng-container>
+                </ul>
+        </div>
+    </div>
+</div>
+</section>

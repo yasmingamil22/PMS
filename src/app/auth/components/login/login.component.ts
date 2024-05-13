@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -8,7 +9,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService){}
+  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService , private _Router:Router){
+    
+  }
   hide = true;
   loading:boolean = false
   loginForm:FormGroup = this._FormBuilder.group({
@@ -28,8 +31,10 @@ export class LoginComponent {
         },
         error:err=>{
           this.loading = false
-          console.log(err);
-          
+          console.log(err); 
+        },
+        complete:()=>{
+        this._Router.navigate(['/dashboard']);
         }
       })
     }
