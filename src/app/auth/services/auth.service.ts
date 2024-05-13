@@ -4,33 +4,32 @@ import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { decoded } from '../auth';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-constructor(private _HttpClient:HttpClient) { }
-ngOnInit(): void {
-  if(localStorage.getItem('tokenOfUserr')!==null){
-    this.tokenDecodeInfo()
+  constructor(private _HttpClient: HttpClient) { }
+  ngOnInit(): void {
+    if (localStorage.getItem('tokenOfUserr') !== null) {
+      this.tokenDecodeInfo()
+    }
   }
-}
-role : any = ''
-tokenDecodeInfo(){
-  let encoded:any = localStorage.getItem('tokenOfUserr')
-  let decoded:decoded = jwtDecode(encoded)
-  localStorage.setItem('userRole',decoded.userGroup)
-  localStorage.setItem('userName',decoded.userName)
-  this.getRole()
-}
-getRole(){
-  if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
-    this.role = localStorage.getItem('userRole')
+  role: any = ''
+  tokenDecodeInfo() {
+    let encoded: any = localStorage.getItem('tokenOfUserr')
+    let decoded: decoded = jwtDecode(encoded)
+    localStorage.setItem('userRole', decoded.userGroup)
+    localStorage.setItem('userName', decoded.userName)
+    this.getRole()
   }
-}
-loginUser(data:FormGroup):Observable<any>{
-return this._HttpClient.post('Users/Login',data)
-}
+  getRole() {
+    if (localStorage.getItem('tokenOfUserr') !== null && localStorage.getItem('userRole') !== null) {
+      this.role = localStorage.getItem('userRole')
+    }
+  }
+  loginUser(data: FormGroup): Observable<any> {
+    return this._HttpClient.post('Users/Login', data)
+  }
 
 }
