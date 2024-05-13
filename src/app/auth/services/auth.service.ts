@@ -40,4 +40,10 @@ currentUser():Observable<any>{
   return this._HttpClient.get('Users/currentUser');
 }
 
+registerUser(data:FormData):Observable<any>{
+return this._HttpClient.post('Users/Register',data)
+}
+verifyAcc(data:FormGroup):Observable<any>{
+  return this._HttpClient.put('Users/verify',data)
+}
 }
