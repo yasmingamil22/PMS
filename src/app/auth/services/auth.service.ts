@@ -32,5 +32,10 @@ getRole(){
 loginUser(data:FormGroup):Observable<any>{
 return this._HttpClient.post('Users/Login',data)
 }
-
+registerUser(data:FormData):Observable<any>{
+return this._HttpClient.post('Users/Register',data)
+}
+verifyAcc(data:FormGroup):Observable<any>{
+  return this._HttpClient.put('Users/verify',data)
+}
 }

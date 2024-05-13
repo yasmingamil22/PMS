@@ -6,18 +6,24 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SharedModule } from '../shared/shared.module';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { HttpClientModule } from '@angular/common/http';
+import { VerifyComponent } from './components/verify/verify.component';
+
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxDropzoneModule,
   ]
 })
 export class AuthModule { }

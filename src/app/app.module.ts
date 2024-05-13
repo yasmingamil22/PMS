@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,12 @@ import { GlobalInterceptor } from './core/interceptor/global.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   providers: [
+
     {provide:HTTP_INTERCEPTORS,useClass:GlobalInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]

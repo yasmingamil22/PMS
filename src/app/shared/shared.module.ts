@@ -11,6 +11,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -26,10 +30,14 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    NgxDropzoneModule,
+    MatDialogModule,
+    
     
   ],
   exports: [
+    MatDialogModule,
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
@@ -38,7 +46,8 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    NgxDropzoneModule
   ]
 })
 export class SharedModule { }

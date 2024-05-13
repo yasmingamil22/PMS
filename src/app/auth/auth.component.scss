@@ -1,0 +1,7 @@
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: transparent !important;
+}
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface{
+    border-radius: 5rem !important;
+    border: 2px solid black;
+}
