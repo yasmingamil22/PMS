@@ -41,3 +41,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .cursor-pointer{
   cursor: pointer;
 }
+
+// Global Properties
+.bg-main{
+  background-color: #0E382F;
+}
+.main-color{
+  color: #EF9B28;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+.active-ul{
+  background-color: rgba($color: #EF9B28, $alpha: 0.3);
+  color: #EF9B28;
+  border-radius: 8px;
+}

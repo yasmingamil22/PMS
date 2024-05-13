@@ -11,12 +11,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     SharedComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

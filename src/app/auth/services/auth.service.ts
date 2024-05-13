@@ -14,6 +14,7 @@ constructor(private _HttpClient:HttpClient) { }
 ngOnInit(): void {
   if(localStorage.getItem('tokenOfUserr')!==null){
     this.tokenDecodeInfo()
+   // this.getRole()
   }
 }
 role : any = ''
@@ -27,10 +28,16 @@ tokenDecodeInfo(){
 getRole(){
   if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
     this.role = localStorage.getItem('userRole')
+    //console.log(this.role);
+    
   }
 }
 loginUser(data:FormGroup):Observable<any>{
 return this._HttpClient.post('Users/Login',data)
+}
+
+currentUser():Observable<any>{
+  return this._HttpClient.get('Users/currentUser');
 }
 
 }
