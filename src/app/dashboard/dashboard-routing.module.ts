@@ -7,7 +7,7 @@ import { HomeComponent } from '../manager/home/home.component';
 
 const routes: Routes = [{
   path: '', component: DashboardComponent, children: [
-  //  {path:'' , redirectTo:'home' , pathMatch:'full'},
+   {path:'' , redirectTo:'home' , pathMatch:'full'},
     {path:'home' , component:HomeComponent , title:'home'} ,
     { path: 'manager',canActivate:[managerGuard] ,
     loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
