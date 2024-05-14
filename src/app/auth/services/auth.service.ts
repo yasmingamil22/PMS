@@ -29,7 +29,7 @@ tokenDecodeInfo(){
 
 getRole(){
   if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
-    this.role = localStorage.getItem('userRole')
+   this.role = localStorage.getItem('userRole')
     console.log(this.role);
     
   }
@@ -37,6 +37,10 @@ getRole(){
 
   currentUser():Observable<any> {
     return this._HttpClient.get('Users/currentUser');
+  }
+
+  loginUser(data: FormGroup): Observable<any> {
+    return this._HttpClient.post('Users/Login', data)
   }
 
   registerUser(data: FormData):Observable<any> {
