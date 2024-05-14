@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$ManagementBusiness-primary: mat.define-palette(mat.$indigo-palette);
+$ManagementBusiness-primary: mat.define-palette(mat.$yellow-palette , 800);
 $ManagementBusiness-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -35,7 +35,7 @@ $ManagementBusiness-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+// html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .cursor-pointer{
@@ -59,4 +59,15 @@ a{
   background-color: rgba($color: #EF9B28, $alpha: 0.3);
   color: #EF9B28;
   border-radius: 8px;
+  transition: 0.3s ease;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb{
+   background-color: #0E382F
+}
+::-webkit-scrollbar-thumb:hover{
+   background-color: #0E382F;
 }

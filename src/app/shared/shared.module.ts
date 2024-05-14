@@ -11,9 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import { HomeComponent } from './components/home/home.component';
-import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -21,19 +22,21 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dial
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
-    HomeComponent
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
     MatDialogModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    RouterModule
+    
   ],
   exports: [
     MatDialogModule,
@@ -42,6 +45,7 @@ import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dial
     NavbarComponent,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,

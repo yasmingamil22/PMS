@@ -1,9 +1,9 @@
 nav{
     .bell-icon{
-       margin-right: 35px;
+       margin-right: 40px;
        .bell{
         right: -6px;
-    top: 7px;
+    top: -3px;
     width: 14px;
     height: 14px;
     padding: 0.4rem;
@@ -16,9 +16,18 @@ nav{
         margin: 0px -3px;
     }
     }
+    .layer-img::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -18px;
+        width: 1px;
+        height: 100%;
+        background-color: #9A9A9A;
+    }
     .profile-img{
-        width: 70px;
-        height: 70px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
     }
     .nav-link{
