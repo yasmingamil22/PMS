@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { decoded } from '../auth';
+// import { decoded } from '../auth';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +12,16 @@ export class AuthService {
 
 constructor(private _HttpClient:HttpClient) { }
 ngOnInit(): void {
+
   if(localStorage.getItem('tokenOfUserr')!==null){
     this.tokenDecodeInfo()
-   // this.getRole()
+   this.getRole()
   }
 }
-role : any = ''
+role :string| any = ''
 tokenDecodeInfo(){
   let encoded:any = localStorage.getItem('tokenOfUserr')
-  let decoded:decoded = jwtDecode(encoded)
+  let decoded:any = jwtDecode(encoded)
   localStorage.setItem('userRole',decoded.userGroup)
   localStorage.setItem('userName',decoded.userName)
   this.getRole()
@@ -28,7 +29,7 @@ tokenDecodeInfo(){
 getRole(){
   if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
     this.role = localStorage.getItem('userRole')
-    //console.log(this.role);
+    console.log(this.role);
     
   }
 }
