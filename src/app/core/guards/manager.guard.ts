@@ -9,7 +9,7 @@ export const managerGuard: CanActivateFn = (route, state) => {
   const _AuthService = inject(AuthService);
   const _Router = inject(Router);
   const role = _AuthService.role;
-  if (localStorage.getItem('tokenOfUserr') !== null && role == 'Manager') {
+  if (localStorage.getItem('tokenOfUserr') !== null && localStorage.getItem('userRole') == 'Manager') {
     return true;
   }else{
     _Router.navigate(['/auth']);

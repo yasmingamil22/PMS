@@ -8,7 +8,7 @@
             <ul class="ps-0">
                     <ng-container *ngFor="let item of menu">
                     <li *ngIf="item.isActive">
-                        <a [routerLink]="item.link" routerLinkActive="active-ul" class="">
+                        <a href="#" [routerLink]="item.link" routerLinkActive="active-ul">
                             <i [class]="item.icon" class="me-2"></i>
                             <span class="">{{item.text}}</span>
                         </a>

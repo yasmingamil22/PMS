@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { ForgetpassComponent } from '../forgetpass/forgetpass.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService , private _Router:Router){
+  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService , private _Router:Router,public dialog: MatDialog){
     
   }
   hide = true;
@@ -39,4 +41,12 @@ export class LoginComponent {
       })
     }
   }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ForgetpassComponent, {
+      width: '550px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
 }

@@ -27,6 +27,7 @@ export class RegisterComponent {
       data:email
     });
   }
+  
 
 registerForm:FormGroup = this._FormBuilder.group({
   userName:['',[Validators.required]],

@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HttpClientModule } from '@angular/common/http';
 import { VerifyComponent } from './components/verify/verify.component';
+import { ForgetpassComponent } from './components/forgetpass/forgetpass.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,13 +18,15 @@ import { VerifyComponent } from './components/verify/verify.component';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    VerifyComponent
+    VerifyComponent,
+    ForgetpassComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     SharedModule,
     NgxDropzoneModule,
+    FormsModule
   ]
 })
 export class AuthModule { }

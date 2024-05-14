@@ -1,9 +1,6 @@
-.main{
-    background-image: url('../../../../assets/images/bg3.png');
-    height: 100vh;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface{
+    border-radius: .7rem !important;
+    border: 1px solid rgb(108,117,125) !important;
 }
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: transparent !important;
@@ -17,12 +14,8 @@
 .log-btn{
     background-color: rgba(239, 155, 40, 1) !important;
 }
-.lable{
-    color: rgba(239, 155, 40, 1)  ;
-}
-.login-card{
+.main{
     background-color: rgba(49, 89, 81, 0.9);
-    border-radius: 16px;
     .sp{
         color: rgba(255, 255, 255, 1) !important;
         font-size: 18px;
@@ -43,6 +36,30 @@
         bottom: 0;
         width: 100%;
         height: 3px;
+    
+        }
     }
-    }
+   
+}
+.fly{
+    animation: move 3s ease forwards; 
+}
+.appear{
+    animation: remove 3s ease forwards; 
+}
+.trans{
+    transform: translateY(0);
+}
+@keyframes move {
+    0%{transform: translateY(-10%);}
+    20% { transform: translateY(-50%);}
+    50% {transform: translateY(-150%); }
+    75% { transform: translateY(0); }
+    100%{display: none}
+}
+@keyframes remove {
+    25% {  opacity:.6 ; }
+    50% { opacity: .8; }
+    75% { opacity:  1}
+    100%{display: block;}
 }

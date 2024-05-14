@@ -12,11 +12,11 @@ export class SidebarComponent {
   constructor(private _AuthService:AuthService){}
 
 isManager():boolean{
- return this._AuthService.role == 'Manager'? true : false ;
+ return localStorage.getItem('userRole') == 'Manager'? true : false ;
 } 
 
 isEmployee():boolean{
-  return this._AuthService.role == 'Employee'? true : false ;
+  return localStorage.getItem('userRole') == 'Employee'? true : false ;
  } 
 
 menu:IMenu[] = [
@@ -24,7 +24,7 @@ menu:IMenu[] = [
   text:'Users' ,
   icon: 'fa-solid fa-user-group' ,
   link:'/dashboard/manager/users',
-  isActive: true,
+  isActive: this.isManager(),
   } ,
   {
     text:'Projects' ,
