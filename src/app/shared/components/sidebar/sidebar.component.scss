@@ -1,5 +1,5 @@
 #sidebar{
-    .arrow{
+    .arroww-left{
         background-color: #EF9B28;
         width: 10px;
         right: 0px;
@@ -10,6 +10,20 @@
         align-items: center;
         padding: 0.6rem;
         cursor: pointer;
+        transition: 0.3s ease;
+    }
+    .arroww-right{
+        background-color: #EF9B28;
+        width: 10px;
+        right: -19px;
+        top: 10px;
+       border-radius: 0px 8px 8px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem;
+        cursor: pointer;
+        transition: 0.3s ease;
     }
     .side-links{
         li{
