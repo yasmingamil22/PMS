@@ -11,17 +11,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
-import {MatMenuModule} from '@angular/material/menu';
-
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
+    SharedHeaderComponent,
+    PageNotFoundComponent
+
   ],
   imports: [
     CommonModule,
@@ -35,8 +39,10 @@ import {MatMenuModule} from '@angular/material/menu';
     RxReactiveFormsModule,
     MatDialogModule,
     NgxDropzoneModule,
-    RouterModule
-    
+    RouterModule,
+    MatTableModule,
+    MatCardModule
+
   ],
   exports: [
     MatDialogModule,
@@ -50,7 +56,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MatTableModule,
+    MatCardModule,
+    SharedHeaderComponent
+
   ]
 })
 export class SharedModule { }
