@@ -9,7 +9,7 @@
                     <ng-container *ngFor="let item of menu">
                         <li *ngIf="item.isActive">
                             <a [routerLink]="item.link" 
-                            routerLinkActive="active-ul" class="d-flex" [class]="isOpened?'':'justify-content-center'">
+                            routerLinkActive="active-ul" class="d-flex align-items-center" [class]="isOpened?'':'justify-content-center'">
                             <i [class]="item.icon" ></i>
                             <span class="ms-2" [ngClass]="{ 'd-none': !isOpened }">{{item.text}}</span>
                         </a>
