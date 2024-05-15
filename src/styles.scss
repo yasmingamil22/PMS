@@ -71,3 +71,17 @@ a{
 ::-webkit-scrollbar-thumb:hover{
    background-color: #0E382F;
 }
+.title{
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(79, 79, 79, 1);
+}
+
+  .main-btn{
+    background-color: rgba(239, 155, 40, 1);
+    color: rgba(255, 255, 255, 1);
+    &:hover{
+      background-color:  rgba(239, 155, 40, 1);
+      color:rgba(255, 255, 255, 1); ;
+    }
+   }

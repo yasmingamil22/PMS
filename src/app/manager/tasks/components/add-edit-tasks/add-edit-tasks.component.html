@@ -1,0 +1,54 @@
+<section class="main">
+    <div class="bg-white py-2">
+       <div class="container">
+        <p class="p-0 m-0"><i class="fa-solid fa-angle-left cursor-pointer" routerLink="/dashboard/manager/tasks"></i> View All Tasks</p>
+        <h3 class="mt-2">Add a New Task</h3>
+       </div>
+    </div>
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <mat-card class="rounded-4 p-4">
+                    <mat-card-content>
+                        <form action="">
+                            <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>Title</mat-label>
+                                <input type="text" placeholder="Enter the title" matInput>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width w-100" appearance="outline">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput placeholder="Description" rows="5"></textarea>
+                              </mat-form-field>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>User</mat-label>
+                                        <mat-select>
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                          </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>Project</mat-label>
+                                        <mat-select >
+                                            <mat-option value="one">First option</mat-option>
+                                            <mat-option value="two">Second option</mat-option>
+                                          </mat-select>
+                                    </mat-form-field>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <mat-card-actions class="d-flex justify-content-between">
+                        <button  class="btn border-2 rounded-pill px-4 border-danger" routerLink="/dashboard/manager/tasks">Cancel</button>
+                      <button  class="main-btn btn rounded-pill px-4">Save</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+        </div>
+      </div>
+</section>
