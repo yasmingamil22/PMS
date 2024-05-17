@@ -20,4 +20,7 @@ export interface IProjectParams {
  pageSize?: number;
  pageNumber?: number;
 }
-
+export interface ICreateProject {
+ title: string;
+ description: string;
+}

@@ -28,7 +28,6 @@ $ManagementBusiness-theme: mat.define-light-theme((color: (primary: $ManagementB
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($ManagementBusiness-theme);
-
 /* You can add global styles to this file, and also import other style files */
 
 // html, body { height: 100%; }
@@ -78,11 +77,14 @@ a {
   background-color: #0E382F;
 }
 
+.cp {
+  cursor: pointer;
+}
 
-
-.main {
+.btnHover {
 
   &:hover {
     opacity: 0.8;
+
   }
 }

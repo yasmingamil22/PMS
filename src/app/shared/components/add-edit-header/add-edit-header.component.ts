@@ -1,16 +1,15 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-shared-header',
-  templateUrl: './shared-header.component.html',
-  styleUrls: ['./shared-header.component.scss']
+  selector: 'app-add-edit-header',
+  templateUrl: './add-edit-header.component.html',
+  styleUrls: ['./add-edit-header.component.scss']
 })
-export class SharedHeaderComponent {
+export class AddEditHeaderComponent {
   constructor() { }
   //? Input property to receive the Main Text header 
   @Input() mainTextHeader!: string;
 
   //? Input property to receive the Main Text Btn header
-  @Input() mainTxTHeaderBtn!: string;
-
+  @Input() mainTxTHeaderLink!: string;
 }
