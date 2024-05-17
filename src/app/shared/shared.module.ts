@@ -13,19 +13,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 
-import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { RouterModule } from '@angular/router';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NotifierModule } from 'angular-notifier';
 import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './components/delete/delete.component';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -99,11 +103,11 @@ import { Subject } from 'rxjs';
       }
     }),
     FormsModule,
-
-
-
+    MatSelectModule,
+    MatDividerModule,
   ],
   exports: [
+    MatCardModule,
     MatDialogModule,
     SharedComponent,
     SidebarComponent,
@@ -125,6 +129,9 @@ import { Subject } from 'rxjs';
     NotifierModule,
     AddEditHeaderComponent,
     FormsModule,
+    MatSelectModule,
+    MatDividerModule,
+
   ],
 
 })

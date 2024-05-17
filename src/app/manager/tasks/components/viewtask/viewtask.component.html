@@ -1,0 +1,15 @@
+<section class="bg-white p-4">
+    <div class="d-flex justify-content-end mt-1 p-0"><i  class="fa-solid fa-xmark-circle text-danger fa-xl cursor-pointer" (click)="_DialogRef.close()"></i></div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="view-card">
+                <h3 class="fw-semibold "><span class="fs-2">Task Id : </span> <span class="fs-4">{{data.id}}</span></h3>
+                <p class="m-0 fw-semibold mt-2">Creation Date : {{data.creationDate |date:'dd/mm/yyyy hh:mm a'}}</p>
+                <h4 class="m-0 p-0 mt-2">Title : {{data.title}}</h4>
+                <h4 class="m-0 p-0 mt-2">employee name : {{data.employee.userName}}</h4>
+                <p class="fs-1 m-0">Describtion : {{data.project.description}}</p>
+                <p class="statuses p-2 rounded-pill text-center mt-2" [class]="data.status">{{data.status}}</p>
+            </div>
+        </div>
+    </div>
+</section>

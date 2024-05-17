@@ -47,7 +47,7 @@ body {
 .bg-main{
   background-color: #0E382F;
 }
-seconary-color{
+.seconary-color{
   color: #0E382F;
 }
 .dark-color{
@@ -106,3 +106,31 @@ a {
 
   }
 }
+.title{
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(79, 79, 79, 1);
+}
+
+  .main-btn{
+    background-color: rgba(239, 155, 40, 1);
+    color: rgba(255, 255, 255, 1);
+    &:hover{
+      background-color:  rgba(239, 155, 40, 1);
+      color:rgba(255, 255, 255, 1); ;
+    }
+   }
+   .statuses{
+    &.ToDo{
+      background-color: rgba(228, 225, 245, 1);
+      color: white;
+    }
+    &.InProgress{
+      background-color: rgba(239, 155, 40, 0.64);
+      color: white;
+    }
+    &.Done{
+      background-color: rgba(0, 146, 71, 1);
+      color: white;
+    }
+   }
