@@ -18,6 +18,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
     RouterModule,
     MatCardModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+     MatPaginatorModule
   ],
   exports: [
     MatCardModule,
@@ -57,7 +59,8 @@ import {MatDividerModule} from '@angular/material/divider';
     RxReactiveFormsModule,
     NgxDropzoneModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

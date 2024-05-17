@@ -6,6 +6,7 @@ import { TasksComponent } from './tasks.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddEditTasksComponent } from './components/add-edit-tasks/add-edit-tasks.component';
 import { ViewtaskComponent } from './components/viewtask/viewtask.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ViewtaskComponent } from './components/viewtask/viewtask.component';
   imports: [
     CommonModule,
     TasksRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class TasksModule { }

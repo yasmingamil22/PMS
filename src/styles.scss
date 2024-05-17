@@ -85,3 +85,17 @@ a{
       color:rgba(255, 255, 255, 1); ;
     }
    }
+   .statuses{
+    &.ToDo{
+      background-color: rgba(228, 225, 245, 1);
+      color: white;
+    }
+    &.InProgress{
+      background-color: rgba(239, 155, 40, 0.64);
+      color: white;
+    }
+    &.Done{
+      background-color: rgba(0, 146, 71, 1);
+      color: white;
+    }
+   }
