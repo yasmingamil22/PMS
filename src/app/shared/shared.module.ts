@@ -32,7 +32,7 @@ import { Subject } from 'rxjs';
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
-    TrimEmailPipe
+    TrimEmailPipe,
     SharedHeaderComponent,
     PageNotFoundComponent,
     AddEditHeaderComponent,
@@ -52,7 +52,7 @@ import { Subject } from 'rxjs';
     MatDialogModule,
     NgxDropzoneModule,
     RouterModule,
-    MatPaginatorModule
+    MatPaginatorModule,
     
     MatTableModule,
     MatCardModule,
