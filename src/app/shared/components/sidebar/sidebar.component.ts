@@ -3,13 +3,13 @@ import { AuthService } from './../../../auth/services/auth.service';
 import { IMenu } from './../../../core/models/global';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
 
   @Output() isOpenedValue = new EventEmitter<boolean>();
   isOpened:boolean =true;

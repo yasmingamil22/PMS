@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
+
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
@@ -30,6 +32,7 @@ import { Subject } from 'rxjs';
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
+    TrimEmailPipe
     SharedHeaderComponent,
     PageNotFoundComponent,
     AddEditHeaderComponent,
@@ -49,6 +52,8 @@ import { Subject } from 'rxjs';
     MatDialogModule,
     NgxDropzoneModule,
     RouterModule,
+    MatPaginatorModule
+    
     MatTableModule,
     MatCardModule,
     NotifierModule.withConfig({
@@ -94,7 +99,7 @@ import { Subject } from 'rxjs';
       }
     }),
     FormsModule,
-    MatPaginatorModule
+    
 
 
   ],
@@ -111,6 +116,8 @@ import { Subject } from 'rxjs';
     ReactiveFormsModule,
     RxReactiveFormsModule,
     NgxDropzoneModule,
+    MatPaginatorModule,
+    TrimEmailPipe,
     MatTableModule,
     MatCardModule,
     SharedHeaderComponent,
@@ -118,7 +125,6 @@ import { Subject } from 'rxjs';
     NotifierModule,
     AddEditHeaderComponent,
     FormsModule,
-    MatPaginatorModule
   ],
 
 })

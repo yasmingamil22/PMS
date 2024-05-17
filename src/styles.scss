@@ -41,12 +41,18 @@ body {
 }
 
 // Global Properties
-.bg-main {
+.main-color{
+  color: #EF9B28;
+}
+.bg-main{
   background-color: #0E382F;
 }
+seconary-color{
+  color: #0E382F;
+}
+.dark-color{
+  color: #1F263E;
 
-.main-color {
-  color: #EF9B28;
 }
 
 ul {
@@ -75,6 +81,18 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0E382F;
+}
+::-webkit-scrollbar-thumb:hover{
+   background-color: #0E382F;
+}
+// Button
+
+// Customise Angular Material
+.mat-mdc-menu-content{
+  padding: 9px !important;
+}
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8{
+  border-radius: 20px !important;
 }
 
 .cp {
