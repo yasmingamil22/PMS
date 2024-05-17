@@ -41,12 +41,18 @@ body {
 }
 
 // Global Properties
-.bg-main {
+.main-color{
+  color: #EF9B28;
+}
+.bg-main{
   background-color: #0E382F;
 }
+.seconary-color{
+  color: #0E382F;
+}
+.dark-color{
+  color: #1F263E;
 
-.main-color {
-  color: #EF9B28;
 }
 
 ul {
@@ -76,6 +82,18 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0E382F;
 }
+::-webkit-scrollbar-thumb:hover{
+   background-color: #0E382F;
+}
+// Button
+
+// Customise Angular Material
+.mat-mdc-menu-content{
+  padding: 9px !important;
+}
+.mat-elevation-z8, .mat-mdc-elevation-specific.mat-elevation-z8{
+  border-radius: 20px !important;
+}
 
 .cp {
   cursor: pointer;
@@ -88,3 +106,31 @@ a {
 
   }
 }
+.title{
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(79, 79, 79, 1);
+}
+
+  .main-btn{
+    background-color: rgba(239, 155, 40, 1);
+    color: rgba(255, 255, 255, 1);
+    &:hover{
+      background-color:  rgba(239, 155, 40, 1);
+      color:rgba(255, 255, 255, 1); ;
+    }
+   }
+   .statuses{
+    &.ToDo{
+      background-color: rgba(228, 225, 245, 1);
+      color: white;
+    }
+    &.InProgress{
+      background-color: rgba(239, 155, 40, 0.64);
+      color: white;
+    }
+    &.Done{
+      background-color: rgba(0, 146, 71, 1);
+      color: white;
+    }
+   }

@@ -51,10 +51,10 @@
     transform: translateY(0);
 }
 @keyframes move {
-    0%{transform: translateY(-10%);}
-    20% { transform: translateY(-50%);}
-    50% {transform: translateY(-150%); }
-    75% { transform: translateY(0); }
+    0%{display: none;}
+    25%{opacity: .5;}
+    50%{opacity: .3;}
+    75%{opacity: .1;}
     100%{display: none}
 }
 @keyframes remove {
