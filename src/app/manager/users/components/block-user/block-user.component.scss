@@ -1,0 +1,30 @@
+.delete{
+
+
+    &.primary {
+      border-radius: 96px;
+      background-color: #ef9b28;
+      color: #fff;
+      transition:  0.25s;
+      padding: 0.5rem 1.2rem;
+      &:hover {
+        color: #ef9b28;
+        background-color: #fff;
+        border: 1px solid #ef9b28;
+       }
+    }
+  
+  
+  &.outline-primary {
+    border-radius: 96px;
+    border: 1px solid #ef9b28 !important;
+    color: #ef9b28 !important;
+    padding: 0.5rem 1.2rem;
+    transition:  0.25s;
+    padding: 0.5rem 1.2rem;
+    &:hover {
+      background-color: #ef9b28;
+      color: #fff !important;
+    }
+  }
+}

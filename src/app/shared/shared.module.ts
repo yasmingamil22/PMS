@@ -11,10 +11,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
+import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {MatMenuModule} from '@angular/material/menu';
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
+    TrimEmailPipe
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import {MatMenuModule} from '@angular/material/menu';
     RxReactiveFormsModule,
     MatDialogModule,
     NgxDropzoneModule,
-    RouterModule
+    RouterModule,
+    MatPaginatorModule
     
   ],
   exports: [
@@ -50,7 +53,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MatPaginatorModule,
+    TrimEmailPipe
   ]
 })
 export class SharedModule { }
