@@ -11,12 +11,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
-import { RouterModule } from '@angular/router';
-import {MatMenuModule} from '@angular/material/menu';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NotifierModule } from 'angular-notifier';
+import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
+import { FormsModule } from '@angular/forms';
+import { DeleteComponent } from './components/delete/delete.component';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { Subject } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -24,7 +33,12 @@ import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
     SidebarComponent,
     NavbarComponent,
     TrimEmailPipe
+    SharedHeaderComponent,
+    PageNotFoundComponent,
+    AddEditHeaderComponent,
+    DeleteComponent
   ],
+
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -40,6 +54,54 @@ import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
     RouterModule,
     MatPaginatorModule
     
+    MatTableModule,
+    MatCardModule,
+    NotifierModule.withConfig({
+
+      position: {
+        horizontal: {
+          position: 'right',
+          distance: 12
+        },
+        vertical: {
+          position: 'top',
+          distance: 12,
+          gap: 10
+        }
+      },
+      theme: 'material',
+      behaviour: {
+        autoHide: 5000,
+        onClick: 'hide',
+        onMouseover: 'pauseAutoHide',
+        showDismissButton: true,
+        stacking: 4
+      },
+      animations: {
+        enabled: true,
+        show: {
+          preset: 'slide',
+          speed: 300,
+          easing: 'ease'
+        },
+        hide: {
+          preset: 'fade',
+          speed: 300,
+          easing: 'ease',
+          offset: 50
+        },
+        shift: {
+          speed: 300,
+          easing: 'ease'
+        },
+        // overlap: 150
+
+      }
+    }),
+    FormsModule,
+    
+
+
   ],
   exports: [
     MatDialogModule,
@@ -55,7 +117,15 @@ import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
     RxReactiveFormsModule,
     NgxDropzoneModule,
     MatPaginatorModule,
-    TrimEmailPipe
-  ]
+    TrimEmailPipe,
+    MatTableModule,
+    MatCardModule,
+    SharedHeaderComponent,
+    PageNotFoundComponent,
+    NotifierModule,
+    AddEditHeaderComponent,
+    FormsModule,
+  ],
+
 })
 export class SharedModule { }
