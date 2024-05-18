@@ -36,3 +36,14 @@
         }
     }
 }
+
+@media (max-width: 991px) {
+    .side-links{
+        li{
+            padding-left: 0px !important;
+            a{
+                padding: 0.4rem 0.9rem !important;
+            }
+        }
+    }
+  }

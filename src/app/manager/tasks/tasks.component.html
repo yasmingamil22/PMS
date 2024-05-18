@@ -1,1 +1,87 @@
-<p>tasks works!</p>
+<section class="main">
+    <div class="mb-2  bg-white  py-3 shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center py-4 px-5">
+            <h2 class="title">Tasks</h2>
+           <button class="main-btn rounded-pill btn py-2 px-3" routerLink="add">Add New Task <i class="fa-solid fa-plus ps-2"></i></button>
+        </div>
+    </div>
+    <div class="data container px-3"> 
+      <div class="row mt-3">
+        <div class="col-md-8">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Search by title</mat-label>
+            <input type="text"  matInput [(ngModel)]="title" (keyup)="getTasksForManagaer()">
+            <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title='';getTasksForManagaer()">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-select [(ngModel)]="status" (selectionChange)="getTasksForManagaer()">
+              <mat-option value="">All</mat-option>
+              <mat-option value="ToDo">To Do</mat-option>
+              <mat-option value="InProgress">In Progress</mat-option>
+              <mat-option value="Done">Done</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+        <table class="table table-striped table-bordered text-center border border-1  shadow">
+            <thead class="">
+                <th class="">Title</th>
+                <th class="">Statues</th>
+                <th class="">User</th>
+                <th class="">Project</th>
+                <th class="">Date Created</th>
+                <th class="">Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tasksData">
+                    <td class="pt-3">{{item.project.title}}</td>
+                    <td class="pt-3">
+                      <span class="statuses p-2 rounded-pill" [class]="item.status">{{item.status}}</span>
+                    </td>
+                    <td class="pt-3">{{item.employee.userName}}</td>
+                    <td class="pt-3">{{item.project.title}}</td>
+                    <td class="pt-3">{{item.creationDate|date:'dd/mm/yyyy hh:mm a'}}</td>
+                    <td class="pt-2">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu" class="rounded-4">
+                            <button mat-menu-item class="px-4" (click)="openViewDialog('700ms', '350ms',item)">
+                              <mat-icon>visibility</mat-icon>
+                              <span>View</span>
+                            </button>
+                            <button [routerLink]="['edit',item.id]" mat-menu-item class="px-4">
+                              <mat-icon>edit_square</mat-icon>
+                              <span>Edit</span>
+                            </button>
+                            <button mat-menu-item class="px-4" (click)="openDeleteDialog(item.id)">
+                              <mat-icon>delete</mat-icon>
+                              <span>Delete</span>
+                            </button>
+                          </mat-menu>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+          <mat-paginator #paginator
+               class="demo-paginator bg-transparent"
+               (page)="handlePageEvent($event)"
+               [length]="total"
+               [pageSize]="pageSize"
+               [disabled]="disabled"
+               [showFirstLastButtons]="showFirstLastButtons"
+               [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+               [hidePageSize]="hidePageSize"
+               [pageIndex]="pageNumber"
+               aria-label="Select page">
+       </mat-paginator>
+
+        </div>
+    </div>
+</section>
