@@ -66,7 +66,7 @@ import { Subject } from 'rxjs';
       },
       theme: 'material',
       behaviour: {
-        autoHide: 5000,
+        autoHide: 900,
         onClick: 'hide',
         onMouseover: 'pauseAutoHide',
         showDismissButton: true,
@@ -76,7 +76,7 @@ import { Subject } from 'rxjs';
         enabled: true,
         show: {
           preset: 'slide',
-          speed: 300,
+          speed: 800,
           easing: 'ease'
         },
         hide: {
@@ -89,7 +89,7 @@ import { Subject } from 'rxjs';
           speed: 300,
           easing: 'ease'
         },
-        // overlap: 150
+        overlap: 150
 
       }
     }),
