@@ -75,7 +75,7 @@ openDeleteDialog(data: any): void {
   console.log(data);
   const dialogRef = this.dialog.open(DeleteComponent, {
     data:data,
-    width: '35%'
+    width: '40%'
   });
 
   dialogRef.afterClosed().subscribe(result => {

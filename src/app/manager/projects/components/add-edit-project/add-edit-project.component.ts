@@ -52,6 +52,7 @@ export class AddEditProjectComponent implements OnInit {
     console.log(this.projectID);
     if (this.projectID) {
       this.onGetProjectByID(this.projectID)
+      
     }
   }
 
@@ -68,10 +69,15 @@ export class AddEditProjectComponent implements OnInit {
           title: this.projectList.title,
           description: this.projectList.description
         })
+     
       },
     })
   }
 
+  disableFormControls() {
+    this.addEditProjectForm.get('title')?.disable();
+    this.addEditProjectForm.get('description')?.disable();
+  }
   //? Function To Add and Edit Project
   onAddEdietProject(ProjectForm: FormGroup) {
     console.log(ProjectForm.value);
