@@ -1,13 +1,30 @@
-p{
-    color: rgba(14, 56, 47, 1);
-    font-size: 18px;
-}
 .main{
     min-height: 100vh;
     background-color:  rgba(128, 128, 128, 0.17);
-}
-h3{
-    color: rgba(14, 56, 47, 1);
-    font-size: 32px;
-    font-weight: 500;
+    a{
+        color: #0E382F;
+    }
+    p{
+        color: rgba(14, 56, 47, 1);
+        font-size: 18px;
+    }
+    h3{
+        color: rgba(14, 56, 47, 1);
+        font-size: 32px;
+        font-weight: 500;
+    }
+    .cancel{
+        border: 1px solid #0E382F;
+        color: #0E382F;
+        transition: 0.4s;
+        &:hover{
+            background-color: #0E382F;
+            color: #fff;
+        }
+    }
+    .main-btn:hover{
+        background-color: #fff;
+        border: 1px solid #EF9B28;
+        color: #EF9B28;
+    }
 }

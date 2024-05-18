@@ -27,4 +27,8 @@ getTaskById(id:number):Observable<any>{
 updateTask(id:number,data:object):Observable<any>{
  return this._HttpClient.put(`Task/${id}`,data)
 }
+onDeleteTask(id: number): Observable<any> {
+  return this._HttpClient.delete(`Task/${id}`)
+
+}
 }

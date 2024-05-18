@@ -106,6 +106,7 @@ export class ProjectsComponent implements OnInit {
     console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: { itemID: id },
+      width: '35%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
