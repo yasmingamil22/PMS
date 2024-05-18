@@ -1,30 +1,32 @@
-.delete{
-
-
+.block{
+  button {
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.25s;
     &.primary {
       border-radius: 96px;
       background-color: #ef9b28;
       color: #fff;
-      transition:  0.25s;
-      padding: 0.5rem 1.2rem;
-      &:hover {
-        color: #ef9b28;
-        background-color: #fff;
-        border: 1px solid #ef9b28;
-       }
+      border: 1px solid #ef9b28;
     }
-  
-  
-  &.outline-primary {
-    border-radius: 96px;
-    border: 1px solid #ef9b28 !important;
-    color: #ef9b28 !important;
-    padding: 0.5rem 1.2rem;
-    transition:  0.25s;
-    padding: 0.5rem 1.2rem;
     &:hover {
-      background-color: #ef9b28;
-      color: #fff !important;
+      border: 1px solid #ef9b28;
+    color: #ef9b28;
+    background-color: #fff;
+    }
+    &.outline-primary {
+      border-radius: 96px;
+      border: 1px solid #ef9b28;
+      color: #ef9b28;
+      &:hover {
+       color: #fff;
+        background-color: #ef9b28;
+      }
     }
   }
 }
+
+
+  
+  
+  

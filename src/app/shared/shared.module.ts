@@ -58,6 +58,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     RouterModule,
     MatPaginatorModule,
 
+    
     MatTableModule,
     MatCardModule,
     NotifierModule.withConfig({

@@ -69,16 +69,14 @@ a {
   border-radius: 8px;
   transition: 0.3s ease;
 }
-
+// Scroll
 ::-webkit-scrollbar {
   width: 10px;
   border-radius: 15px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #0E382F
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0E382F;
 }

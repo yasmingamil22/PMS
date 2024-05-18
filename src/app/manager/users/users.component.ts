@@ -1,10 +1,10 @@
-import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from './services/users.service';
 import { ITableData, IEmployee } from './models/users';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { BlockUserComponent } from './components/block-user/block-user.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +17,8 @@ export class UsersComponent implements OnInit {
   tableData: ITableData | any ;
   listUsers: IEmployee[] = [] ;
   message:string = '';
-  constructor(private _UsersService:UsersService , public dialog: MatDialog , private _ToastrService:ToastrService){}
+  constructor(private _UsersService:UsersService , public dialog: MatDialog){
+  }
   ngOnInit(): void {
     this.getAllUsers();
   }
@@ -52,7 +53,7 @@ handlePageEvent(e: PageEvent) {
 openBlockDialog(item:IEmployee): void {
   const dialogRef = this.dialog.open(BlockUserComponent, {
     data: item,
-    width: '35%'
+    width: '40%'
   });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -73,7 +74,7 @@ onActivateuser(id:number){
     },
     complete:()=>{
       this.getAllUsers();
-      this._ToastrService.success(this.message , 'User Active Now')
+     
     }
   })
 }
