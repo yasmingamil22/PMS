@@ -4,13 +4,15 @@
  <div class="Add-Edit  ">
   <mat-card class="p-5 rounded-5">
    <!--? Start Form -->
-   <form [formGroup]="addEditProjectForm" (ngSubmit)="onCreateProject()" class="p-4  w-100">
+   <form [formGroup]="addEditProjectForm" (ngSubmit)="onAddEdietProject(addEditProjectForm)" class="p-4  w-100">
     <div class="title-input">
+     <!-- ? title -->
      <mat-form-field class="w-100">
       <mat-label>Project Name</mat-label>
       <input type="text" formControlName="title" matInput placeholder="Add New Project">
      </mat-form-field>
     </div>
+    <!-- ?Describtion  -->
     <div class="title-input">
      <mat-form-field class="example-full-width w-100 ">
       <mat-label>Project Describtion</mat-label>
@@ -19,13 +21,12 @@
     </div>
     <hr>
     <mat-card-actions class="d-flex justify-content-between">
-     <button type="button" routerLink="../"
+     <button type="button" routerLink="/dashboard/manager/projects"
       class="main px-4 py-1 mt-3  btn-outline-dark rounded rounded-pill border-1 text-dark">
       <small>Close</small>
      </button>
 
-     <button routerLink="../" type="submit" class="  main btn rounded mt-3 rounded-pill border-0 text-white"
-      style="background: #EF9B28; ">
+     <button class=" main btn rounded mt-3 rounded-pill border-0 text-white" style="background: #EF9B28; ">
       <small>Add Project</small>
      </button>
 
@@ -35,27 +36,4 @@
   </mat-card>
  </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <notifier-container></notifier-container>

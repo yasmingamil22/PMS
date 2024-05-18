@@ -58,6 +58,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     RouterModule,
     MatPaginatorModule,
 
+    
     MatTableModule,
     MatCardModule,
     NotifierModule.withConfig({
@@ -75,7 +76,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
       },
       theme: 'material',
       behaviour: {
-        autoHide: 5000,
+        autoHide: 900,
         onClick: 'hide',
         onMouseover: 'pauseAutoHide',
         showDismissButton: true,
@@ -85,7 +86,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
         enabled: true,
         show: {
           preset: 'slide',
-          speed: 300,
+          speed: 800,
           easing: 'ease'
         },
         hide: {
@@ -98,7 +99,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
           speed: 300,
           easing: 'ease'
         },
-        // overlap: 150
+        overlap: 150
 
       }
     }),

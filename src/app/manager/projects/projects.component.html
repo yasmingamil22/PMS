@@ -25,9 +25,9 @@
       <mat-card-header>
         <mat-form-field class="w-25 " appearance="outline">
           <input type="search" class="inp text-dark inp-radius" placeholder="Search By Title"
-            [(ngModel)]="projectFiltrationValue" (keyup.enter)="getManagerProjects()" matInput>
+            [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
           <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
-            (click)="projectFiltrationValue='';getManagerProjects()">
+            (click)="projectFiltrationValue='';onGetManagerProjects()">
             <mat-icon>close</mat-icon>
           </button>
           <mat-label class="lable">Search</mat-label>
@@ -44,7 +44,7 @@
   <div class="">
     <div class="container">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-5 text-capitalize text-center">
-        <!--- Note that these columns can be defined in any order.
+        <!--? Note that these columns can be defined in any order. 
           The actual rendered columns are set as a property on the row definition" -->
 
         <!--? Title Column -->
@@ -104,11 +104,11 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item [routerLink]="['viewProject',element.id]">
                 <mat-icon>visibility</mat-icon>
                 <span>View</span>
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item [routerLink]="['editProject',element.id]">
                 <mat-icon>edite_square</mat-icon>
                 <span>Edit</span>
               </button>
@@ -123,6 +123,7 @@
         <tr mat-row *matRowDef=" let row; columns: displayColumns;"></tr>
       </table>
 
+      <!-- ? paginator -->
       <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
         [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
         [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="PageNumber"

@@ -1,12 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './services/projects.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IProjectData, IProjectParams, IProjects } from './interface/projects';
+import { IProjectData, IProjectParams } from './interface/projects';
 import { NotifierService } from 'angular-notifier';
-import { AddEditProjectComponent } from './components/add-edit-project/add-edit-project.component';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
-import { HelperService } from 'src/app/shared/services/helper.service';
 import { PageEvent } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs';
@@ -34,7 +32,8 @@ export class ProjectsComponent implements OnInit {
   projectFiltrationValue: string = '';
   myControl = new FormControl();
   filteredProject: any[] = [];
-  projects: any[] = []; // assuming you have a list of categories
+  projects: any[] = [];
+
 
 
 
@@ -50,20 +49,18 @@ export class ProjectsComponent implements OnInit {
   PageNumber: number = 1;
   PageSize: number = 10;
 
-  fullText: string = '';
-
-
   public displayColumns: any[] = ['title', 'description', 'creationDate', 'modificationDate', 'task', 'menu']
 
   public dataSource: any = [];
 
   constructor(private _ProjectsService: ProjectsService,
     private _HttpClient: HttpClient, notifierService: NotifierService,
-    private dialog: MatDialog, private _Router: Router) {
+    private dialog: MatDialog, private _Router: Router,) {
     this.notifier = notifierService;
   }
+
   ngOnInit(): void {
-    this.getManagerProjects()
+    this.onGetManagerProjects()
     this.filteredProject = this.projects;
     this.myControl.valueChanges
       .pipe(startWith(''), map((value) => this._filter(value))
@@ -81,7 +78,7 @@ export class ProjectsComponent implements OnInit {
     );
   }
   //? Function To Get All Project 
-  getManagerProjects() {
+  onGetManagerProjects() {
     let params: IProjectParams = {
       title: this.projectFiltrationValue,
       pageSize: this.PageSize,
@@ -97,23 +94,11 @@ export class ProjectsComponent implements OnInit {
       error: (error: HttpErrorResponse) =>
         this.notifier.notify('error', error.error.message),
       complete: () => {
-        this.notifier.notify('success', 'The items were successfully retrieved.!');
+        // this.notifier.notify('success', 'The items were successfully retrieved.!');
       }
     })
   }
 
-  openDeleteDialog(id: number): void {
-    console.log(id);
-    const dialogRef = this.dialog.open(DeleteComponent, {
-      data: { itemID: id },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.onDeleteProject(result);
-      }
-    });
-  }
 
   //? Function To Delete Project By ID
   onDeleteProject(id: number) {
@@ -123,15 +108,27 @@ export class ProjectsComponent implements OnInit {
         this.notifier.notify('error', error.error.message),
       complete: () => {
         this.notifier.notify('success', 'The Certificate has been successfully deleted');
-        this.getManagerProjects()
+        this.onGetManagerProjects()
       }
 
     })
   }
 
+  //? Function To Open Project DeleteDialog
+  openDeleteDialog(id: number): void {
+    console.log(id);
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      data: { itemID: id },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onDeleteProject(result);
+      }
+    });
+  }
+
 
   //? handle paginator
-
   length = 50;
   pageSize = 10;
   pageIndex = 0;
@@ -149,6 +146,6 @@ export class ProjectsComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.PageNumber = e.pageIndex;
 
-    this.getManagerProjects()
+    this.onGetManagerProjects()
   }
 }

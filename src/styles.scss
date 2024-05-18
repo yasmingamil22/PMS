@@ -39,6 +39,28 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+// Table Design
+
+th {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px;
+  border: 1px solid rgba(49, 89, 81, 0.9);
+  background: rgba(49, 89, 81, 0.9);
+  color: #fff;
+  text-align: center;
+}
+tr{
+  text-align: center;
+  color: #4F4F4F;
+  border: 1px solid rgba(49, 89, 81, 0.9);
+  td:not(:last-child){
+      padding-top: 1.5rem;
+  }
+}
+
 
 // Global Properties
 .main-color{
@@ -69,16 +91,14 @@ a {
   border-radius: 8px;
   transition: 0.3s ease;
 }
-
+// Scroll
 ::-webkit-scrollbar {
   width: 10px;
   border-radius: 15px;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #0E382F
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0E382F;
 }

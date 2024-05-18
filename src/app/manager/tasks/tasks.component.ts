@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewtaskComponent } from './components/viewtask/viewtask.component';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
 
 @Component({
   selector: 'app-tasks',
@@ -68,4 +69,41 @@ handlePageEvent(e: PageEvent) {
   this.pageNumber = e.pageIndex;
   this.getTasksForManagaer()
 }
+
+// Delete Tasks
+openDeleteDialog(data: any): void {
+  console.log(data);
+  const dialogRef = this.dialog.open(DeleteComponent, {
+    data:data,
+    width: '40%'
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.onDeleteTask(result.id);
+    }
+  });
+}
+
+//? Function To Delete Project By ID
+onDeleteTask(id: number) {
+  this._TasksService.onDeleteTask(id).subscribe({
+    next:(res)=>{
+      console.log(res);
+      
+    },
+    error:(err)=>{
+      console.log(err.error.message);
+      
+    },
+    complete: () => {
+      this.getTasksForManagaer()
+    }
+
+  })
+}
+ 
+
+
+
 }
