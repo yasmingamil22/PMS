@@ -15,10 +15,14 @@ constructor(private _AuthService:AuthService){
   this.getCurrentUser();
 }
 
+onLogout() {
+  this._AuthService.logout();
+}
+
 getCurrentUser():void{
   this._AuthService.currentUser().subscribe({
     next:(res)=>{
-      console.log(res); 
+      console.log(res);
       this.currentUser = res;
     },
     error:(err)=>{

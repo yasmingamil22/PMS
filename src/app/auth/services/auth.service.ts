@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+
 // import { decoded } from '../auth';
 
 @Injectable({
@@ -31,7 +32,7 @@ getRole(){
   if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
    this.role = localStorage.getItem('userRole')
     console.log(this.role);
-    
+
   }
 }
   currentUser():Observable<any> {
@@ -56,5 +57,9 @@ getRole(){
     return this._HttpClient.post('Users/Reset',data)
   }
 
+  logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+  }
 }
 
