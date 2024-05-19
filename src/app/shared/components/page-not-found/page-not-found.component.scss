@@ -1,0 +1,30 @@
+.notFoundContent {
+ width: 100%;
+ height: 80vh;
+}
+
+.content {
+ h2 {
+  font-size: 2.5rem !important;
+  font-weight: 700;
+  color: #1F263E;
+  font-family: Arial, Helvetica, sans-serif;
+ }
+
+ p {
+  font-family: cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1F263E;
+  width: fit-content;
+
+  &.not-found {
+   font-size: 1.8rem;
+   color: #009247;
+  }
+ }
+
+ button {
+  width: fit-content !important;
+ }
+}

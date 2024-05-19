@@ -2,129 +2,73 @@
   <header class="project-header ">
     <!--? Import shared-header component to display main header and content -->
     <div class="container">
-      <div class="row px-0 shadow p-5 mb-4 ">
-        <div class="col-md-6 ">
-          <app-shared-header [mainTextHeader]="mainTextHeader"
-            [mainTxTHeaderBtn]="mainTxTHeaderBtn"></app-shared-header>
-        </div>
-        <!--* Right Col Section  -->
-        <div class="col-md-6 ">
-          <!--* Main Text Button  -->
-          <div class="contectButton  text-end">
-            <button routerLink="addProject" class=" w-50 main rounded rounded-pill text-center border-0 text-white"
-              style="background: #EF9B28; padding: 0.8rem 1rem; ">
-              <span> <i class="fa-solid fa-plus "></i> {{ mainTxTHeaderBtn }}</span>
-            </button>
-          </div>
-        </div>
+      <div class="row  justify-content-between align-items-center shadow py-3 mb-4 ">
+        <app-shared-header [mainTextHeader]="mainTextHeader" [mainTxTHeaderBtn]="mainTxTHeaderBtn"></app-shared-header>
       </div>
     </div>
   </header>
-  <div class="container">
-    <mat-card>
-      <mat-card-header>
-        <mat-form-field class="w-25 " appearance="outline">
-          <input type="search" class="inp text-dark inp-radius" placeholder="Search By Title"
-            [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
-          <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
-            (click)="projectFiltrationValue='';onGetManagerProjects()">
-            <mat-icon>close</mat-icon>
-          </button>
-          <mat-label class="lable">Search</mat-label>
-          <mat-icon matPrefix>
-            <span class="material-symbols-outlined">
-              search
-            </span>
-          </mat-icon>
-        </mat-form-field>
-      </mat-card-header>
-    </mat-card>
-  </div>
+  <div class="container px-3">
+    <div class="col-8">
+      <mat-form-field class="w-75 " appearance="outline">
+        <mat-label class="lable">Search</mat-label>
+        <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
+          [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
+        <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
+          (click)="projectFiltrationValue='';onGetManagerProjects()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <table class="table table-striped text-capitalize table-bordered text-center border border-1  shadow ">
+      <thead>
+        <th>title</th>
+        <th>description</th>
+        <th>creationDate</th>
+        <th>modificationDate</th>
+        <th>task</th>
+        <th> </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projects of projectList.data">
+          <!--? Title Column -->
+          <td>{{projects.title}}</td>
+          <!--? Description Column -->
+          <td>{{projects.description}}</td>
+          <!--? CreationDate Column -->
+          <td>{{projects.creationDate | date:'dd-mm-yyyy'}}</td>
+          <!--? ModificationDate Column -->
+          <td>{{projects.modificationDate | date: 'dd/mm h:m a'}}</td>
+          <!--? Task Column -->
+          <td>{{projects.task.length}}</td>
 
-  <div class="">
-    <div class="container">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-5 text-capitalize text-center">
-        <!--? Note that these columns can be defined in any order. 
-          The actual rendered columns are set as a property on the row definition" -->
-
-        <!--? Title Column -->
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>
-            <span>title</span>
-            <mat-icon class="mat-18  pt-1"><span class="mt-5">unfold_more</span></mat-icon>
-          </th>
-          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-        </ng-container>
-
-        <!--? Description Column -->
-        <ng-container matColumnDef="description" class="text-center">
-          <th mat-header-cell *matHeaderCellDef class="text-center">
-            <span>Description</span>
-            <mat-icon class="mat-18 text-center pt-1"><span class="mt-5">unfold_more</span></mat-icon>
-          </th>
-          <td mat-cell *matCellDef="let element" class="text-center"> {{element.description | slice:0:10}}...</td>
-        </ng-container>
-
-        <!--? CreationDate Column -->
-        <ng-container matColumnDef="creationDate">
-          <th mat-header-cell *matHeaderCellDef class="text-center">
-            <span>CreationDate</span>
-            <mat-icon class="mat-18 text-center pt-1"><span class="mt-5">unfold_more</span>
-            </mat-icon>
-          </th>
-          <td mat-cell *matCellDef="let element" class="text-center"> {{element.creationDate |
-            date:'dd/mm h:m a'}}
-          </td>
-        </ng-container>
-
-        <!--? ModificationDate Column -->
-        <ng-container matColumnDef="modificationDate">
-          <th mat-header-cell *matHeaderCellDef>
-            <span>ModificationDate</span>
-            <mat-icon class="mat-18 text-center pt-1"><span class="mt-5">unfold_more</span></mat-icon>
-          </th>
-          <td mat-cell *matCellDef="let element"> {{element.modificationDate | date:'dd/mm h:m a'}}
-          </td>
-        </ng-container>
-
-        <!--? Task Count Column -->
-        <ng-container matColumnDef="task">
-          <th mat-header-cell *matHeaderCellDef class="text-center">
-            <span>task count</span>
-            <mat-icon class="mat-18 text-center pt-1"><span class="mt-5">unfold_more</span></mat-icon>
-          </th>
-          <td mat-cell *matCellDef="let element" class="text-center"> {{element.task.length}}</td>
-        </ng-container>
-
-        <!--? Menu Column -->
-        <ng-container matColumnDef="menu">
-          <th mat-header-cell *matHeaderCellDef> </th>
-          <td mat-cell *matCellDef="let element">
+          <td>
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item [routerLink]="['viewProject',element.id]">
+              <button mat-menu-item [routerLink]="['view',projects.id,'disabled']">
                 <mat-icon>visibility</mat-icon>
                 <span>View</span>
               </button>
-              <button mat-menu-item [routerLink]="['editProject',element.id]">
+              <button mat-menu-item [routerLink]="['editProject',projects.id,'edit']">
                 <mat-icon>edite_square</mat-icon>
                 <span>Edit</span>
               </button>
-              <button mat-menu-item (click)="openDeleteDialog(element.id)">
+              <button mat-menu-item (click)="openDeleteDialog(projects.id)">
                 <mat-icon>delete</mat-icon>
                 <span>Delete</span>
               </button>
             </mat-menu>
           </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-        <tr mat-row *matRowDef=" let row; columns: displayColumns;"></tr>
-      </table>
+        </tr>
 
+        <app-page-not-found *ngIf="projectList.data.length == 0 "></app-page-not-found>
+
+      </tbody>
+    </table>
+    <div class=" d-flex justify-content-center bg-transparent">
       <!-- ? paginator -->
-      <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
+      <mat-paginator #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
         [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
         [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="PageNumber"
         aria-label="Select page">
@@ -134,3 +78,5 @@
 </section>
 
 <notifier-container></notifier-container>
+
+<!-- <app-page-not-found></app-page-not-found> -->

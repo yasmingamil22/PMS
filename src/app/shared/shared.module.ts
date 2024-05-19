@@ -12,7 +12,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
-
 import { MatTableModule } from '@angular/material/table';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -22,14 +21,13 @@ import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './components/delete/delete.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
-import {MatCardModule} from '@angular/material/card';
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDividerModule} from '@angular/material/divider';
-
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +38,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     SharedHeaderComponent,
     PageNotFoundComponent,
     AddEditHeaderComponent,
-    DeleteComponent
+    DeleteComponent,
+
   ],
 
   imports: [
@@ -57,8 +56,6 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     NgxDropzoneModule,
     RouterModule,
     MatPaginatorModule,
-
-    
     MatTableModule,
     MatCardModule,
     NotifierModule.withConfig({
