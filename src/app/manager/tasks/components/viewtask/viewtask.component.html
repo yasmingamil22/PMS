@@ -1,14 +1,13 @@
-<section class="bg-white p-4">
+<section class="bg-main p-4">
     <div class="d-flex justify-content-end mt-1 p-0"><i  class="fa-solid fa-xmark-circle text-danger fa-xl cursor-pointer" (click)="_DialogRef.close()"></i></div>
-    <div class="row justify-content-center">
+    <div class="d-flex justify-content-center"><img src="./assets/images/logo.svg" alt=""></div>
+    <div class="row justify-content-start mt-3">
         <div class="col-md-10">
             <div class="view-card">
-                <h3 class="fw-semibold "><span class="fs-2">Task Id : </span> <span class="fs-4">{{data.id}}</span></h3>
-                <p class="m-0 fw-semibold mt-2">Creation Date : {{data.creationDate |date:'dd/mm/yyyy hh:mm a'}}</p>
-                <h4 class="m-0 p-0 mt-2">Title : {{data.title}}</h4>
-                <h4 class="m-0 p-0 mt-2">employee name : {{data.employee.userName}}</h4>
-                <p class="fs-1 m-0">Describtion : {{data.project.description}}</p>
-                <p class="statuses p-2 rounded-pill text-center mt-2" [class]="data.status">{{data.status}}</p>
+               <h2 class="text-white"><span class="tit">Title : </span><span class="fs-4">{{data.description}}</span></h2>
+               <h2 class="text-white  mt-2"><span class="tit">Status : </span> <span class="statuses p-2 rounded-pill fs-4" [class]="data.status">{{data.status}}</span></h2>
+               <h2 class="text-white"><span class="tit">User : </span> <span class="fs-4">{{data.employee.userName}}</span></h2>
+               <h3 class="text-white"><span class="tit">Task Assigned At : </span><span class="fs-4">{{data.creationDate|date :'dd/mm/yyyy'}}</span></h3>
             </div>
         </div>
     </div>

@@ -5,6 +5,8 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewtaskComponent } from './components/viewtask/viewtask.component';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tasks',
@@ -12,7 +14,7 @@ import { DIALOG_DATA } from '@angular/cdk/dialog';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent {
-constructor(private _TasksService:TasksService,public dialog: MatDialog){}
+constructor(private _TasksService:TasksService,public dialog: MatDialog,private _ToastrService:ToastrService){}
 tasksData:Tasks[]=[]
 pageSize:number = 10
 pageNumber:number = 1
@@ -21,6 +23,20 @@ ngOnInit(): void {
   
   this.getTasksForManagaer()
 }
+openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string , id:number): void {
+ const dialo= this.dialog.open(DeleteComponent, {
+    width: '500px',
+    enterAnimationDuration,
+    exitAnimationDuration,
+    data:id
+  });
+  dialo.afterClosed().subscribe(res=>{
+    if(res!=null){
+      this.delTask(res)
+    }
+  })
+}
+
 openViewDialog(enterAnimationDuration: string, exitAnimationDuration: string,data:object): void {
   this.dialog.open(ViewtaskComponent, {
     width: '550px',
@@ -32,6 +48,19 @@ openViewDialog(enterAnimationDuration: string, exitAnimationDuration: string,dat
 
 status:string = ''
 title:string = ''
+delTask(id:number){
+  this._TasksService.deleteTask(id).subscribe({
+    next:res=>{
+      this._ToastrService.success('Task deleted successfully')
+    },
+    error:err=>{
+      this._ToastrService.error(err)
+    },
+    complete:()=>{
+      this.getTasksForManagaer()
+    }
+  })
+}
 getTasksForManagaer(){
   let data = {
     title:this.title,
@@ -41,7 +70,6 @@ getTasksForManagaer(){
   }
   this._TasksService.getTasksForManager(data).subscribe({
     next:res=>{
-      console.log(res);
       this.tasksData = res.data
       this.total = res.totalNumberOfRecords
       

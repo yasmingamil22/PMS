@@ -19,6 +19,7 @@
         </div>
         <div class="col-md-4">
           <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Filter By Status</mat-label>
             <mat-select [(ngModel)]="status" (selectionChange)="getTasksForManagaer()">
               <mat-option value="">All</mat-option>
               <mat-option value="ToDo">To Do</mat-option>
@@ -39,7 +40,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of tasksData">
-                    <td class="pt-3">{{item.project.title}}</td>
+                    <td class="pt-3">{{item.description}}</td>
                     <td class="pt-3">
                       <span class="statuses p-2 rounded-pill" [class]="item.status">{{item.status}}</span>
                     </td>
@@ -59,7 +60,7 @@
                               <mat-icon>edit_square</mat-icon>
                               <span>Edit</span>
                             </button>
-                            <button mat-menu-item class="px-4">
+                            <button mat-menu-item class="px-4" (click)="openDeleteDialog('700ms', '400ms',item.id)">
                               <mat-icon>delete</mat-icon>
                               <span>Delete</span>
                             </button>

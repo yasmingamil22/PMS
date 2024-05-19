@@ -19,12 +19,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { DeleteComponent } from './components/delete/delete.component';
 
 @NgModule({
   declarations: [
     SharedComponent,
     SidebarComponent,
     NavbarComponent,
+    DeleteComponent,
   ],
   imports: [
     CommonModule,
