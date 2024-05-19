@@ -30,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     SharedHeaderComponent,
     PageNotFoundComponent,
     AddEditHeaderComponent,
-    DeleteComponent
+    DeleteComponent,
+    ChangePasswordComponent
   ],
 
   imports: [

@@ -57,6 +57,10 @@ getRole(){
     return this._HttpClient.post('Users/Reset',data)
   }
 
+  changePassword(data: any): Observable<any>  { //make interface
+    return this._HttpClient.put('Users/ChangePassword', data);
+  }
+
   logout(): void {
     localStorage.clear();
     sessionStorage.clear();
