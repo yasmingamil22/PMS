@@ -7,10 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class TaskBoardService {
 
-constructor(private _HttpClient:HttpClient) { }
+  constructor(private _HttpClient:HttpClient) { }
 
-getAllEmployeeTasks(): Observable<any> {
-  return this._HttpClient.get('Task', {params: { pageSize: 1000, pageNumber:1}})
-}
+  getAllEmployeeTasks(): Observable<any> {
+    return this._HttpClient.get('Task', {params: { pageSize: 1000, pageNumber:1}})
+  }
+
+  employeeTaskStatusChange(id: number): Observable<any> {
+    return this._HttpClient.put(`Task/${id}/change-status`, id)
+  }
+
 
 }
