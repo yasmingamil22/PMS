@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { RxwebValidators } from '@rxweb/reactive-form-validators';
+
 
 
 @Component({
@@ -12,22 +14,20 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class ChangePasswordComponent {
   changePasswordForm = new FormGroup({
-    oldPassword: new FormControl(null, [
+    oldPassword: new FormControl('', [
       Validators.pattern(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/
       ),
       Validators.required,
     ]),
-    newPassword: new FormControl(null, [
+    newPassword: new FormControl('', [
       Validators.pattern(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/
       ),
       Validators.required,
     ]),
-    confirmNewPassword: new FormControl(null, [
-      Validators.pattern(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/
-      ),
+    confirmNewPassword: new FormControl('',
+      [RxwebValidators.compare({fieldName:'newPassword'}),
       Validators.required,
     ]),
   });
