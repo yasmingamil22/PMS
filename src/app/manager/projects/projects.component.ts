@@ -99,8 +99,8 @@ export class ProjectsComponent implements OnInit {
   onDeleteProject(id: number) {
     this._ProjectsService.deleteManagerProject(id).subscribe({
       next: () => { },
-      error: (error: HttpErrorResponse) =>
-        this._ToastrService.error(error.error.message , 'Notify That!' )
+      error: (error) =>
+        this._ToastrService.error('Opps Error' , 'Notify That!' )
       ,
       complete: () => {
       this.onGetManagerProjects()
@@ -115,6 +115,7 @@ export class ProjectsComponent implements OnInit {
    // console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: { itemID: id },
+      width: '500px'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

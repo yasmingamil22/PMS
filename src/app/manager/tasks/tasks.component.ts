@@ -52,7 +52,7 @@ title:string = ''
 delTask(id:number){
   this._TasksService.deleteTask(id).subscribe({
     next:res=>{
-      this._ToastrService.success('Task deleted successfully')
+      this._ToastrService.success('Task deleted successfully' , 'Done!')
     },
     error:err=>{
       this._ToastrService.error(err)
@@ -76,7 +76,7 @@ getTasksForManagaer(){
       localStorage.setItem('tasksNumber',JSON.stringify(res.totalNumberOfRecords))
 
     },error:err=>{
-      console.log(err);
+     // console.log(err);
 
     }
   })
@@ -99,30 +99,15 @@ handlePageEvent(e: PageEvent) {
   this.getTasksForManagaer()
 }
 
-// Delete Tasks
-// openDeleteDialog(data: any): void {
-//   console.log(data);
-//   const dialogRef = this.dialog.open(DeleteComponent, {
-//     data:data,
-//     width: '40%'
-//   });
-
-//   dialogRef.afterClosed().subscribe(result => {
-//     if (result) {
-//       this.onDeleteTask(result.id);
-//     }
-//   });
-// }
-
 //? Function To Delete Project By ID
 onDeleteTask(id: number) {
   this._TasksService.onDeleteTask(id).subscribe({
     next:(res)=>{
-      console.log(res);
+     // console.log(res);
 
     },
     error:(err)=>{
-      console.log(err.error.message);
+     // console.log(err.error.message);
 
     },
     complete: () => {

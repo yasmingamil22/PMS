@@ -1,31 +1,17 @@
-<section class="bg-main p-3">
-    <div class="d-flex justify-content-end"><i class="fa-solid fa-xmark-circle text-danger cursor-pointer fa-1x" (click)="dialogRef.close()"></i></div>
+<section class="bg-main p-3 block">
+    <div class="d-flex justify-content-end"><i class="fa-solid fa-xmark-circle main-color fa-2x cursor-pointer fa-1x" (click)="dialogRef.close()"></i></div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <div class="d-flex justify-content-center"><img src="../../../../assets/images/logo.svg" alt=""></div>
-                <h1 class="text-center title py-3">Delete this Task ?</h1>
+                <div class="d-flex justify-content-center "><img src="../../../../assets/images/logo.svg" class="w-50" alt=""></div>
+                <h1 class="text-center title py-4">Delete this Task ?</h1>
                 <div class="d-flex justify-content-between align-items-center mt-4">
-                    <button class="btn btn-warning text-white" type="button" (click)="dialogRef.close()">Cancel</button>
-                    <button class="btn btn-danger" [mat-dialog-close]="data">Delete <i class="fa-solid fa-trash-can"></i></button>
+                    <button class="outline-primary " type="button" (click)="dialogRef.close()">Cancel</button>
+                    <button class="primary" [mat-dialog-close]="data">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- <section class="text-capitalize p-2 bg-main delete">
- <div class="text-end close ">
-  <a class="cp"><i class="fa-solid fa-xmark-circle main-color fa-2x pe-auto" (click)="onNoClick()"></i></a>
- </div>
- <div class="text-center">
-  <i class="fa-solid fa-trash-can" style="font-size: 3rem; color: #EF9B28;"></i>
- </div>
- <div class="p-5 text-center">
-  <p class="text-white">are you sure you want to delete this record ?<br> if you are sure just click on delete it</p>
- </div>
- <div mat-dialog-actions class="d-flex justify-content-between">
-  <button class="outline-primary" (click)="onNoClick()">No Thanks</button>
 
-  <button class="primary px-4" [mat-dialog-close]="data.itemID" cdkFocusInitial>Delete</button>
- </div> -->
 </section>

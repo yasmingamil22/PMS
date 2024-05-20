@@ -49,7 +49,7 @@ export class AddEditProjectComponent implements OnInit {
 
   constructor(private _ProjectsService: ProjectsService,
     private _ActivatedRoute: ActivatedRoute,
-     private _Location: Location , private _ToastrService:ToastrService) {
+     private _Location: Location , private _ToastrService:ToastrService , private _Router:Router) {
     
   }
 
@@ -106,6 +106,7 @@ export class AddEditProjectComponent implements OnInit {
         this._ToastrService.error(error.error.message , 'Notify That!' )
         ,
         complete: () => {
+          this._Router.navigate(['/dashboard/manager/projects'])
          this._ToastrService.success('The Record Updated Successfully' , 'Done!')
         }
       })
@@ -116,6 +117,7 @@ export class AddEditProjectComponent implements OnInit {
           this._ToastrService.error(error.error.message , 'Notify That!' )
         ,
         complete: () => {
+          this._Router.navigate(['/dashboard/manager/projects'])
         this._ToastrService.success('Project Created Successfully', 'Done!')
         }
       })
