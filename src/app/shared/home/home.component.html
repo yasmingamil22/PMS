@@ -1,0 +1,82 @@
+<section class="home d-flex align-items-center mx-4 overflow-x-hidden"> 
+    <div class="home-content text-white px-5">
+      <h1 class="">Welcome <span class="main-color">{{userName}}</span></h1>
+      <p>You can add project and assign tasks to your team</p>
+    </div>
+</section>
+
+<section *ngIf="userRole == 'Manager'" class="bg-white overflow-x-hidden">
+  <div class="container mt-3">
+
+    <div class="row justify-content-center align-items-center">
+
+      <div class="col-md-3">
+        <div class="chart-card bg-light shadow pb-4">
+          <h4 class="seconary-color">Users</h4>
+          <p class="text-muted">Total number of Activiate & Deactivate Employees</p>
+         <div class="row gy-4">
+          <div class="col-md-12">
+            <div class="chart-item bg-white item-1 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">Total Active</h6>
+                <span class="h2 fw-bolder seconary-color">{{usersCount?.activatedEmployeeCount}}</span></div>  
+              <div class="chart-icon chart-icon-1 mt-5">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">Total Deactive</h6>
+                <span class="h2 fw-bolder seconary-color">{{usersCount?.deactivatedEmployeeCount}}</span></div>  
+              <div class="chart-icon chart-icon-2 mt-5">
+                <i class="fa-solid fa-user-lock"></i>
+              </div>
+            </div>
+          </div>
+         </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="chart-card bg-light shadow pb-4">
+          <h4 class="seconary-color">Latest Transaction</h4>
+          <p class="text-muted">Total number of tasks & projects</p>
+         <div class="row gy-4">
+          <div class="col-md-12">
+            <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">Tasks Number</h6>
+                <span class="h2 fw-bolder seconary-color">{{tasksNumber}}</span></div>  
+              <div class="chart-icon chart-icon-2 mt-5">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="chart-item bg-white item-3 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">Projects Number</h6>
+                <span class="h2 fw-bolder seconary-color">{{projectsCount}}</span></div>  
+              <div class="chart-icon chart-icon-3 mt-5">
+                <i class="fa-solid fa-diagram-project"></i>
+              </div>
+            </div>
+          </div>
+         </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-5">
+        <div class="chart-card bg-light shadow">
+          <h3 class="seconary-color">Tasks Status</h3>
+          <p class="text-muted">Lorem ipsum dolor sit amet,consecteture</p>
+          <div class="w-75 mx-auto text-center">
+            <canvas id="status">{{chart}}</canvas>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

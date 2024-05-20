@@ -43,8 +43,9 @@
             </tr>
         </tbody>
     </table>
-    <div class="">
-        <mat-paginator #paginator
+    <app-no-data *ngIf="listUsers?.length == 0 "></app-no-data>
+    <div class="d-flex justify-content-center">
+        <mat-paginator *ngIf="listUsers.length > 0"  #paginator
           (page)="handlePageEvent($event)"
           [length]="tableData?.totalNumberOfRecords"
           [pageSize]="pageSize"
