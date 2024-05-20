@@ -4,7 +4,6 @@ import { ITableData, IEmployee } from './models/users';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { BlockUserComponent } from './components/block-user/block-user.component';
-import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-users',

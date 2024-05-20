@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotifierService } from 'angular-notifier';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProjectsByID } from '../../interface/projects';
 import { Location } from '@angular/common';
@@ -14,7 +13,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-edit-project.component.scss']
 })
 export class AddEditProjectComponent implements OnInit {
-  private readonly notifier: NotifierService;
 
   //? Main Text Add-Edit header  will be passed to the add-edit--shared-header component
   mainTextHeader: string = 'Add a New Project';
@@ -42,9 +40,7 @@ export class AddEditProjectComponent implements OnInit {
   }
 
   constructor(private _ProjectsService: ProjectsService,
-    private _ActivatedRoute: ActivatedRoute,
-    notifierService: NotifierService, private _Location: Location) {
-    this.notifier = notifierService
+    private _ActivatedRoute: ActivatedRoute, private _Location: Location) {
   }
 
   ngOnInit(): void {
@@ -85,9 +81,8 @@ export class AddEditProjectComponent implements OnInit {
       this._ProjectsService.editManagerProject(this.projectID, ProjectForm.value).subscribe({
         next: () => { },
         error: (error: HttpErrorResponse) =>
-          this.notifier.notify('error', error.error.message),
+         {},
         complete: () => {
-          this.notifier.notify('success', 'The Record Updated Successfully');
           this._Location.back();
         }
       })
@@ -95,9 +90,8 @@ export class AddEditProjectComponent implements OnInit {
       this._ProjectsService.addManagerProject(ProjectForm.value).subscribe({
         next: () => { },
         error: (error: HttpErrorResponse) =>
-          this.notifier.notify('error', error.error.message),
+          {},
         complete: () => {
-          this.notifier.notify('success', 'Project Created Successfully');
           this._Location.back();
         }
       })
