@@ -13,7 +13,9 @@ const routes: Routes = [{
     { path: 'manager',canActivate:[managerGuard] ,
     loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
     { path: 'employee',canActivate:[employeeGuard] ,
-    loadChildren: () => import('../employee/employee.module').then(m => m.EmployeeModule) }
+    loadChildren: () => import('../employee/employee.module').then(m => m.EmployeeModule) },
+    { path: 'profile',
+    loadComponent: () => import('../shared/components/profile/profile.component').then(m => m.ProfileComponent) },
   ]
 },
 ];

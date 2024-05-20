@@ -36,6 +36,9 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -147,6 +150,7 @@ color: #fff;
   cursor: pointer;
 }
 
+
 .btnHover {
 
   &:hover {
@@ -160,6 +164,7 @@ color: #fff;
   font-weight: 500;
   color: rgba(79, 79, 79, 1);
 }
+
 
 .main-btn {
   background-color: rgba(239, 155, 40, 1);
@@ -197,8 +202,9 @@ color: #fff;
         background-color: #ef9b28;
       }
     }
-  }
-}
+   }
+
+
 
 
 .statuses {
@@ -217,3 +223,4 @@ color: #fff;
     color: white;
   }
 }
+

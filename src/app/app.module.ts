@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -18,11 +22,18 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot(), // ToastrModule added
+    NgxSpinnerModule,
+
 
   ],
   providers: [
 
-    {provide:HTTP_INTERCEPTORS,useClass:GlobalInterceptor,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:GlobalInterceptor,multi:true},
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoadingInterceptor,
+      multi:true
+    },
   ],
   bootstrap: [AppComponent]
 })
