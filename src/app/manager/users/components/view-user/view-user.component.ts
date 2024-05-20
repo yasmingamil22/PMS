@@ -60,7 +60,7 @@ activateUser(id:number){
       this._ToastrService.error(err.error.message, 'error')
     },complete:()=>{
       this.getUserById(this.userId);
-      this._ToastrService.success(this.Message , 'Proccess is Completed Successfully')
+      this._ToastrService.success('Proccess is Completed Successfully' , 'Done!')
     }
   })
 

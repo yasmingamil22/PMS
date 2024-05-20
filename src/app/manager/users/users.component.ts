@@ -76,7 +76,7 @@ onActivateuser(id:number){
     },
     complete:()=>{
       this.getAllUsers();
-        this._ToastrService.success(this.message , 'Proccess is Completed Successfully')
+        this._ToastrService.success( 'Proccess is Completed Successfully' , 'Done!')
     
     
     }

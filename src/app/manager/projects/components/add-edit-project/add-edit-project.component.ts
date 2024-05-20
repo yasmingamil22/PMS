@@ -106,7 +106,7 @@ export class AddEditProjectComponent implements OnInit {
         this._ToastrService.error(error.error.message , 'Notify That!' )
         ,
         complete: () => {
-         this._ToastrService.success('success', 'The Record Updated Successfully')
+         this._ToastrService.success('The Record Updated Successfully' , 'Done!')
         }
       })
     } else {
@@ -116,7 +116,7 @@ export class AddEditProjectComponent implements OnInit {
           this._ToastrService.error(error.error.message , 'Notify That!' )
         ,
         complete: () => {
-        this._ToastrService.success('success', 'Project Created Successfully')
+        this._ToastrService.success('Project Created Successfully', 'Done!')
         }
       })
     }

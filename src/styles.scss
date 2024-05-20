@@ -48,12 +48,14 @@ th {
   font-weight: 400;
   line-height: normal;
   padding: 20px;
-  border: 1px solid rgba(49, 89, 81, 0.9);
+ // border: 1px solid rgba(49, 89, 81, 0.9);
   background: rgba(49, 89, 81, 0.9);
   color: #fff;
   text-align: center;
 }
-
+// .table-bordered>:not(caption)>*>*{
+//   border-width: 0 !important;
+// }
 tr {
   text-align: center;
   color: #4F4F4F;
@@ -136,7 +138,6 @@ color: #fff;
 .mat-mdc-menu-content {
   padding: 9px !important;
 }
-
 .mat-elevation-z8,
 .mat-mdc-elevation-specific.mat-elevation-z8 {
   border-radius: 20px !important;

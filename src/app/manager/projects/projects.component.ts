@@ -104,7 +104,7 @@ export class ProjectsComponent implements OnInit {
       ,
       complete: () => {
       this.onGetManagerProjects()
-      this._ToastrService.success('success', 'The Certificate has been successfully deleted')
+      this._ToastrService.success('The Certificate has been successfully deleted' , 'Done!')
       }
 
     })
