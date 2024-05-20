@@ -12,14 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class LoginComponent {
   constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService , private _Router:Router,public dialog: MatDialog){
-    
+
   }
   hide = true;
   loading:boolean = false
   loginForm:FormGroup = this._FormBuilder.group({
-    email:['',[Validators.required]],
+    email:['',[Validators.required, Validators.email]],
     password:['',Validators.required]
-
   })
   hanldeLogin(){
     if(!this.loading){
@@ -33,7 +32,7 @@ export class LoginComponent {
         },
         error:err=>{
           this.loading = false
-          console.log(err); 
+          console.log(err);
         },
         complete:()=>{
         this._Router.navigate(['/dashboard']);
