@@ -1,18 +1,26 @@
+import { UsersService } from 'src/app/manager/users/services/users.service';
 import { AuthService } from './../../../auth/services/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   emptyImg:string = '../../../../assets/images/dummy-profile-pic-300x300-1.png';
   imgUrl:string = 'https://upskilling-egypt.com:3003/' ;
   currentUser:any;
-constructor(private _AuthService:AuthService){
+constructor(private _AuthService:AuthService,private _UsersService:UsersService){
+}
+
+ngOnInit(): void {
   this.getCurrentUser();
+  this.changeInUserEmail()
+  this.changeInUserImg()
+  this.changeInUserName()
+  
 }
 
 getCurrentUser():void{
@@ -29,5 +37,39 @@ getCurrentUser():void{
     }
   })
 }
+
+
+changeInUserName(){
+  this._UsersService.userName.subscribe({
+    next:(val)=>{
+      this.currentUser.userName=val
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
+ }
+
+ changeInUserImg(){
+  this._UsersService.userImg.subscribe({
+    next:(val)=>{
+      this.currentUser.imagePath=val
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
+ }
+
+ changeInUserEmail(){
+  this._UsersService.userEmail.subscribe({
+    next:(val)=>{
+      this.currentUser.email=val
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
+ }
 
 }

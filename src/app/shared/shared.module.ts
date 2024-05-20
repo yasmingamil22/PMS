@@ -30,6 +30,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { ConfirmPassComponent } from './components/confirm-pass/confirm-pass.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     SharedHeaderComponent,
     PageNotFoundComponent,
     AddEditHeaderComponent,
-    DeleteComponent
+    DeleteComponent,
+    ConfirmPassComponent
   ],
 
   imports: [
@@ -61,51 +65,13 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     
     MatTableModule,
     MatCardModule,
-    NotifierModule.withConfig({
 
-      position: {
-        horizontal: {
-          position: 'right',
-          distance: 12
-        },
-        vertical: {
-          position: 'top',
-          distance: 12,
-          gap: 10
-        }
-      },
-      theme: 'material',
-      behaviour: {
-        autoHide: 900,
-        onClick: 'hide',
-        onMouseover: 'pauseAutoHide',
-        showDismissButton: true,
-        stacking: 4
-      },
-      animations: {
-        enabled: true,
-        show: {
-          preset: 'slide',
-          speed: 800,
-          easing: 'ease'
-        },
-        hide: {
-          preset: 'fade',
-          speed: 300,
-          easing: 'ease',
-          offset: 50
-        },
-        shift: {
-          speed: 300,
-          easing: 'ease'
-        },
-        overlap: 150
-
-      }
-    }),
     FormsModule,
     MatSelectModule,
     MatDividerModule,
+    NgxFileDropModule,
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   exports: [
     MatCardModule,
@@ -132,6 +98,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     MatSelectModule,
     MatDividerModule,
+    
 
   ],
 
