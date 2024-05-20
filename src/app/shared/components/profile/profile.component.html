@@ -1,0 +1,141 @@
+<section id="user-view" class="p-5 vh-100">
+    <div class="container">
+      <div *ngIf="noEdit" class="d-flex justify-content-end gap-2 my-4">
+        <button class="iconEdit" (click)="toggleEdit()"><i class="fa-solid fa-pen"></i>
+           </button>
+      </div>
+      <div class="row align-items-center  justify-content-center g-4">
+        <div class="col-12 d-flex justify-content-center">
+
+
+          <div  class="center my-4" *ngIf="!noEdit">
+
+            <ng-container *ngIf="imgNeededToEdit">
+            <div  class="edit  ">
+          
+              <ngx-file-drop dropZoneClassName=""   [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
+ <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
+
+   <div >
+     <button type="button" (click)="openFileSelector()" class="iconEdit">
+       <i class="fa-solid fa-pen   "></i>
+     </button>
+   </div>
+
+  
+
+ </ng-template>
+</ngx-file-drop>
+
+
+          
+            </div>
+          </ng-container>
+
+
+              <ngx-file-drop dropZoneClassName="drop-zone"  *ngIf="!imageUploaded && !imgNeededToEdit" [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
+ <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
+
+   <div >
+     <button type="button" (click)="openFileSelector()" class="bg-transparent d-flex flex-column align-items-center">
+
+      <i class="fa-solid fa-upload fs-4 mb-2"></i>
+       <span class=" upload">
+        Upload your profile image</span>
+
+     </button>
+   </div>
+
+  
+
+ </ng-template>
+</ngx-file-drop>
+
+
+<div *ngIf="imageUploaded || imgNeededToEdit" class="drop-zone">
+  <img [src]="(imageUrl)? imageUrl:imgNeededToEdit"  class="w-100 img-fluid photo" alt="Uploaded Image">
+</div>
+
+
+
+              
+          </div>
+
+
+
+
+             <div *ngIf="noEdit">
+
+            <div *ngIf="currentUser?.imagePath" >
+              <img class="img-fluid photo" [src]="pathHttps+currentUser.imagePath" alt="" >
+            </div>
+            <div *ngIf="!currentUser?.imagePath" >
+              <img class="img-fluid photo" src="./assets/images/dummy-profile-pic-300x300-1.png" alt="">
+            </div>
+          </div>
+
+          </div>
+     
+           <form [formGroup]="currentUserForm">
+            <div class="row mt-2">
+
+            
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label class="text-secondry">User Name</mat-label>
+                      <input formControlName="userName" class="text-main"  matInput   />
+                      <mat-error *ngIf="currentUserForm.get('userName')?.getError('required')&&(currentUserForm.get('userName')?.value!=''||currentUserForm.get('userName')?.touched||currentUserForm.invalid)">userName is required</mat-error>
+                      <mat-error *ngIf="currentUserForm.get('userName')?.getError('pattern')">userName must be at least 4 characters and end with numbers without spaces</mat-error>
+                    </mat-form-field>
+    
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label class="text-secondry">E-mail</mat-label>
+                      <input formControlName="email" class="text-main"  matInput  />
+                      <mat-error *ngIf="currentUserForm.get('email')?.getError('required')&&(currentUserForm.get('email')?.value!=''||currentUserForm.get('email')?.touched||currentUserForm.invalid)">email is required</mat-error>
+                      <mat-error *ngIf="currentUserForm.get('email')?.getError('email')">invalid email</mat-error>
+                    </mat-form-field>
+    
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label class="text-secondry">Country</mat-label>
+                      <input formControlName="country" class="text-main"  matInput />
+                      <mat-error *ngIf="currentUserForm.get('country')?.getError('required')&&(currentUserForm.get('country')?.value!=''||currentUserForm.get('country')?.touched||currentUserForm.invalid)">country is required</mat-error>
+
+                    </mat-form-field>
+    
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label class="text-secondry">Phone Number</mat-label>
+                      <input formControlName="phoneNumber" class="text-main"  matInput />
+                      <mat-error *ngIf="currentUserForm.get('phoneNumber')?.getError('required')&&(currentUserForm.get('phoneNumber')?.value!=''||currentUserForm.get('phoneNumber')?.touched||currentUserForm.invalid)">phoneNumber is required</mat-error>
+
+                    </mat-form-field>
+    
+                  </div>
+
+                </div>
+
+                </form>
+
+              
+                
+                  
+         
+       
+      </div>
+
+      <div *ngIf="!noEdit" class="d-flex justify-content-end gap-2 my-4">
+        <button class="primary" (click)="openDialog()" [disabled]="currentUserForm.invalid">Update your profile
+           </button>
+      </div>
+
+      
+    </div>
+    </section>
+    

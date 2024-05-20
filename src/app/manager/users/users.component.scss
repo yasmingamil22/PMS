@@ -9,18 +9,5 @@
         color: #4F4F4F;
     }
 }
-.table-card{
-    .status{
-  border-radius: 16px;
-  color: #fff;
-  &.active {
-    padding: 0.5rem 0.7rem;
-    background-color: #009247;
-  }
-  &.notActive {
-    padding: 0.5rem 0.7rem;
-    background-color: rgba(146, 46, 37, 0.7);
-  }
-    }
-}
+
 

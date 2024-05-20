@@ -20,11 +20,11 @@ export class SidebarComponent implements OnInit {
 
 isManager():boolean{
  return localStorage.getItem('userRole') == "Manager"? true : false ;
-} 
+}
 
 isEmployee():boolean{
   return localStorage.getItem('userRole') == "Employee"? true : false ;
- } 
+ }
 
 menu:IMenu[] = [
   {
@@ -60,7 +60,7 @@ menu:IMenu[] = [
         {
           text:'User Task' ,
           icon: 'fa-solid fa-list-check' ,
-          link:'dashboard/employee/task',
+          link: '/dashboard/employee/task-board',
           isActive: this.isEmployee(),
           } ,
 ]

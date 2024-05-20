@@ -14,3 +14,15 @@ export interface iChangePassword {
   newPassword: string
   confirmNewPassword: string
 }
+
+export interface iReset{
+  email: string,
+  seed: string,
+  password: string,
+  confirmPassword: string
+}
+
+export interface iRequest {
+  email: string
+}
+

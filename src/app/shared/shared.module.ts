@@ -14,10 +14,9 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
-import { NotifierModule } from 'angular-notifier';
 import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
 import { FormsModule } from '@angular/forms';
-import { DeleteComponent } from './components/delete/delete.component';
+import { DeleteComponent } from './components/delete-project/delete.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
@@ -26,12 +25,15 @@ import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
-
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { ConfirmPassComponent } from './components/confirm-pass/confirm-pass.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { ToastrModule } from 'ngx-toastr';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+
 
 @NgModule({
   declarations: [
@@ -42,10 +44,12 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedHeaderComponent,
     AddEditHeaderComponent,
     DeleteComponent,
+    ConfirmPassComponent,
     ChangePasswordComponent,
     HomeComponent,
     NotFoundComponent,
-    NoDataComponent
+    NoDataComponent,
+
   ],
 
   imports: [
@@ -64,51 +68,13 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
-    NotifierModule.withConfig({
-
-      position: {
-        horizontal: {
-          position: 'right',
-          distance: 12
-        },
-        vertical: {
-          position: 'top',
-          distance: 12,
-          gap: 10
-        }
-      },
-      theme: 'material',
-      behaviour: {
-        autoHide: 900,
-        onClick: 'hide',
-        onMouseover: 'pauseAutoHide',
-        showDismissButton: true,
-        stacking: 4
-      },
-      animations: {
-        enabled: true,
-        show: {
-          preset: 'slide',
-          speed: 800,
-          easing: 'ease'
-        },
-        hide: {
-          preset: 'fade',
-          speed: 300,
-          easing: 'ease',
-          offset: 50
-        },
-        shift: {
-          speed: 300,
-          easing: 'ease'
-        },
-        overlap: 150
-
-      }
-    }),
     FormsModule,
     MatSelectModule,
     MatDividerModule,
+    NgxFileDropModule,
+    ToastrModule.forRoot(), // ToastrModule added
+
+
   ],
   exports: [
     MatCardModule,
@@ -129,13 +95,13 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatTableModule,
     MatCardModule,
     SharedHeaderComponent,
-    NotifierModule,
     AddEditHeaderComponent,
     FormsModule,
     MatSelectModule,
     MatDividerModule,
     HomeComponent,
     NoDataComponent
+
   ],
 
 })

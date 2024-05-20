@@ -34,7 +34,7 @@ registerForm:FormGroup = this._FormBuilder.group({
   email:['',[Validators.required,Validators.email]],
   country:['',[Validators.required]],
   phoneNumber:['',[Validators.required,Validators.pattern(/^(002)?01[0125][0-9]{8}$/)]],
-  password:['',[Validators.required]],
+  password:['',[Validators.required,Validators.pattern(/^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.\W)(?!.* ).{6,16}$/)]],
   confirmPassword:['',[RxwebValidators.compare({fieldName:'password'}),Validators.required]]
 })
 email:string=''

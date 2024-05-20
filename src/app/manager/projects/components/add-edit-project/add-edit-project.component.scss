@@ -33,3 +33,7 @@ h3 {
  font-size: 32px;
  font-weight: 500;
 }
+
+::ng-deep.mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input{
+    color: #0E382F !important;
+}

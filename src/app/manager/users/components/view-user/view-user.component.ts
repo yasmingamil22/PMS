@@ -15,10 +15,10 @@ export class ViewUserComponent {
   userId:number | any;
   user:IEmployee | any;
   pathHttps: string = 'https://upskilling-egypt.com:3003/';
-  Messgage:string='';
+  Message:string='';
 
 constructor(
-  private toastr: ToastrService,
+  private _ToastrService: ToastrService,
  private _ActivatedRoute:ActivatedRoute ,
   private _UsersService:UsersService,
  
@@ -55,12 +55,12 @@ openBlockDialog(item:IEmployee): void {
 activateUser(id:number){
   this._UsersService.activateUser(id).subscribe({
     next:(res)=>{
-     this.Messgage=res.message;
+     this.Message=res.message;
     },error:(err)=>{
-      this.toastr.error(err.error.message, 'error')
+      this._ToastrService.error(err.error.message, 'error')
     },complete:()=>{
       this.getUserById(this.userId);
-      this.toastr.success( this.Messgage ,'User Active now');
+      this._ToastrService.success('Proccess is Completed Successfully' , 'Done!')
     }
   })
 

@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './services/projects.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IProjectData, IProjectParams } from './interface/projects';
-import { NotifierService } from 'angular-notifier';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/components/delete-project/delete.component';
 import { PageEvent } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-projects',
@@ -20,7 +20,6 @@ import { Router } from '@angular/router';
 export class ProjectsComponent implements OnInit {
 
 
-  private readonly notifier: NotifierService;
 
   // Main Text header  will be passed to the main-shared-header component
   mainTextHeader: string = 'Projects';
@@ -50,9 +49,9 @@ export class ProjectsComponent implements OnInit {
   public dataSource: any = [];
 
   constructor(private _ProjectsService: ProjectsService,
-    private _HttpClient: HttpClient, notifierService: NotifierService,
-    private dialog: MatDialog, private _Router: Router,) {
-    this.notifier = notifierService;
+    private _HttpClient: HttpClient, 
+    private dialog: MatDialog, private _Router: Router, private _ToastrService:ToastrService)
+     {
   }
 
   ngOnInit(): void {
@@ -88,7 +87,8 @@ export class ProjectsComponent implements OnInit {
      //   localStorage.setItem('projectsCount' , JSON.stringify(res.totalNumberOfRecords))
       },
       error: (error: HttpErrorResponse) =>
-        this.notifier.notify('error', error.error.message),
+      this._ToastrService.error(error.error.message , 'Notify That!' )
+      ,
       complete: () => {
       }
     })
@@ -99,11 +99,12 @@ export class ProjectsComponent implements OnInit {
   onDeleteProject(id: number) {
     this._ProjectsService.deleteManagerProject(id).subscribe({
       next: () => { },
-      error: (error: HttpErrorResponse) =>
-        this.notifier.notify('error', error.error.message),
+      error: (error) =>
+        this._ToastrService.error('Opps Error' , 'Notify That!' )
+      ,
       complete: () => {
-        this.notifier.notify('success', 'The Certificate has been successfully deleted');
-        this.onGetManagerProjects()
+      this.onGetManagerProjects()
+      this._ToastrService.success('The Certificate has been successfully deleted' , 'Done!')
       }
 
     })
@@ -114,6 +115,7 @@ export class ProjectsComponent implements OnInit {
    // console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: { itemID: id },
+      width: '500px'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
