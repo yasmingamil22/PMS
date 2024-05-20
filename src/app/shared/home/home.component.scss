@@ -1,0 +1,114 @@
+.home{
+    background-image: url(../../../assets/images/home-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 15px;
+    height: 50vh;
+    margin-top: 1rem;
+    p{
+        font-size: 22px;
+    }
+}
+
+
+
+.chart-card{
+    // background-color: #F5F5F5;
+    padding: 1rem;
+    margin: 1rem 0px;
+    border-radius: 16px;
+    .chart-item{
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      padding: 1rem;
+      transition: 0.5s;
+      &:hover{
+        transform: translateY(-5px);
+      }
+      &:hover i{
+        animation: chartIcon 0.7s infinite ease-in-out;
+      }
+      h6{
+        color: #6F7881;
+      }
+      .chart-icon{
+          width: 45px;
+          height: 45px;
+          border-radius:6px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i{
+            font-size: 20px;
+          }
+      }
+    }
+    .item-1{
+      border-bottom: 3px solid #CFD1EC;
+      .chart-icon-1{
+        background-color: #CFD1EC;
+        i{
+          color: rebeccapurple;  
+         }
+      }
+     }
+     .item-2{
+      border-bottom: 3px solid #E4E4BC;
+      .chart-icon-2{
+        background-color: #E4E4BC;
+        i{
+          color: #0E382F;
+          
+         }
+      }
+     }
+     .item-3{
+      border-bottom: 3px solid #E7C3D7;
+      .chart-icon-3{
+        background-color: #E7C3D7;
+        i{
+          color: #f072b7;
+          
+         }
+      }
+     }
+  }
+  
+ 
+  .bg-itemOne{
+    background-color: #E5E6F4;
+  }
+  .bg-itemTwo{
+    background-color: #F4E5ED;
+  }
+  
+
+  
+  #home-data{
+    margin-top: 2rem;
+    padding: 0 1rem;
+  
+    .w-50{
+      background-color: white;
+      border-radius: 20px;
+      padding: 2rem;
+    }
+    .content-header{
+  border-left: 5px solid #EF9B28;
+  padding-left: 2rem;
+    }
+  }
+  
+
+  @keyframes chartIcon {
+    0%{
+      transform: translateX(3px);
+    }
+    50%{
+      transform: translateX(-3px);
+    }
+    100%{
+      transform: translateX(0px);
+    }
+  }

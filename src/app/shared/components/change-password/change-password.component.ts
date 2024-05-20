@@ -54,6 +54,7 @@ export class ChangePasswordComponent {
       complete: () => {
         //toaster or notifier?
         // this._Router.navigate(['dashboard']);
+        //console.log('success')
       },
     });
   }
