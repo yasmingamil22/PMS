@@ -1,4 +1,4 @@
-<section id="sidebar" class="bg-main position-sticky top-0 z-2 vh-100">
+<section id="sidebar" class="bg-main position-sticky top-0 z-2 h-100">
 <div class="container-fluid">
     <div class="row">
         <div (click)="onClicked()" class="position-absolute" [ngClass]="isOpened ? 'arroww-left' : 'arroww-right'">
@@ -8,15 +8,45 @@
             <ul class="ps-0">
                     <ng-container *ngFor="let item of menu">
                         <li *ngIf="item.isActive">
-                     <a [routerLink]="item.link" 
-                        routerLinkActive="active-ul" class="d-flex w-100 align-items-center" [class]="isOpened?'':'justify-content-center'">
-                        <i [class]="item.icon" ></i>
-                        <span class="ms-2" [ngClass]="{ 'd-none': !isOpened }">{{item.text}}</span>
-                    </a> 
+                            <a [routerLink]="item.link" 
+                            routerLinkActive="active-ul" class="d-flex align-items-center" [class]="isOpened?'':'justify-content-center'">
+                            <i [class]="item.icon" ></i>
+                            <span class="ms-2" [ngClass]="{ 'd-none': !isOpened }">{{item.text}}</span>
+                        </a>
                     </li>
                 </ng-container>
                 </ul>
         </div>
     </div>
 </div>
+</section>
+
+<section id="sideLink" class="position-relative start-0">
+    <a class="btn seconary-color bar-chart position-absolute z-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </a>
+     
+      <div class="offcanvas offcanvas-start bg-main" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header d-flex justify-content-between align-items-center">
+         <img src="../../../../assets/images/logo.svg" class="w-50" alt="">
+          <span role="button" class="close main-color fa-solid fa-xmark" data-bs-dismiss="offcanvas" aria-label="Close"></span>
+        </div>
+        <div class="offcanvas-body">
+         
+            <div class="side-links pt-5">
+                <ul class="ps-0">
+                        <ng-container *ngFor="let item of menu">
+                            <li *ngIf="item.isActive" class="pb-3">
+                                <a [routerLink]="item.link" 
+                                routerLinkActive="active-ul" class="d-flex align-items-center text-white">
+                                <i [class]="item.icon" ></i>
+                                <span class="ms-2">{{item.text}}</span>
+                            </a>
+                        </li>
+                    </ng-container>
+                    </ul>
+            </div>
+         
+        </div>
+      </div>
 </section>

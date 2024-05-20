@@ -5,8 +5,9 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewtaskComponent } from './components/viewtask/viewtask.component';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
-import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/components/delete-project/delete.component';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-tasks',
@@ -20,7 +21,7 @@ pageSize:number = 10
 pageNumber:number = 1
 total:number=0
 ngOnInit(): void {
-  
+
   this.getTasksForManagaer()
 }
 openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string , id:number): void {
@@ -51,7 +52,7 @@ title:string = ''
 delTask(id:number){
   this._TasksService.deleteTask(id).subscribe({
     next:res=>{
-      this._ToastrService.success('Task deleted successfully')
+      this._ToastrService.success('Task deleted successfully' , 'Done!')
     },
     error:err=>{
       this._ToastrService.error(err)
@@ -72,10 +73,11 @@ getTasksForManagaer(){
     next:res=>{
       this.tasksData = res.data
       this.total = res.totalNumberOfRecords
-      
+      localStorage.setItem('tasksNumber',JSON.stringify(res.totalNumberOfRecords))
+
     },error:err=>{
-      console.log(err);
-      
+     // console.log(err);
+
     }
   })
 }
@@ -96,4 +98,26 @@ handlePageEvent(e: PageEvent) {
   this.pageNumber = e.pageIndex;
   this.getTasksForManagaer()
 }
+
+//? Function To Delete Project By ID
+onDeleteTask(id: number) {
+  this._TasksService.onDeleteTask(id).subscribe({
+    next:(res)=>{
+     // console.log(res);
+
+    },
+    error:(err)=>{
+     // console.log(err.error.message);
+
+    },
+    complete: () => {
+      this.getTasksForManagaer()
+    }
+
+  })
+}
+
+
+
+
 }

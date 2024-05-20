@@ -1,0 +1,15 @@
+.not-page{
+    .not-btn{
+        background-color: #424242;
+        transition: 0.4s;
+    &:hover{
+        background-color: #757575 ;
+    }
+    i{
+        transition: 0.4s;
+    }
+    &:hover i{
+        transform: translateX(-5px);
+    }
+}
+}

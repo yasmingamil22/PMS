@@ -3,13 +3,13 @@ import { AuthService } from './../../../auth/services/auth.service';
 import { IMenu } from './../../../core/models/global';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
 
   @Output() isOpenedValue = new EventEmitter<boolean>();
   isOpened:boolean =true;
@@ -20,11 +20,11 @@ export class SidebarComponent implements OnInit {
 
 isManager():boolean{
  return localStorage.getItem('userRole') == "Manager"? true : false ;
-} 
+}
 
 isEmployee():boolean{
   return localStorage.getItem('userRole') == "Employee"? true : false ;
- } 
+ }
 
 menu:IMenu[] = [
   {
@@ -60,7 +60,7 @@ menu:IMenu[] = [
         {
           text:'User Task' ,
           icon: 'fa-solid fa-list-check' ,
-          link:'dashboard/employee/task',
+          link: '/dashboard/employee/task-board',
           isActive: this.isEmployee(),
           } ,
 ]
@@ -68,7 +68,7 @@ menu:IMenu[] = [
 onClicked() {
   this.isOpened = !this.isOpened;
   this.isOpenedValue.emit(this.isOpened);
-  console.log(this.isOpened)
+ // console.log(this.isOpened)
 }
 
 }

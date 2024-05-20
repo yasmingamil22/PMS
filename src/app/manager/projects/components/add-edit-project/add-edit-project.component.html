@@ -1,0 +1,59 @@
+<app-add-edit-header [editTextHeader]="projectID ? editTextHeader : addTextHeader"
+  [mainTxTHeaderLink]="mainTxTHeaderLink"></app-add-edit-header>
+
+<section class="project  h-100">
+  <div class="Add-Edit  ">
+    <mat-card class="p-5 rounded-5">
+      <!--  Start Form --->
+      <form [formGroup]="addEditProjectForm" (ngSubmit)="onAddEdietProject(addEditProjectForm)" class="p-4  w-100">
+        <!--  Start Title input --->
+        <div class="title-input">
+          <mat-form-field class="w-100">
+            <mat-label>Project Name</mat-label>
+            <input type="text" formControlName="title" matInput placeholder="Add New Project">
+          </mat-form-field>
+        </div>
+
+        <!--  Start Describtion input --->
+        <div class="Descrbtion-input">
+          <mat-form-field class="example-full-width w-100 ">
+            <mat-label>Project Describtion</mat-label>
+            <textarea formControlName="description" matInput placeholder="Add Project Descrbtion"></textarea>
+          </mat-form-field>
+        </div>
+        <hr>
+
+        <mat-card-actions *ngIf="isNonDisplay" class="d-flex justify-content-between"
+          class="d-flex justify-content-between align-items-center">
+          <button type="button" class="btn border-2 rounded-pill px-4  cancel" routerLink="/dashboard/manager/projects">
+            Cancel
+          </button>
+          <button type="submit" class="main-btn btn rounded-pill px-4">{{projectID
+            ?'Edit Project': 'Add Project' }}
+          </button>
+        </mat-card-actions>
+      </form>
+      <!-- End Form -->
+    </mat-card>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

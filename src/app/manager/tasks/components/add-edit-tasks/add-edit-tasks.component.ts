@@ -46,33 +46,35 @@ export class AddEditTasksComponent {
       }
     })
   }
-  // id():boolean{
-  //   if(this.id==null){
-  //     return true
-  //   }
-  // }
+
   addTask(){   
     if(this.id!=null){
       this._TasksService.updateTask(this.id,this.addEditForm.value).subscribe({
         next:res=>{
-          this._ToastrService.success('Task Updated successfully')
-          this._Router.navigate(['/dashboard/manager/tasks'])
+          
+         
         },
         error:err=>{
           this._ToastrService.error(err)
+        },
+        complete:()=>{
+          this._Router.navigate(['/dashboard/manager/tasks']);
+          this._ToastrService.success('Task Updated successfully' , 'Done!')
         }
       })
     }
     else{
       this._TasksService.addTask(this.addEditForm.value).subscribe({
         next:res=>{
-          this._ToastrService.success('Task Added successfully')
-          console.log(res);
-          this._Router.navigate(['/dashboard/manager/tasks'])
+          //console.log(res);       
           
         },
         error:err=>{
           this._ToastrService.error(err.message)
+        },
+        complete:()=>{
+          this._Router.navigate(['/dashboard/manager/tasks']);
+          this._ToastrService.success('Task Added successfully' , 'Done!') 
         }
       })
     }
@@ -80,10 +82,10 @@ export class AddEditTasksComponent {
   
   task:Tasks={} as Tasks
   getTaskByID(){
-    if(this.id>0){
+    if(this.id!=null){
       this._TasksService.getTaskById(this.id).subscribe({
         next:res=>{
-          console.log(res);
+         // console.log(res);
           this.task=res
           this.addEditForm.patchValue({
             title:this.task.title,

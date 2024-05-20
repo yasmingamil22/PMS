@@ -30,4 +30,8 @@ updateTask(id:number,data:object):Observable<any>{
 deleteTask(id:number):Observable<any>{
   return this._HttpClient.delete(`Task/${id}`)
 }
+onDeleteTask(id: number): Observable<any> {
+  return this._HttpClient.delete(`Task/${id}`)
+
+}
 }
