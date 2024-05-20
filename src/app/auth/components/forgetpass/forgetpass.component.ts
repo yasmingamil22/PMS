@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-forgetpass',
@@ -10,7 +12,7 @@ import { RxwebValidators } from '@rxweb/reactive-form-validators';
   styleUrls: ['./forgetpass.component.scss']
 })
 export class ForgetpassComponent {
-constructor (private _AuthService:AuthService,private _ToastrService:ToastrService,private _FormBuilder:FormBuilder){}
+constructor (private _AuthService:AuthService,private _ToastrService:ToastrService,private _FormBuilder:FormBuilder, private _Router:Router){}
 pos:boolean=false
 email:string=''
 loading:boolean=false
@@ -21,7 +23,6 @@ verifyPass(){
   this._AuthService.verifyPass(this.email).subscribe({
     next:res=>{
       this.pos=true
-      this.pos1=true
 
       this.loading=false
       this._ToastrService.success(res.message)
@@ -32,24 +33,30 @@ verifyPass(){
     }
   })
 }
-resetForm:FormGroup = this._FormBuilder.group({
+
+requestForm:FormGroup = this._FormBuilder.group({
   email:['',[Validators.email,Validators.required]],
-  password:['',[Validators.required]],
-  confirmPassword:['',[RxwebValidators.compare({fieldName:'password'}),Validators.required]],
-  seed:['',[Validators.required]]
 })
-pos1=false
-resetPass():void{
-  this.loading=true
-  this._AuthService.resetPass(this.resetForm.value).subscribe({
-    next:res=>{
-      this.loading=false
-      this._ToastrService.success(res.message)
-    },
-    error:err=>{
-      this.loading=false
-      this._ToastrService.error(err.message)
+
+
+sendResetForm(): void {
+  const data = this.requestForm.value;
+
+    if (this.requestForm.valid) {
+      this._AuthService.onRequestReset(data).subscribe({
+        next: (res) => {
+          console.log('Password reset successful', res.message);
+        },
+        error: (err) => {
+          console.error('Error resetting password', err);
+
+        },
+        complete: () => {
+          this._Router.navigate(['auth/reset-pass']);
+        }
+      });
     }
-  })
-}
+
+  }
+
 }

@@ -15,3 +15,7 @@ export interface iReset{
   password: string,
   confirmPassword: string
 }
+export interface iRequest {
+  email: string
+}
+

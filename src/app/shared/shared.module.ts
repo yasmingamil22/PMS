@@ -44,7 +44,8 @@ import { DeleteComponent } from './components/delete/delete.component';
     MatCardModule,
     MatSelectModule,
     MatDividerModule,
-     MatPaginatorModule
+     MatPaginatorModule,
+
   ],
   exports: [
     MatCardModule,
