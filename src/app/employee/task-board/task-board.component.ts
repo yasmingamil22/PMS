@@ -49,47 +49,47 @@ export class TaskBoardComponent {
     });
   }
 
-  getTaskById(id: number) {
-    this._TaskBoardService.getTaskById(id).subscribe({
-      next: (res) => {
-        console.log(res);
-        console.log('ISRAAAAAAAAAAAAAAAAAAAAAAA');
-      },
-      error: () => {},
-      complete: () => {},
-    });
-  }
 
   drop(event: CdkDragDrop<ITask[]>) {
-    console.log(event);
     const item = event.previousContainer.data[event.previousIndex];
-    const newStatus = event.container.id;
+
+    let newStatus: string;
+
+    if (event.container.id === 'cdk-drop-list-0') {
+        newStatus = 'ToDo';
+    } else if (event.container.id === 'cdk-drop-list-1') {
+        newStatus = 'InProgress';
+    } else if (event.container.id === 'cdk-drop-list-2') {
+        newStatus = 'Done';
+    } else {
+        newStatus = item.status;
+    }
 
     if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+        moveItemInArray(
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex
+        );
     } else {
-      this._TaskBoardService
-        .employeeTaskStatusChange(item.id, newStatus)
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            transferArrayItem(
-              event.previousContainer.data,
-              event.container.data,
-              event.previousIndex,
-              event.currentIndex
-            );
-            item.status = newStatus;
-          },
-          error: (err) => {
-            console.error("Error updating task status:", err);
-          },
-          complete: () => {},
-        });
+        transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex
+        );
+
+        this._TaskBoardService
+            .employeeTaskStatusChange(item.id, newStatus)
+            .subscribe({
+                next: () => {
+                    item.status = newStatus;
+                },
+                error: (err) => {
+                    console.error('Error updating task status:', err);
+                },
+                complete: () => {},
+            });
     }
-  }
+}
 }
