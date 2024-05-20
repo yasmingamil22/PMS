@@ -30,6 +30,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HomeComponent } from './home/home.component';
     AddEditHeaderComponent,
     DeleteComponent,
     ChangePasswordComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
 
   imports: [

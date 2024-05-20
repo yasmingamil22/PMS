@@ -68,7 +68,7 @@ menu:IMenu[] = [
 onClicked() {
   this.isOpened = !this.isOpened;
   this.isOpenedValue.emit(this.isOpened);
-  console.log(this.isOpened)
+ // console.log(this.isOpened)
 }
 
 }
