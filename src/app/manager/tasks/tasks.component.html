@@ -68,15 +68,14 @@
                 </tr>
             </tbody>
         </table>
+        <app-no-data *ngIf="tasksData?.length == 0 "></app-no-data>
         <div class="d-flex justify-content-center">
-          <mat-paginator #paginator
+          <mat-paginator *ngIf="tasksData.length > 0 " #paginator
                class="demo-paginator bg-transparent"
                (page)="handlePageEvent($event)"
                [length]="total"
                [pageSize]="pageSize"
                [disabled]="disabled"
-               [showFirstLastButtons]="showFirstLastButtons"
-               [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
                [hidePageSize]="hidePageSize"
                [pageIndex]="pageNumber"
                aria-label="Select page">

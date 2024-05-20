@@ -61,14 +61,12 @@
             </mat-menu>
           </td>
         </tr>
-
-       
-
       </tbody>
     </table>
+    <app-no-data *ngIf="projectList.data.length == 0 "></app-no-data>
     <div class=" d-flex justify-content-center bg-transparent">
       <!-- ? paginator -->
-      <mat-paginator #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
+      <mat-paginator *ngIf="projectList.data.length > 0" #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
         [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
         [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="PageNumber"
         aria-label="Select page">

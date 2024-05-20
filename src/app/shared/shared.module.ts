@@ -31,6 +31,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NoDataComponent } from './components/no-data/no-data.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     DeleteComponent,
     ChangePasswordComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NoDataComponent
   ],
 
   imports: [
@@ -132,7 +134,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormsModule,
     MatSelectModule,
     MatDividerModule,
-    HomeComponent
+    HomeComponent,
+    NoDataComponent
   ],
 
 })
