@@ -44,11 +44,11 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedHeaderComponent,
     AddEditHeaderComponent,
     DeleteComponent,
-    ConfirmPassComponent
+    ConfirmPassComponent,
     ChangePasswordComponent,
     HomeComponent,
     NotFoundComponent,
-    NoDataComponent
+    NoDataComponent,
 
   ],
 
