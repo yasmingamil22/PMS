@@ -25,12 +25,12 @@ import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
-
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+
 
 @NgModule({
   declarations: [

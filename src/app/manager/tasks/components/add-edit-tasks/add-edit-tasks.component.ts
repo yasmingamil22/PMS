@@ -52,7 +52,7 @@ export class AddEditTasksComponent {
   //   }
   // }
   addTask(){   
-    if(this.id>0){
+    if(this.id!=null){
       this._TasksService.updateTask(this.id,this.addEditForm.value).subscribe({
         next:res=>{
           this._ToastrService.success('Task Updated successfully')
@@ -80,7 +80,7 @@ export class AddEditTasksComponent {
   
   task:Tasks={} as Tasks
   getTaskByID(){
-    if(this.id>0){
+    if(this.id!=null){
       this._TasksService.getTaskById(this.id).subscribe({
         next:res=>{
           console.log(res);

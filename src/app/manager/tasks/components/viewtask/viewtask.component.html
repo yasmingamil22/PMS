@@ -1,4 +1,14 @@
-<section class="bg-main p-2">
+<section class="bg-main p-4">
+    <div class="d-flex justify-content-end mt-1 p-0"><i  class="fa-solid fa-xmark-circle text-danger fa-xl cursor-pointer" (click)="_DialogRef.close()"></i></div>
+    <div class="d-flex justify-content-center"><img src="./assets/images/logo.svg" alt=""></div>
+    <div class="row justify-content-start mt-3">
+        <div class="col-md-10">
+            <div class="view-card">
+               <h2 class="text-white"><span class="tit">Title : </span><span class="fs-4">{{data.description}}</span></h2>
+               <h2 class="text-white  mt-2"><span class="tit">Status : </span> <span class="statuses p-2 rounded-pill fs-4" [class]="data.status">{{data.status}}</span></h2>
+               <h2 class="text-white"><span class="tit">User : </span> <span class="fs-4">{{data.employee.userName}}</span></h2>
+               <h3 class="text-white"><span class="tit">Task Assigned At : </span><span class="fs-4">{{data.creationDate|date :'dd/mm/yyyy'}}</span></h3>
+<!-- <section class="bg-main p-2">
     <div class="d-flex justify-content-end mt-3"><i  class="fa-solid fa-xmark-circle main-color fa-xl cursor-pointer" (click)="_DialogRef.close()"></i></div>
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -8,7 +18,7 @@
                 <h4 class="   main-color mb-3">Title : <span class="text-white">{{data.title}}</span></h4>
                 <h4 class="   main-color mb-3">employee name : <span class="text-white">{{data.employee.userName}}</span></h4>
                 <h4 class="main-color mb-3">Describtion : <span class="text-white">{{data.project.description}}</span></h4>
-                <h4 class="statuses p-2 rounded-pill text-center mt-4 main-color" [class]="data.status">{{data.status}}</h4>
+                <h4 class="statuses p-2 rounded-pill text-center mt-4 main-color" [class]="data.status">{{data.status}}</h4> -->
             </div>
         </div>
     </div>
