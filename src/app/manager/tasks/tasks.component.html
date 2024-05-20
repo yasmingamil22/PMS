@@ -1,11 +1,11 @@
 <section class="main">
     <div class="mb-2  bg-white  py-3 shadow-sm">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="container d-flex justify-content-between align-items-center py-4 px-5">
             <h2 class="title">Tasks</h2>
-           <button class="main-btn rounded-pill btn pt-2" routerLink="add">Add New Task <i class="fa-solid fa-plus"></i></button>
+           <button class="main-btn rounded-pill btn py-2 px-3" routerLink="add">Add New Task <i class="fa-solid fa-plus ps-2"></i></button>
         </div>
     </div>
-    <div class="data container"> 
+    <div class="data container px-3"> 
       <div class="row mt-3">
         <div class="col-md-8">
           <mat-form-field class="w-100" appearance="outline">
@@ -29,14 +29,14 @@
           </mat-form-field>
         </div>
       </div>
-        <table class="table table-striped text-center">
+        <table class="table table-striped table-bordered text-center border border-1  shadow">
             <thead class="">
-                <th class="border-1 border-end-2 border-black py-3">Title <i class="fa-solid fa-sort bg-transparent text-white"></i></th>
-                <th class="border-1 border-end-2 border-black py-3">Statues <i class="fa-solid fa-sort bg-transparent text-white"></i></th>
-                <th class="border-1 border-end-2 border-black py-3">User <i class="fa-solid fa-sort bg-transparent text-white"></i></th>
-                <th class="border-1 border-end-2 border-black py-3">Project <i class="fa-solid fa-sort bg-transparent text-white"></i></th>
-                <th class="border-1 border-end-2 border-black py-3">Date Created <i class="fa-solid fa-sort bg-transparent text-white"></i></th>
-                <th class="border-1 border-end-2 border-black py-3"></th>
+                <th class="">Title</th>
+                <th class="">Statues</th>
+                <th class="">User</th>
+                <th class="">Project</th>
+                <th class="">Date Created</th>
+                <th class="">Actions</th>
             </thead>
             <tbody>
                 <tr *ngFor="let item of tasksData">
@@ -61,6 +61,7 @@
                               <span>Edit</span>
                             </button>
                             <button mat-menu-item class="px-4" (click)="openDeleteDialog('700ms', '400ms',item.id)">
+
                               <mat-icon>delete</mat-icon>
                               <span>Delete</span>
                             </button>
@@ -69,15 +70,14 @@
                 </tr>
             </tbody>
         </table>
+        <app-no-data *ngIf="tasksData?.length == 0 "></app-no-data>
         <div class="d-flex justify-content-center">
-          <mat-paginator #paginator
+          <mat-paginator *ngIf="tasksData.length > 0 " #paginator
                class="demo-paginator bg-transparent"
                (page)="handlePageEvent($event)"
                [length]="total"
                [pageSize]="pageSize"
                [disabled]="disabled"
-               [showFirstLastButtons]="showFirstLastButtons"
-               [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
                [hidePageSize]="hidePageSize"
                [pageIndex]="pageNumber"
                aria-label="Select page">

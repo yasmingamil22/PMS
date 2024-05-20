@@ -1,0 +1,29 @@
+#user-view{
+  button {
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.25s;
+    &.primary {
+      border-radius: 96px;
+      background-color: #ef9b28;
+      color: #fff;
+      border: 1px solid #ef9b28;
+      &:hover {
+        border: 1px solid #ef9b28;
+      color: #ef9b28;
+      background-color: #fff;
+      }
+    }
+   
+    
+  }
+}
+
+
+input {
+    --mdc-filled-text-field-disabled-input-text-color: rgba(0, 0, 0, 1);
+  }
+  
+  img {
+    border-radius: 50%;
+  }

@@ -1,1 +1,79 @@
-<p>projects works!</p>
+<section class="project">
+  <header class="project-header ">
+    <!--? Import shared-header component to display main header and content -->
+    <div class="container">
+      <div class="row  justify-content-between align-items-center shadow py-3 mb-4 ">
+        <app-shared-header [mainTextHeader]="mainTextHeader" [mainTxTHeaderBtn]="mainTxTHeaderBtn"></app-shared-header>
+      </div>
+    </div>
+  </header>
+  <div class="container px-3">
+    <div class="col-8">
+      <mat-form-field class="w-75 " appearance="outline">
+        <mat-label class="lable">Search</mat-label>
+        <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
+          [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
+        <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
+          (click)="projectFiltrationValue='';onGetManagerProjects()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <table class="table table-striped text-capitalize table-bordered text-center border border-1  shadow ">
+      <thead>
+        <th>title</th>
+        <th>description</th>
+        <th>creationDate</th>
+        <th>modificationDate</th>
+        <th>task</th>
+        <th> </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projects of projectList.data">
+          <!--? Title Column -->
+          <td>{{projects.title}}</td>
+          <!--? Description Column -->
+          <td>{{projects.description}}</td>
+          <!--? CreationDate Column -->
+          <td>{{projects.creationDate | date:'dd-mm-yyyy'}}</td>
+          <!--? ModificationDate Column -->
+          <td>{{projects.modificationDate | date: 'dd/mm h:m a'}}</td>
+          <!--? Task Column -->
+          <td>{{projects.task.length}}</td>
+
+          <td>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [routerLink]="['view',projects.id,'disabled']">
+                <mat-icon>visibility</mat-icon>
+                <span>View</span>
+              </button>
+              <button mat-menu-item [routerLink]="['editProject',projects.id,'edit']">
+                <mat-icon>edite_square</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="openDeleteDialog(projects.id)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-no-data *ngIf="projectList.data.length == 0 "></app-no-data>
+    <div class=" d-flex justify-content-center bg-transparent">
+      <!-- ? paginator -->
+      <mat-paginator *ngIf="projectList.data.length > 0" #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
+        [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="PageNumber"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+</section>
+
+
+

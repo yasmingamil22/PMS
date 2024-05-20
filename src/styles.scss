@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,82 +19,171 @@ $ManagementBusiness-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$ManagementBusiness-theme: mat.define-light-theme((
-  color: (
-    primary: $ManagementBusiness-primary,
-    accent: $ManagementBusiness-accent,
-    warn: $ManagementBusiness-warn,
-  )
-));
+$ManagementBusiness-theme: mat.define-light-theme((color: (primary: $ManagementBusiness-primary,
+        accent: $ManagementBusiness-accent,
+        warn: $ManagementBusiness-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($ManagementBusiness-theme);
-
 /* You can add global styles to this file, and also import other style files */
 
 // html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
-// Global Properties
-.bg-main{
-  background-color: #0E382F;
+// Table Design
+
+th {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px;
+  border: 1px solid rgba(49, 89, 81, 0.9);
+  background: rgba(49, 89, 81, 0.9);
+  color: #fff;
+  text-align: center;
 }
-.main-color{
+
+tr {
+  text-align: center;
+  color: #4F4F4F;
+  border: 1px solid rgba(49, 89, 81, 0.9);
+
+  td:not(:last-child) {
+    padding-top: 1.5rem;
+  }
+}
+
+
+// Global Properties
+.main-color {
   color: #EF9B28;
 }
-ul{
+
+.bg-main {
+  background-color: #0E382F;
+}
+
+.seconary-color {
+  color: #0E382F;
+}
+
+.dark-color {
+  color: #1F263E;
+
+}
+
+ul {
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
 }
-.active-ul{
+
+.active-ul {
   background-color: rgba($color: #EF9B28, $alpha: 0.3);
   color: #EF9B28;
   border-radius: 8px;
   transition: 0.3s ease;
 }
-::-webkit-scrollbar{
+.table-card{
+  .status{
+border-radius: 16px;
+color: #fff;
+&.active {
+  padding: 0.5rem 0.7rem;
+  background-color: #009247;
+}
+&.notActive {
+  padding: 0.5rem 0.7rem;
+  background-color: rgba(146, 46, 37, 0.7);
+}
+  }
+}
+
+// Scroll
+::-webkit-scrollbar {
   width: 10px;
   border-radius: 15px;
 }
-::-webkit-scrollbar-thumb{
-   background-color: #0E382F
+
+::-webkit-scrollbar-thumb {
+  background-color: #0E382F
 }
-::-webkit-scrollbar-thumb:hover{
-   background-color: #0E382F;
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0E382F;
 }
-.title{
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0E382F;
+}
+
+// Button
+
+// Customise Angular Material
+.mat-mdc-menu-content {
+  padding: 9px !important;
+}
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  border-radius: 20px !important;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.btnHover {
+
+  &:hover {
+    opacity: 0.8;
+
+  }
+}
+
+.title {
   font-size: 28px;
   font-weight: 500;
   color: rgba(79, 79, 79, 1);
 }
 
-  .main-btn{
+.main-btn {
+  background-color: rgba(239, 155, 40, 1);
+  color: rgba(255, 255, 255, 1);
+
+  &:hover {
     background-color: rgba(239, 155, 40, 1);
     color: rgba(255, 255, 255, 1);
-    &:hover{
-      background-color:  rgba(239, 155, 40, 1);
-      color:rgba(255, 255, 255, 1); ;
-    }
-   }
-   .statuses{
-    &.ToDo{
-      background-color: rgba(228, 225, 245, 1);
-      color: white;
-    }
-    &.InProgress{
-      background-color: rgba(239, 155, 40, 0.64);
-      color: white;
-    }
-    &.Done{
-      background-color: rgba(0, 146, 71, 1);
-      color: white;
-    }
-   }
+    ;
+  }
+}
+
+.statuses {
+  &.ToDo {
+    background-color: rgba(228, 225, 245, 1);
+    color: white;
+  }
+
+  &.InProgress {
+    background-color: rgba(239, 155, 40, 0.64);
+    color: white;
+  }
+
+  &.Done {
+    background-color: rgba(0, 146, 71, 1);
+    color: white;
+  }
+}

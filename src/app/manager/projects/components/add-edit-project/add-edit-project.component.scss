@@ -1,0 +1,39 @@
+.Add-Edit {
+ padding: 5rem;
+}
+
+.main {
+ min-height: 100vh;
+ background-color: rgba(128, 128, 128, 0.17);
+
+
+
+}
+
+.cancel {
+ border: 1px solid #0E382F !important;
+ color: #0E382F;
+ transition: 0.4s !important;
+
+ &:hover {
+  background-color: #0E382F !important;
+  color: #ffff;
+ }
+}
+
+.main-btn:hover {
+ background-color: #fff;
+ border: 1px solid #EF9B28;
+ color: #EF9B28;
+}
+
+
+h3 {
+ color: rgba(14, 56, 47, 1);
+ font-size: 32px;
+ font-weight: 500;
+}
+
+::ng-deep.mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input{
+    color: #0E382F !important;
+}
