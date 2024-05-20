@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -36,7 +37,7 @@ export class ChangePasswordComponent {
   hideNew: boolean = true;
   hideConfirm: boolean = true;
 
-  constructor( private _AuthService: AuthService, private _Router: Router,
+  constructor( private _AuthService: AuthService, private _Router: Router, private _ToastrService:ToastrService ,
     public dialogRef: MatDialogRef<ChangePasswordComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
@@ -50,11 +51,12 @@ export class ChangePasswordComponent {
       next: (res) => {
         console.log(res);
       },
-      error: () => {},
+      error: (err) => {
+        this._ToastrService.error(err.error.message , 'Notify That!');
+      },
       complete: () => {
-        //toaster or notifier?
-        // this._Router.navigate(['dashboard']);
-        //console.log('success')
+        
+        this._ToastrService.success('Change Password Successfuly' , 'Done!');
       },
     });
   }

@@ -5,7 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewtaskComponent } from './components/viewtask/viewtask.component';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
-// import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/components/delete-project/delete.component';
 import { ToastrService } from 'ngx-toastr';
 
 

@@ -4,8 +4,8 @@
       <div class="d-flex mb-5">
         <h2 class="container-fluid p-0">Task Board</h2>
       </div>
-      <div class="row">
-        <div class="col-md-4">
+      <div class="row g-3">
+        <div class="col-md-4 bg-danger">
           <h3 class="task-card-title mb-4 w-50">To Do</h3>
           <div class="task-card">
             <div cdkDropList [cdkDropListData]="todo" class="task-list" (cdkDropListDropped)="drop($event)" class="task-scroll d-flex justify-content-center">
