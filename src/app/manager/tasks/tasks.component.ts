@@ -45,7 +45,8 @@ getTasksForManagaer(){
       console.log(res);
       this.tasksData = res.data
       this.total = res.totalNumberOfRecords
-      
+      localStorage.setItem('tasksNumber',JSON.stringify(res.totalNumberOfRecords))
+
     },error:err=>{
       console.log(err);
       

@@ -24,11 +24,11 @@ export class NavbarComponent {
   getCurrentUser(): void {
     this._AuthService.currentUser().subscribe({
       next: (res) => {
-        console.log(res);
+       // console.log(res);
         this.currentUser = res;
       },
       error: (err) => {
-        console.log(err.error.message);
+       // console.log(err.error.message);
       },
       complete: () => {},
     });
@@ -39,7 +39,7 @@ export class NavbarComponent {
     const dialogRef = this.dialog.open(ChangePasswordComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('Received data from dialog:', result); //add a toaster or notifier
+     //   console.log('Received data from dialog:', result); //add a toaster or notifier
       }
     });
   }
