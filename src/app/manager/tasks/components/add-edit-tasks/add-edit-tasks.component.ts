@@ -80,7 +80,7 @@ export class AddEditTasksComponent {
   
   task:Tasks={} as Tasks
   getTaskByID(){
-    if(this.id>0){
+    if(this.id!=null){
       this._TasksService.getTaskById(this.id).subscribe({
         next:res=>{
           console.log(res);
