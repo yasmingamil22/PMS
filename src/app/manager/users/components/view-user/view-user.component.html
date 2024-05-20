@@ -11,8 +11,8 @@
           </div>
         <div class="col-md-8">
                 <div class="title my-4">
-                  <span>Status Active : <span class="text-secondry">{{user.isActivated}}</span></span>
-                  <h3>User <span class="text-secondry">
+                  <span>Status Active: <span class="seconary-color">{{user?.isActivated}}</span></span>
+                  <h3>User: <span class="seconary-color">
                     {{user.userName}}
                   </span></h3>
                 </div>
@@ -59,8 +59,11 @@
                     </mat-form-field>
     
                   </div>
+                  <div class="table-card">
+                    <button type="submit" class="px-4 status" [class]="user?.isActivated?'active':'notActive'" (click)="openBlockDialog(user)">{{user.isActivated?'Block':'Unblock'}}</button>
+                  </div>
                   <div class="d-flex justify-content-end gap-2 my-4">
-                    <button type="submit" class="px-4" [class]="user.isActivated?'primary':'outline-primary'" (click)="openBlockDialog(user)">{{user.isActivated?'Block':'Unblock'}}</button>
+                    
                     <button class="primary" [routerLink]="['/dashboard/manager/users/']">Back To All Users  <i class="fa-solid fa-arrow-right ps-2"></i> </button>
                   </div>
               </div>

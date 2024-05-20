@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from '../../services/projects.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NotifierService } from 'angular-notifier';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProjectsByID } from '../../interface/projects';
 import { Location } from '@angular/common';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-edit-project',
@@ -14,15 +13,18 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-edit-project.component.scss']
 })
 export class AddEditProjectComponent implements OnInit {
-  private readonly notifier: NotifierService;
+ 
 
-  //? Main Text Add-Edit header  will be passed to the add-edit--shared-header component
-  mainTextHeader: string = 'Add a New Project';
+  // Main Text Add-Edit header  will be passed to the add-edit--shared-header component ...
+  editTextHeader: string = 'Update a New Project';
 
-  //? Main Text Add-Edit header Link  will be passed to the add-edit--shared-header component
+  addTextHeader: string = 'Add a New Project';
+
+
+  // Main Text Add-Edit header Link  will be passed to the add-edit--shared-header component ...
   mainTxTHeaderLink: string = 'View All Projects';
 
-  //? Initialize form group with title and description control
+  // Initialize form group with title and description control ...
   addEditProjectForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
@@ -30,6 +32,10 @@ export class AddEditProjectComponent implements OnInit {
 
 
   projectID: number = 0;
+  moodPram: string = '';
+  EditPram: string = '';
+
+  isNonDisplay: boolean = false
 
   projectList: IProjectsByID = {
     id: 0,
@@ -43,20 +49,34 @@ export class AddEditProjectComponent implements OnInit {
 
   constructor(private _ProjectsService: ProjectsService,
     private _ActivatedRoute: ActivatedRoute,
-    notifierService: NotifierService, private _Location: Location) {
-    this.notifier = notifierService
+     private _Location: Location , private _ToastrService:ToastrService , private _Router:Router) {
+    
   }
 
   ngOnInit(): void {
-    this.projectID = this._ActivatedRoute.snapshot.params['id']
-    console.log(this.projectID);
+    this.projectID = this._ActivatedRoute.snapshot.params['id'];
+    this.moodPram = this._ActivatedRoute.snapshot.params['mood'];
+    this.EditPram = this._ActivatedRoute.snapshot.params['edit'];
+
+    //If the Condition To Catch ID From URL To Call Function onGetProjectByID ...
     if (this.projectID) {
       this.onGetProjectByID(this.projectID)
-      
+    }
+
+    // If the condition to catch MoodPram from the URL To Make addEditProjectForm 
+    // Disable In Case #View ..
+
+    if (this.moodPram == 'disabled') {
+      this.addEditProjectForm.disable();
+      this.isNonDisplay = false;
+    } else {
+      this.addEditProjectForm.enable()
+      this.isNonDisplay = true;
     }
   }
 
-  //? Function To Get Project By ID
+  // Function To Get Project By ID ...
+
   onGetProjectByID(id: number) {
     this._ProjectsService.getProjectById(id).subscribe({
       next: (res) => {
@@ -69,36 +89,36 @@ export class AddEditProjectComponent implements OnInit {
           title: this.projectList.title,
           description: this.projectList.description
         })
-     
+
       },
     })
   }
 
-  disableFormControls() {
-    this.addEditProjectForm.get('title')?.disable();
-    this.addEditProjectForm.get('description')?.disable();
-  }
-  //? Function To Add and Edit Project
+
+  //Function To Add and Edit Project ...
+
   onAddEdietProject(ProjectForm: FormGroup) {
     console.log(ProjectForm.value);
     if (this.projectID) {
       this._ProjectsService.editManagerProject(this.projectID, ProjectForm.value).subscribe({
         next: () => { },
         error: (error: HttpErrorResponse) =>
-          this.notifier.notify('error', error.error.message),
+        this._ToastrService.error(error.error.message , 'Notify That!' )
+        ,
         complete: () => {
-          this.notifier.notify('success', 'The Record Updated Successfully');
-          this._Location.back();
+          this._Router.navigate(['/dashboard/manager/projects'])
+         this._ToastrService.success('The Record Updated Successfully' , 'Done!')
         }
       })
     } else {
       this._ProjectsService.addManagerProject(ProjectForm.value).subscribe({
         next: () => { },
         error: (error: HttpErrorResponse) =>
-          this.notifier.notify('error', error.error.message),
+          this._ToastrService.error(error.error.message , 'Notify That!' )
+        ,
         complete: () => {
-          this.notifier.notify('success', 'Project Created Successfully');
-          this._Location.back();
+          this._Router.navigate(['/dashboard/manager/projects'])
+        this._ToastrService.success('Project Created Successfully', 'Done!')
         }
       })
     }

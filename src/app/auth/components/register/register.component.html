@@ -62,7 +62,8 @@
                                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                       <mat-icon class="text-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
-                                    <mat-error>Password is required</mat-error>
+                                    <mat-error *ngIf="registerForm.get('password')?.touched&&registerForm.get('password')?.getError('required')">Password is required</mat-error>
+                                    <mat-error *ngIf="registerForm.get('password')?.getError('pattern')&&registerForm.get('password')?.value!=''">your password is invalid</mat-error>
                                   </mat-form-field>
                             </div>
                             <div class="col-md-6">

@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './services/projects.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IProjectData, IProjectParams } from './interface/projects';
-import { NotifierService } from 'angular-notifier';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/components/delete-project/delete.component';
 import { PageEvent } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-projects',
@@ -20,12 +20,11 @@ import { Router } from '@angular/router';
 export class ProjectsComponent implements OnInit {
 
 
-  private readonly notifier: NotifierService;
 
-  //? Main Text header  will be passed to the main-shared-header component
+  // Main Text header  will be passed to the main-shared-header component
   mainTextHeader: string = 'Projects';
 
-  //? Main Text Btn header  will be passed to the main-shared-header component
+  // Main Text Btn header  will be passed to the main-shared-header component
   mainTxTHeaderBtn: string = 'Add project';
 
 
@@ -33,8 +32,6 @@ export class ProjectsComponent implements OnInit {
   myControl = new FormControl();
   filteredProject: any[] = [];
   projects: any[] = [];
-
-
 
 
   projectList: IProjectData = {
@@ -49,18 +46,17 @@ export class ProjectsComponent implements OnInit {
   PageNumber: number = 1;
   PageSize: number = 10;
 
-  public displayColumns: any[] = ['title', 'description', 'creationDate', 'modificationDate', 'task', 'menu']
-
   public dataSource: any = [];
 
   constructor(private _ProjectsService: ProjectsService,
-    private _HttpClient: HttpClient, notifierService: NotifierService,
-    private dialog: MatDialog, private _Router: Router,) {
-    this.notifier = notifierService;
+    private _HttpClient: HttpClient, 
+    private dialog: MatDialog, private _Router: Router, private _ToastrService:ToastrService)
+     {
   }
 
   ngOnInit(): void {
     this.onGetManagerProjects()
+    // Handel Search Input ...
     this.filteredProject = this.projects;
     this.myControl.valueChanges
       .pipe(startWith(''), map((value) => this._filter(value))
@@ -77,7 +73,7 @@ export class ProjectsComponent implements OnInit {
       project.title.toLowerCase().includes(filterValue)
     );
   }
-  //? Function To Get All Project 
+  // Function To Get All Project ... 
   onGetManagerProjects() {
     let params: IProjectParams = {
       title: this.projectFiltrationValue,
@@ -87,38 +83,39 @@ export class ProjectsComponent implements OnInit {
     this._ProjectsService.getManagerProject(params).subscribe({
       next: (res) => {
         this.projectList = res
-        this.dataSource = res.data
-        console.log(this.projectList);
-
+        localStorage.setItem('projectsCount',res.totalNumberOfRecords)
+     //   localStorage.setItem('projectsCount' , JSON.stringify(res.totalNumberOfRecords))
       },
       error: (error: HttpErrorResponse) =>
-        this.notifier.notify('error', error.error.message),
+      this._ToastrService.error(error.error.message , 'Notify That!' )
+      ,
       complete: () => {
-        // this.notifier.notify('success', 'The items were successfully retrieved.!');
       }
     })
   }
 
 
-  //? Function To Delete Project By ID
+  // Function To Delete Project By ID ...
   onDeleteProject(id: number) {
     this._ProjectsService.deleteManagerProject(id).subscribe({
       next: () => { },
-      error: (error: HttpErrorResponse) =>
-        this.notifier.notify('error', error.error.message),
+      error: (error) =>
+        this._ToastrService.error('Opps Error' , 'Notify That!' )
+      ,
       complete: () => {
-        this.notifier.notify('success', 'The Certificate has been successfully deleted');
-        this.onGetManagerProjects()
+      this.onGetManagerProjects()
+      this._ToastrService.success('The Certificate has been successfully deleted' , 'Done!')
       }
 
     })
   }
 
-  //? Function To Open Project DeleteDialog
+  // Function To Open Project DeleteDialog ...
   openDeleteDialog(id: number): void {
-    console.log(id);
+   // console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: { itemID: id },
+      width: '500px'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -128,7 +125,7 @@ export class ProjectsComponent implements OnInit {
   }
 
 
-  //? handle paginator
+  // Handle Paginator ...
   length = 50;
   pageSize = 10;
   pageIndex = 0;
@@ -139,13 +136,11 @@ export class ProjectsComponent implements OnInit {
   disabled = false;
 
   pageEvent: PageEvent | undefined;
-
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.PageNumber = e.pageIndex;
-
     this.onGetManagerProjects()
   }
 }

@@ -1,63 +1,25 @@
-<div class="main p-3">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="forget-card" [class]="pos?'fly':'opacity-100'">
-                    <span class="sp">welcome to PMS</span>
-                    <h2><span class="sp2">F</span>orget Password</h2>
-                    <form action="" class="mt-5" (ngSubmit)="verifyPass()">
-                        <mat-form-field class="w-100">
-                            <mat-label class="text-warning">E-mail</mat-label>
-                            <input [(ngModel)]="email" name="email" class="inp text-white" placeholder="Enter your E-mail" type="email" matInput>
-                            <button mat-icon-button matSuffix>
-                                <mat-icon class="text-white">mail</mat-icon>
-                            </button>
-                        </mat-form-field>
-                        <button class="btn log-btn w-75 mx-auto d-block rounded-pill text-white">Send <i *ngIf="loading" class="fa-solid fa-spinner fa-spin"></i></button>
-                    </form>
-                </div>
-                <div class="forget-card" [class]="pos1?'appear':'d-none'">
-                    <span class="sp">welcome to PMS</span>
-                    <h2><span class="sp2">R</span>eset Password</h2>
-                    <form action="" [formGroup]="resrtForm" class="mt-5" (ngSubmit)="resetPass()">
-                        <mat-form-field class="w-100">
-                            <mat-label class="text-warning">E-mail</mat-label>
-                            <input formControlName="email" class="inp text-white" placeholder="Enter your E-mail" type="email" matInput>
-                            <button mat-icon-button matSuffix type="button">
-                                <mat-icon class="text-white">mail</mat-icon>
-                            </button>
-                            <mat-error *ngIf="resrtForm.get('email')?.touched&&resrtForm.get('email')?.getError('required')">Email is required</mat-error>
-                            <mat-error *ngIf="resrtForm.get('email')?.value!=''&&resrtForm.get('email')?.getError('email')">Email is Invalid</mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="w-100">
-                            <mat-label class="text-warning">OTP Verification</mat-label>
-                            <input formControlName="seed" class="inp text-white" placeholder="Enter Verification Code" type="text" matInput>
-                            <button mat-icon-button matSuffix type="button">
-                                <mat-icon class="text-white">verified_user</mat-icon>
-                            </button>
-                            <mat-error>verification code is required</mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="w-100">
-                            <mat-label class="lable text-warning">Enter your password</mat-label>
-                            <input formControlName="password" placeholder="Enter your Password" class="inp text-white" matInput [type]="hide ? 'password' : 'text'">
-                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                              <mat-icon class="text-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                            <mat-error>Password is required</mat-error>
-                          </mat-form-field>
-                          <mat-form-field class="w-100">
-                            <mat-label class="lable text-warning">Confirm Password</mat-label>
-                            <input formControlName="confirmPassword" placeholder="Confirm New Password" class="inp text-white" matInput [type]="hide2 ? 'password' : 'text'">
-                            <button type="button" mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
-                              <mat-icon class="text-white">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                            <mat-error *ngIf="resrtForm.get('confirmPassword')?.getError('required')&&(resrtForm.get('confirmPassword')?.value!=''||resrtForm.get('confirmPassword')?.touched||resrtForm.invalid)">confirmPassword is required</mat-error>
-                            <mat-error *ngIf="resrtForm.get('confirmPassword')?.value!=''&&resrtForm.get('confirmPassword')?.getError('compare')">Password not match</mat-error>
-                          </mat-form-field>
-                          <button class="btn log-btn w-50 d-block mx-auto text-white rounded-pill" >Save <i *ngIf="loading" class="fa-solid fa-spinner fa-spin"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<section class="main">
+  <div class="container">
+      <div class="row justify-content-center vh-100 align-items-center">
+          <div class="col-md-7">
+              <div class="d-flex justify-content-center mb-3"><img class="" src="./assets/images/logo.svg" alt=""></div>
+              <div class="forget-card p-5">
+                  <span class="sp">welcome to PMS</span>
+                  <h2><span class="sp2">F</span>orget Password</h2>
+                  <form action="" class="mt-4" [formGroup]="requestForm" (ngSubmit)="sendResetForm()">
+                      <mat-form-field class="w-100">
+                          <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
+                          <mat-label class="lable">E-mail</mat-label>
+                          <mat-hint  class="text-center text-danger" *ngIf="requestForm.get('email')?.touched && requestForm.get('email')?.hasError('required')">*Email is required</mat-hint>
+                          <mat-hint  class="text-center text-danger" *ngIf="requestForm.get('email')?.hasError('email')">  *Invalid email</mat-hint>
+                          <button type="button" mat-icon-button matSuffix>
+                              <mat-icon class="text-white">mail</mat-icon>
+                          </button>
+                      </mat-form-field>
+                        <button [disabled]="requestForm.invalid" class="btn log-btn btn-warning rounded-pill text-white w-75 py-3 d-block mx-auto mt-5">Request Reset<i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>

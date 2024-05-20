@@ -4,9 +4,9 @@
     </div>
 </section>
 
-<section class="table-card mt-5 mx-4 mw-100">
+<section class="table-card mt-5 mx-3 mw-100">
     <table class="table table-striped table-bordered text-center border border-1  shadow ">
-        <thead>
+        <thead class="">
             <th>userName</th>
             <th>Status</th>
             <th>Phone Number</th>
@@ -43,8 +43,9 @@
             </tr>
         </tbody>
     </table>
-    <div class="">
-        <mat-paginator #paginator
+    <app-no-data *ngIf="listUsers?.length == 0 "></app-no-data>
+    <div class="d-flex justify-content-center">
+        <mat-paginator *ngIf="listUsers.length > 0"  #paginator
           (page)="handlePageEvent($event)"
           [length]="tableData?.totalNumberOfRecords"
           [pageSize]="pageSize"

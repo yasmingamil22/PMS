@@ -7,4 +7,15 @@
 //     iat: number
 //     exp: number
 //   }
-  
+
+
+export interface iReset{
+  email: string,
+  seed: string,
+  password: string,
+  confirmPassword: string
+}
+export interface iRequest {
+  email: string
+}
+

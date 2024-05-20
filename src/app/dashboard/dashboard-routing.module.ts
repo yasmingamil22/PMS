@@ -3,12 +3,13 @@ import { managerGuard } from './../core/guards/manager.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent } from '../manager/home/home.component';
+import { HomeComponent } from '../shared/home/home.component';
+
 
 const routes: Routes = [{
   path: '', component: DashboardComponent, children: [
-   {path:'' , redirectTo:'home' , pathMatch:'full'},
-    {path:'home' , component:HomeComponent , title:'home'} ,
+  {path: '' , redirectTo: 'home' , pathMatch: 'full'},
+  {path: 'home' , component: HomeComponent , title: 'Home'},
     { path: 'manager',canActivate:[managerGuard] ,
     loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
     { path: 'employee',canActivate:[employeeGuard] ,
