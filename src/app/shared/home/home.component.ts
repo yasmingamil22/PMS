@@ -43,7 +43,7 @@ getTasksCount(){
             label: 'My First Dataset',
             data: [this.tasksCount?.toDo, this.tasksCount?.inProgress, this.tasksCount?.done],
             backgroundColor: ['#CE93D8','#EF9B28A3','#009247'],
-            hoverOffset: 5
+            hoverOffset: 4
           }]
         }
       })

@@ -84,6 +84,8 @@ export class ProjectsComponent implements OnInit {
     this._ProjectsService.getManagerProject(params).subscribe({
       next: (res) => {
         this.projectList = res
+        localStorage.setItem('projectsCount',res.totalNumberOfRecords)
+     //   localStorage.setItem('projectsCount' , JSON.stringify(res.totalNumberOfRecords))
       },
       error: (error: HttpErrorResponse) =>
         this.notifier.notify('error', error.error.message),
