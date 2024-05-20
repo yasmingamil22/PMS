@@ -7,4 +7,10 @@
 //     iat: number
 //     exp: number
 //   }
-  
+
+
+export interface iChangePassword {
+  oldPassword: string
+  newPassword: string
+  confirmNewPassword: string
+}

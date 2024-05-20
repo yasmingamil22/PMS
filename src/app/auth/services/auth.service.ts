@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+import { iChangePassword } from '../auth';
 
 // import { decoded } from '../auth';
 
@@ -57,7 +58,7 @@ getRole(){
     return this._HttpClient.post('Users/Reset',data)
   }
 
-  changePassword(data: any): Observable<any>  { //make interface
+  changePassword(data: iChangePassword): Observable<any>  {
     return this._HttpClient.put('Users/ChangePassword', data);
   }
 

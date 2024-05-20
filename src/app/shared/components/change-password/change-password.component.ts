@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { iChangePassword } from 'src/app/auth/auth';
 
 
 
@@ -38,7 +39,7 @@ export class ChangePasswordComponent {
 
   constructor( private _AuthService: AuthService, private _Router: Router,
     public dialogRef: MatDialogRef<ChangePasswordComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: iChangePassword,
   ) { }
   onNoClick(): void {
     this.dialogRef.close();
@@ -52,8 +53,8 @@ export class ChangePasswordComponent {
       },
       error: () => {},
       complete: () => {
-        //toaster or notifier?
-        // this._Router.navigate(['dashboard']);
+        //toaster
+        this._Router.navigate(['dashboard/home']);
       },
     });
   }
