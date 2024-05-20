@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { iRequest, iReset } from '../auth';
 // import { decoded } from '../auth';
 
 @Injectable({
