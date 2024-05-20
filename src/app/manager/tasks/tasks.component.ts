@@ -21,7 +21,7 @@ pageSize:number = 10
 pageNumber:number = 1
 total:number=0
 ngOnInit(): void {
-  
+
   this.getTasksForManagaer()
 }
 openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string , id:number): void {
@@ -77,7 +77,7 @@ getTasksForManagaer(){
 
     },error:err=>{
       console.log(err);
-      
+
     }
   })
 }
@@ -100,30 +100,30 @@ handlePageEvent(e: PageEvent) {
 }
 
 // Delete Tasks
-openDeleteDialog(data: any): void {
-  console.log(data);
-  const dialogRef = this.dialog.open(DeleteComponent, {
-    data:data,
-    width: '40%'
-  });
+// openDeleteDialog(data: any): void {
+//   console.log(data);
+//   const dialogRef = this.dialog.open(DeleteComponent, {
+//     data:data,
+//     width: '40%'
+//   });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      this.onDeleteTask(result.id);
-    }
-  });
-}
+//   dialogRef.afterClosed().subscribe(result => {
+//     if (result) {
+//       this.onDeleteTask(result.id);
+//     }
+//   });
+// }
 
 //? Function To Delete Project By ID
 onDeleteTask(id: number) {
   this._TasksService.onDeleteTask(id).subscribe({
     next:(res)=>{
       console.log(res);
-      
+
     },
     error:(err)=>{
       console.log(err.error.message);
-      
+
     },
     complete: () => {
       this.getTasksForManagaer()
@@ -131,7 +131,7 @@ onDeleteTask(id: number) {
 
   })
 }
- 
+
 
 
 
