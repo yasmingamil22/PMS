@@ -4,7 +4,7 @@ import { ITableData, IEmployee } from './models/users';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { BlockUserComponent } from './components/block-user/block-user.component';
-import { NotifierService } from 'angular-notifier';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
   tableData: ITableData | any ;
   listUsers: IEmployee[] = [] ;
   message:string = '';
-  constructor(private _UsersService:UsersService , public dialog: MatDialog){
+  constructor(private _UsersService:UsersService , public dialog: MatDialog , private _ToastrService:ToastrService){
   }
   ngOnInit(): void {
     this.getAllUsers();
@@ -31,7 +31,7 @@ getAllUsers(){
   }
   this._UsersService.getUsers(params).subscribe({
     next:(res)=>{
-      console.log(res);
+     // console.log(res);
       this.tableData = res ;
       this.listUsers = this.tableData.data;    
     },
@@ -53,11 +53,10 @@ handlePageEvent(e: PageEvent) {
 openBlockDialog(item:IEmployee): void {
   const dialogRef = this.dialog.open(BlockUserComponent, {
     data: item,
-    width: '40%'
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed',result);
+   // console.log('The dialog was closed',result);
       if(result){
         this.onActivateuser(result)
       }
@@ -67,14 +66,19 @@ openBlockDialog(item:IEmployee): void {
 onActivateuser(id:number){
   this._UsersService.activateUser(id).subscribe({
     next:(res)=>{
-      this.message = res.message;
+      this.message = res;
+     // console.log(this.message);
+      
     },
     error:(err)=>{
       console.log(err.error.message);
+      this._ToastrService.error(err.error.message , 'Notify That!')
     },
     complete:()=>{
       this.getAllUsers();
-     
+        this._ToastrService.success(this.message , 'Proccess is Completed Successfully')
+    
+    
     }
   })
 }

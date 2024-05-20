@@ -14,7 +14,6 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
-import { NotifierModule } from 'angular-notifier';
 import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteComponent } from './components/delete/delete.component';
@@ -64,48 +63,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
-    NotifierModule.withConfig({
-
-      position: {
-        horizontal: {
-          position: 'right',
-          distance: 12
-        },
-        vertical: {
-          position: 'top',
-          distance: 12,
-          gap: 10
-        }
-      },
-      theme: 'material',
-      behaviour: {
-        autoHide: 900,
-        onClick: 'hide',
-        onMouseover: 'pauseAutoHide',
-        showDismissButton: true,
-        stacking: 4
-      },
-      animations: {
-        enabled: true,
-        show: {
-          preset: 'slide',
-          speed: 800,
-          easing: 'ease'
-        },
-        hide: {
-          preset: 'fade',
-          speed: 300,
-          easing: 'ease',
-          offset: 50
-        },
-        shift: {
-          speed: 300,
-          easing: 'ease'
-        },
-        overlap: 150
-
-      }
-    }),
+    
     FormsModule,
     MatSelectModule,
     MatDividerModule,
@@ -129,7 +87,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatTableModule,
     MatCardModule,
     SharedHeaderComponent,
-    NotifierModule,
+
     AddEditHeaderComponent,
     FormsModule,
     MatSelectModule,

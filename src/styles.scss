@@ -97,6 +97,20 @@ a {
   border-radius: 8px;
   transition: 0.3s ease;
 }
+.table-card{
+  .status{
+border-radius: 16px;
+color: #fff;
+&.active {
+  padding: 0.5rem 0.7rem;
+  background-color: #009247;
+}
+&.notActive {
+  padding: 0.5rem 0.7rem;
+  background-color: rgba(146, 46, 37, 0.7);
+}
+  }
+}
 
 // Scroll
 ::-webkit-scrollbar {
