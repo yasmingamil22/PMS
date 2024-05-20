@@ -43,7 +43,7 @@ sendResetForm(): void {
   const data = this.requestForm.value;
 
     if (this.requestForm.valid) {
-      this._AuthService.onRequestReset(data).subscribe({
+      this._AuthService.resetPass(data).subscribe({
         next: (res) => {
           console.log('Password reset successful', res.message);
         },

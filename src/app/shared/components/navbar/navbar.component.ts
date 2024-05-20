@@ -17,9 +17,9 @@ export class NavbarComponent {
     this.getCurrentUser();
   }
 
-  onLogout() {
-    this._AuthService.logout();
-  }
+  // onLogout() {
+  //   this._AuthService.logout();
+  // }
 
   getCurrentUser(): void {
     this._AuthService.currentUser().subscribe({

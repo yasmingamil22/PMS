@@ -47,7 +47,7 @@ export class ChangePasswordComponent {
 
 
   onChangePassword(data: FormGroup) {
-    this._AuthService.changePassword(data.value).subscribe({
+    this._AuthService.resetPass(data.value).subscribe({
       next: (res) => {
         console.log(res);
       },
