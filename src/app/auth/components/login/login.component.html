@@ -11,7 +11,7 @@
                         <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
                         <mat-label class="lable">E-mail</mat-label>
                         <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">*Email is required</mat-hint>
-                        <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.hasError('email')">  *Invalid email</mat-hint>
+                        <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.hasError('email')">  *Invalid Email Format</mat-hint>
                         <button type="button" mat-icon-button matSuffix>
                             <mat-icon class="text-white">mail</mat-icon>
                         </button>

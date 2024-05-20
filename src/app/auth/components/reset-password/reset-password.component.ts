@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { iReset } from '../../auth';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-reset-password',
@@ -33,7 +35,7 @@ export class ResetPasswordComponent {
 
   bgImagePath = "url('assets/images/bg1-1.png')";
 
-  constructor(private _AuthService: AuthService) {}
+  constructor(private _AuthService: AuthService, private _Router: Router) {}
 
   ngOnInit(): void {
     (document.querySelector('.auth-bg') as any).style.setProperty(
@@ -53,6 +55,9 @@ export class ResetPasswordComponent {
         error: (err) => {
           console.error('Error resetting password', err);
         },
+        complete: () => {
+          this._Router.navigate(['auth/login']);
+        }
       });
     }
   }
