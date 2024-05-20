@@ -67,6 +67,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     FormsModule,
     MatSelectModule,
     MatDividerModule,
+     MatPaginatorModule
   ],
   exports: [
     MatCardModule,

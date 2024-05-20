@@ -12,6 +12,8 @@ import { VerifyComponent } from './components/verify/verify.component';
 import { ForgetpassComponent } from './components/forgetpass/forgetpass.component';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -22,15 +24,17 @@ import { AuthComponent } from './auth.component';
     RegisterComponent,
     VerifyComponent,
     ForgetpassComponent,
-    AuthComponent
+    AuthComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     SharedModule,
     NgxDropzoneModule,
-    FormsModule
+    FormsModule,
     // NgxDropzoneModule,
+    MatFormFieldModule
   ]
 })
 export class AuthModule { }
