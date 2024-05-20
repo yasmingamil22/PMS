@@ -3,7 +3,7 @@ import { ProjectsService } from './services/projects.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IProjectData, IProjectParams } from './interface/projects';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteComponent } from 'src/app/shared/components/delete/delete.component';
+import { DeleteComponent } from 'src/app/shared/components/delete-project/delete.component';
 import { PageEvent } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs';

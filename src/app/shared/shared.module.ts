@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
 import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
 import { FormsModule } from '@angular/forms';
-import { DeleteComponent } from './components/delete/delete.component';
+// import { DeleteComponent } from './components/delete-project/delete.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
@@ -40,7 +40,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     TrimEmailPipe,
     SharedHeaderComponent,
     AddEditHeaderComponent,
-    DeleteComponent,
+    // DeleteComponent,
     ChangePasswordComponent,
     HomeComponent,
     NotFoundComponent,
@@ -87,7 +87,6 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatTableModule,
     MatCardModule,
     SharedHeaderComponent,
-
     AddEditHeaderComponent,
     FormsModule,
     MatSelectModule,
