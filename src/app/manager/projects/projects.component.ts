@@ -22,10 +22,10 @@ export class ProjectsComponent implements OnInit {
 
   private readonly notifier: NotifierService;
 
-  //! Main Text header  will be passed to the main-shared-header component
+  // Main Text header  will be passed to the main-shared-header component
   mainTextHeader: string = 'Projects';
 
-  //! Main Text Btn header  will be passed to the main-shared-header component
+  // Main Text Btn header  will be passed to the main-shared-header component
   mainTxTHeaderBtn: string = 'Add project';
 
 
@@ -57,7 +57,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGetManagerProjects()
-    //! Handel Search Input ...
+    // Handel Search Input ...
     this.filteredProject = this.projects;
     this.myControl.valueChanges
       .pipe(startWith(''), map((value) => this._filter(value))
@@ -74,7 +74,7 @@ export class ProjectsComponent implements OnInit {
       project.title.toLowerCase().includes(filterValue)
     );
   }
-  //! Function To Get All Project ... 
+  // Function To Get All Project ... 
   onGetManagerProjects() {
     let params: IProjectParams = {
       title: this.projectFiltrationValue,
@@ -93,7 +93,7 @@ export class ProjectsComponent implements OnInit {
   }
 
 
-  //! Function To Delete Project By ID ...
+  // Function To Delete Project By ID ...
   onDeleteProject(id: number) {
     this._ProjectsService.deleteManagerProject(id).subscribe({
       next: () => { },
@@ -107,9 +107,9 @@ export class ProjectsComponent implements OnInit {
     })
   }
 
-  //! Function To Open Project DeleteDialog ...
+  // Function To Open Project DeleteDialog ...
   openDeleteDialog(id: number): void {
-    console.log(id);
+   // console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       data: { itemID: id },
     });
@@ -121,7 +121,7 @@ export class ProjectsComponent implements OnInit {
   }
 
 
-  //! Handle Paginator ...
+  // Handle Paginator ...
   length = 50;
   pageSize = 10;
   pageIndex = 0;

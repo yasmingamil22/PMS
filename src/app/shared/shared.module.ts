@@ -14,7 +14,6 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { TrimEmailPipe } from '../pipes/trimEmail.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NotifierModule } from 'angular-notifier';
 import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-header.component';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +29,7 @@ import {MatDividerModule} from '@angular/material/divider';
 
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +38,10 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     NavbarComponent,
     TrimEmailPipe,
     SharedHeaderComponent,
-    PageNotFoundComponent,
     AddEditHeaderComponent,
     DeleteComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HomeComponent
   ],
 
   imports: [
@@ -125,13 +125,12 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     MatTableModule,
     MatCardModule,
     SharedHeaderComponent,
-    PageNotFoundComponent,
     NotifierModule,
     AddEditHeaderComponent,
     FormsModule,
     MatSelectModule,
     MatDividerModule,
-
+    HomeComponent
   ],
 
 })
