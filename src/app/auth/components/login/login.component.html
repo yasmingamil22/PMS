@@ -10,7 +10,7 @@
                     <mat-form-field class="w-100">
                         <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
                         <mat-label class="lable">E-mail</mat-label>
-                        <mat-hint  class="text-center text-danger">*Email is required</mat-hint>
+                        <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">*Email is required</mat-hint>
                         <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.hasError('email')">  *Invalid email</mat-hint>
                         <button type="button" mat-icon-button matSuffix>
                             <mat-icon class="text-white">mail</mat-icon>
@@ -26,7 +26,7 @@
                       </mat-form-field>
                       <div class="d-flex justify-content-between">
                         <a class="text-decoration-none text-white cursor-pointer" routerLink="/auth/register">Register Now ?</a>
-                        <a class="text-decoration-none text-white cursor-pointer" (click)="openDialog('700ms', '350ms')">Forget Password ?</a>
+                        <a class="text-decoration-none text-white cursor-pointer" routerLink="/auth/forget-pass">Forget Password ?</a>
                       </div>
                       <button [disabled]="loginForm.invalid" class="btn log-btn btn-warning rounded-pill text-white w-75 py-3 d-block mx-auto mt-5">Login <i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>
                 </form>

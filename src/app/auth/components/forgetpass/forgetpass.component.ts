@@ -32,7 +32,7 @@ verifyPass(){
     }
   })
 }
-resrtForm:FormGroup = this._FormBuilder.group({
+resetForm:FormGroup = this._FormBuilder.group({
   email:['',[Validators.email,Validators.required]],
   password:['',[Validators.required]],
   confirmPassword:['',[RxwebValidators.compare({fieldName:'password'}),Validators.required]],
@@ -41,7 +41,7 @@ resrtForm:FormGroup = this._FormBuilder.group({
 pos1=false
 resetPass():void{
   this.loading=true
-  this._AuthService.resetPass(this.resrtForm.value).subscribe({
+  this._AuthService.resetPass(this.resetForm.value).subscribe({
     next:res=>{
       this.loading=false
       this._ToastrService.success(res.message)
