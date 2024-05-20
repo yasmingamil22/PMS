@@ -13,13 +13,8 @@ export class TaskBoardService {
     return this._HttpClient.get('Task', {params: { pageSize: 1000, pageNumber:1}})
   }
 
-  getTaskById(id:number): Observable<any> {
-    return this._HttpClient.get(`Task/${id}`);
-  }
-
   employeeTaskStatusChange(id: number, status: string): Observable<any> {
     return this._HttpClient.put(`Task/${id}/change-status`, { status: status });
-}
-
+  }
 
 }

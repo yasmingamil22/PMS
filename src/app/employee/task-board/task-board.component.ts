@@ -5,7 +5,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { TaskBoardService } from '../services/task-board.service';
-import { ITask } from 'src/app/Models/Employee/iTask';
+import { iTask } from 'src/app/Models/Employee/iTask';
 
 @Component({
   selector: 'app-task-board',
@@ -13,15 +13,11 @@ import { ITask } from 'src/app/Models/Employee/iTask';
   styleUrls: ['./task-board.component.scss'],
 })
 export class TaskBoardComponent {
-  dummyTasks = Array(8)
-    .fill(0)
-    .map((x, i) => i + 1);
-  // id!: number;
-  employeeTasksData: any[] = [];
-  todo: any[] = []; //of type Task - Make interface
-  inProgress: any[] = []; //of type Task - Make interface
-  done: any[] = []; //of type Task - Make interface
-  taskId: number = 0;
+
+  employeeTasksData: iTask[] = [];
+  todo: iTask[] = [];
+  inProgress: iTask[] = [];
+  done: iTask[] = [];
 
   constructor(private _TaskBoardService: TaskBoardService) {
     this.getAllTasks();
@@ -34,7 +30,6 @@ export class TaskBoardComponent {
   getAllTasks() {
     this._TaskBoardService.getAllEmployeeTasks().subscribe({
       next: (res) => {
-        console.log(res);
         this.employeeTasksData = res.data;
         this.todo = this.employeeTasksData.filter(
           (tasks) => tasks.status == 'ToDo'
@@ -50,7 +45,7 @@ export class TaskBoardComponent {
   }
 
 
-  drop(event: CdkDragDrop<ITask[]>) {
+  drop(event: CdkDragDrop<iTask[]>) {
     const item = event.previousContainer.data[event.previousIndex];
 
     let newStatus: string;
