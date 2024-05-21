@@ -28,11 +28,10 @@ ngOnInit(): void {
 getTasksCount(){
   this._HelperService.onGetTasksCount().subscribe({
     next: (res)=>{
-     console.log(res);
+    // console.log(res);
       this.tasksCount = res;
     }, error: (err)=>{
       console.log(err);
-
     }, complete: ()=>{
       this.chart = new Chart('status', {
         type: 'doughnut',
