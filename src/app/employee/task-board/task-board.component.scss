@@ -1,4 +1,3 @@
-
   h2 {
     color: #4f4f4f;
   }
@@ -9,8 +8,6 @@
 
   .task-card {
     background-color: rgba(49, 89, 81, 0.9);
-    // width: 23rem;
-    // height: 25.5rem;
     padding: 0.5rem 2rem;
     border-radius: 1rem;
   }
@@ -25,8 +22,6 @@
     justify-content: flex-start;
     background-color: #ef9b28;
     width: 100% !important;
-    // height: 3.25rem;
-    // padding-right: 10rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     padding: 1rem;
@@ -60,7 +55,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: #ef9b28;
-  width: 19.5rem;
+  width: 100%;
   height: 3.25rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
