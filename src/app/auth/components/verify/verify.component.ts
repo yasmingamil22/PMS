@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Router } from '@angular/router';
@@ -13,11 +13,13 @@ import { Router } from '@angular/router';
 export class VerifyComponent {
   constructor(private _AuthService:AuthService,private _FormBuilder:FormBuilder,private _ToastrService:ToastrService,@Inject(DIALOG_DATA) public data: any,private _Router:Router , public _DialogRef:DialogRef){}
   verfiyForm:FormGroup  = this._FormBuilder.group({
-    email:[this.data],
-    code:['']
+    email:[this.data.email,[Validators.required,Validators.email]],
+    code:['',[Validators.required]],
   })
   loading:boolean = false
   verifyEmail(){
+
+
     this.loading=true
     this._AuthService.verifyAcc(this.verfiyForm.value).subscribe({
       next:res=>{
@@ -28,8 +30,10 @@ export class VerifyComponent {
       },
       error:err=>{
         this.loading=false
-        this._ToastrService.error(err.message)
+        console.log(err)
+        this._ToastrService.error(err.error.message)
       }
     })
+    
   }
 }

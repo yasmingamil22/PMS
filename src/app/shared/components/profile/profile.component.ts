@@ -7,7 +7,7 @@ import { ConfirmPassComponent } from '../confirm-pass/confirm-pass.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import {  ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -120,8 +120,6 @@ export class ProfileComponent implements OnInit{
        });
      }
  
- 
- 
      }
    
  
@@ -146,11 +144,7 @@ export class ProfileComponent implements OnInit{
 
     myData.append('confirmPassword', this.confirmPassword);
 
-   /* myData.append('userName', this.profileForm.value.userName);
-    myData.append('email', this.profileForm.value.email);
-    myData.append('country', this.profileForm.value.country);
-    myData.append('phoneNumber', this.profileForm.value.phoneNumber);
-    myData.append('confirmPassword', this.confirmPassword);*/
+
 
     if (this.uploadedFile && this.uploadedFile.name) {
       myData.append('profileImage', this.uploadedFile, this.uploadedFile.name);

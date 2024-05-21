@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 
 
@@ -33,8 +34,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     SharedModule,
     NgxDropzoneModule,
     FormsModule,
-    // NgxDropzoneModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxFileDropModule
   ]
 })
 export class AuthModule { }

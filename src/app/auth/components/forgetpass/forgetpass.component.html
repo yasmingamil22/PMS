@@ -6,9 +6,9 @@
               <div class="forget-card p-5">
                   <span class="sp">welcome to PMS</span>
                   <h2><span class="sp2">F</span>orget Password</h2>
-                  <form action="" class="mt-4" [formGroup]="requestForm" (ngSubmit)="sendResetForm()">
+                  <form action="" class="mt-4" [formGroup]="requestForm" (ngSubmit)="verifyPass()">
                       <mat-form-field class="w-100">
-                          <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
+                          <input formControlName="email" [(ngModel)]="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
                           <mat-label class="lable">E-mail</mat-label>
                           <mat-hint  class="text-center text-danger" *ngIf="requestForm.get('email')?.touched && requestForm.get('email')?.hasError('required')">*Email is required</mat-hint>
                           <mat-hint  class="text-center text-danger" *ngIf="requestForm.get('email')?.hasError('email')">  *Invalid email</mat-hint>
@@ -16,7 +16,7 @@
                               <mat-icon class="text-white">mail</mat-icon>
                           </button>
                       </mat-form-field>
-                        <button [disabled]="requestForm.invalid" class="btn log-btn btn-warning rounded-pill text-white w-75 py-3 d-block mx-auto mt-5">Request Reset<i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>
+                        <button [disabled]="requestForm.invalid" class="primary rounded-pill  w-75 py-3 d-block mx-auto mt-3">Request Reset<i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>
                   </form>
               </div>
           </div>

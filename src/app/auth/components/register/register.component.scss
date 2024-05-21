@@ -4,19 +4,19 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    .center{
+        position: relative;
+        
+        .edit{
+        position: absolute;
+        top: -20px;
+        right: 35%;
+        border-radius: 5px;
+        color: white;
+        }}
 }
-.drop{
-    width: 250px;
-    height: 250px;
-    border-radius: 100vh;
-    background-color: transparent;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    i{
-        color: rgba(239, 155, 40, 0.6);
-        transform: translateX(-400%);
-    }
-}
+
 .reg-card{
     background-color: rgba(49, 89, 81, 0.9);
     .sp{
@@ -60,4 +60,19 @@
 }
 .lable{
     color: rgba(239, 155, 40, 1)  ;
+}
+
+
+.photo{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+
+}
+
+.iconEdit{
+    color: rgba(49, 89, 81, 0.9);
+    background-color: #fff;
+    border-radius: 50%;
+
 }

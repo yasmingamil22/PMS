@@ -9,13 +9,16 @@
                 <form action="" class="mt-3" [formGroup]="verfiyForm" (ngSubmit)="verifyEmail()">
                     <mat-form-field class="w-100">
                         <mat-label class="lable">E-mail</mat-label>
-                        <input formControlName="email" type="email" matInput placeholder="Enter Your Email" class="inp">
+                        <input formControlName="email" [(ngModel)]="data.email" type="email" matInput placeholder="Enter Your Email" class="inp">
+                        <mat-hint class="text-danger" *ngIf="verfiyForm.get('email')?.touched && verfiyForm.get('email')?.hasError('required')">Email is required</mat-hint>
+                        <mat-error class="text-danger" *ngIf="verfiyForm.get('email')?.getError('email')">Email is not Valid</mat-error>
                     </mat-form-field>
                     <mat-form-field class="w-100">
-                        <mat-label class="lable">OTP Verification</mat-label>
-                        <input type="text" formControlName="code" matInput placeholder="Enter Verification Code" class="inp">
+                    <mat-label class="lable">OTP Verification</mat-label>
+                        <input type="text" formControlName="code" [(ngModel)]="data.code" matInput placeholder="Enter Verification Code" class="inp">
+                        <mat-hint class="text-danger" *ngIf="verfiyForm.get('code')?.touched && verfiyForm.get('code')?.hasError('required')">Code is required</mat-hint>
                     </mat-form-field>
-                    <button class="ver-btn btn rounded-pill text-white w-50 d-block mx-auto py-2">Save <i *ngIf="loading" class="fa-solid fa-spinner fa-spin"></i></button>
+                    <button [disabled]="verfiyForm.invalid"  class="primary rounded-pill w-50 d-block mx-auto py-2">Save <i *ngIf="loading" class="fa-solid fa-spinner fa-spin"></i></button>
                 </form>
             </div>
         </div>
