@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectsTableService } from '../services/projects-table.service';
-import { iEmployeeProjects } from '../../Models/Employee/iTask';
+import { iEmployeeProjects, iProjectsResponse } from '../../Models/Employee/iTask';
+
 
 @Component({
   selector: 'app-projects-table',
@@ -15,7 +16,7 @@ export class ProjectsTableComponent {
   pageSize: number = 10;
   pageNumber: number = 0;
   total: number = 0;
-  listData: any;
+  listData!: iProjectsResponse;
   titleSearch: string = '';
 
   pageSizeOptions = [5, 10, 25];

@@ -41,10 +41,11 @@ export interface iEmployeeProjects {
   task: iTask[]
 }
 
-// export interface IPage {
-//   pageNumber: number
-//   pageSize: number
-//   data: iEmployeeProjects[]
-//   totalNumberOfRecords: number
-//   totalNumberOfPages: number
-// }
+export interface iProjectsResponse {
+  pageNumber: number
+  pageSize: number
+  data: iEmployeeProjects[]
+  totalNumberOfRecords: number
+  totalNumberOfPages: number
+}
+
