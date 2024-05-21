@@ -5,17 +5,23 @@ import { UsersService } from '../../services/users.service';
 import { BlockUserComponent } from '../block-user/block-user.component';
 import { IEmployee } from '../../models/users';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-view-user',
   templateUrl: './view-user.component.html',
-  styleUrls: ['./view-user.component.scss']
+  styleUrls: ['./view-user.component.scss'],
+  providers: [DatePipe]
+
 })
 export class ViewUserComponent {
   userId:number | any;
   user:IEmployee | any;
   pathHttps: string = 'https://upskilling-egypt.com:3003/';
   Message:string='';
+  formattedCreationDate: string | null | undefined;
+
 
 constructor(
   private _ToastrService: ToastrService,
@@ -23,6 +29,8 @@ constructor(
   private _UsersService:UsersService,
  
   private dialog:MatDialog,
+  private datePipe: DatePipe
+
   ){
     this.userId = _ActivatedRoute.snapshot.params['id']
     this.getUserById(this.userId);
@@ -32,6 +40,8 @@ this._UsersService.onGetUserById(id).subscribe({
   next: (res) => {
 console.log(res);
 this.user=res;
+this.formattedCreationDate = this.datePipe.transform(this.user.creationDate, 'dd/MM/yyyy hh:mm a');
+
   },
   error: (err) => {
     console.log(err.error.message);

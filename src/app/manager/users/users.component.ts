@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
   pageSize:number = 10 ;
-  pageNumber:number = 1 ;
+  pageNumber:number = 0 ;
   tableData: ITableData | any ;
   listUsers: IEmployee[] = [] ;
   message:string = '';
@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
 getAllUsers(){
   let params = {
     pageSize: this.pageSize ,
-    pageNumber: this.pageNumber
+    pageNumber: this.pageNumber+1
   }
   this._UsersService.getUsers(params).subscribe({
     next:(res)=>{
@@ -82,5 +82,6 @@ onActivateuser(id:number){
     }
   })
 }
+//
 
 }

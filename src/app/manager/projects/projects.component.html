@@ -8,24 +8,29 @@
     </div>
   </header>
   <div class="container px-3">
-    <div class="col-8">
+    <div class="col-8 ">
       <mat-form-field class="w-75 " appearance="outline">
+        <button  matPrefix mat-icon-button 
+        (click)="onGetManagerProjects()">
+        <mat-icon>search</mat-icon>
+       </button>
         <mat-label class="lable">Search</mat-label>
+       
         <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
-          [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
+          [(ngModel)]="projectFiltrationValue"  (keyup.enter)="onGetManagerProjects()" matInput>
         <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
           (click)="projectFiltrationValue='';onGetManagerProjects()">
-          <mat-icon>arrow_back</mat-icon>
+          <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
     </div>
-    <table class="table table-striped text-capitalize table-bordered text-center border border-1  shadow ">
+    <table *ngIf="projectList.data.length != 0" class="table table-striped  table-bordered text-center border border-1  shadow ">
       <thead>
-        <th>title</th>
-        <th>description</th>
-        <th>creationDate</th>
-        <th>modificationDate</th>
-        <th>task</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Creation date</th>
+        <th>Modification date</th>
+        <th>Tasks</th>
         <th>Actions</th>
       </thead>
       <tbody>
@@ -64,11 +69,12 @@
       </tbody>
     </table>
     <app-no-data *ngIf="projectList.data.length == 0 "></app-no-data>
-    <div class=" d-flex justify-content-center bg-transparent">
+    <div class="  bg-transparent">
       <!-- ? paginator -->
       <mat-paginator *ngIf="projectList.data.length > 0" #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
         [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
-        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [pageIndex]="PageNumber"
+        [pageSizeOptions]="[5, 10, 25 , 50]"
+        [pageIndex]="PageNumber"
         aria-label="Select page">
       </mat-paginator>
     </div>

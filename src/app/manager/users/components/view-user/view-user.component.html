@@ -6,12 +6,11 @@
               <img class="img-fluid" [src]="pathHttps+user?.imagePath" alt="">
             </div>
             <div *ngIf="!user?.imagePath">
-              <img class="img-fluid" src="../../../../../assets/images/dummy-profile-pic-300x300-1.png" alt="">
+              <img class="img-fluid" src="./assets/images/dummy-profile-pic-300x300-1.png" alt="">
             </div>
           </div>
         <div class="col-md-8">
                 <div class="title my-4">
-                  <span>Status Active: <span class="seconary-color">{{user?.isActivated}}</span></span>
                   <h3>User: <span class="seconary-color">
                     {{user.userName}}
                   </span></h3>
@@ -48,7 +47,7 @@
                   <div class="col-md-6">
                     <mat-form-field appearance="fill" class="w-100">
                       <mat-label class="text-secondry">Join Date</mat-label>
-                      <input class="text-main"  matInput [value]="user.group.creationDate" [disabled]="true"/>
+                      <input class="text-main"  matInput [value]="formattedCreationDate" [disabled]="true"/>
                     </mat-form-field>
     
                   </div>
@@ -71,5 +70,6 @@
        
       </div>
     </div>
+
     </section>
     

@@ -11,7 +11,7 @@
                         <input formControlName="email" type="email" class="inp text-white" placeholder="Enter your E-mail" matInput>
                         <mat-label class="lable">E-mail</mat-label>
                         <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">*Email is required</mat-hint>
-                        <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.hasError('email')">  *Invalid Email Format</mat-hint>
+                        <mat-hint  class="text-center text-danger" *ngIf="loginForm.get('email')?.hasError('email')">  *Invalid Email </mat-hint>
                         <button type="button" mat-icon-button matSuffix>
                             <mat-icon class="text-white">mail</mat-icon>
                         </button>
@@ -23,7 +23,7 @@
                           <mat-icon class="text-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                         <mat-hint class=" text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">*Password is required</mat-hint>
-                        <mat-hint class=" text-danger" *ngIf=" loginForm.get('password')?.getError('pattern')">*Invalid password format</mat-hint>
+                        <mat-hint class=" text-danger" *ngIf=" loginForm.get('password')?.getError('pattern')">*Invalid password </mat-hint>
           
                     </mat-form-field>
                       <div class="d-flex justify-content-between">

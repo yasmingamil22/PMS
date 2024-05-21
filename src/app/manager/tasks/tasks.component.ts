@@ -18,7 +18,7 @@ export class TasksComponent {
 constructor(private _TasksService:TasksService,public dialog: MatDialog,private _ToastrService:ToastrService){}
 tasksData:Tasks[]=[]
 pageSize:number = 10
-pageNumber:number = 1
+pageNumber:number = 0
 total:number=0
 ngOnInit(): void {
 
@@ -67,7 +67,7 @@ getTasksForManagaer(){
     title:this.title,
     status:this.status,
     pageSize:this.pageSize,
-    pageNumber:this.pageNumber
+    pageNumber:this.pageNumber+1
   }
   this._TasksService.getTasksForManager(data).subscribe({
     next:res=>{
