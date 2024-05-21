@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { iReset } from '../../auth';
 import { Router } from '@angular/router';
+import { RxwebValidators } from '@rxweb/reactive-form-validators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,21 +23,18 @@ export class ResetPasswordComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/
       ),
     ]),
-    confirmPassword: new FormControl('', [
-      Validators.required,
-      Validators.pattern(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/
-      ),
-    ]),
+    confirmPassword:new FormControl('',[RxwebValidators.compare({fieldName:'password'}),Validators.required])
+
+    ,
     seed: new FormControl('', [Validators.required]),
   });
 
   bgImagePath = "url('assets/images/bg1-1.png')";
 
-  constructor(private _AuthService: AuthService, private _Router: Router) {}
+  constructor(private _AuthService: AuthService, private _Router: Router,private _ToastrService:ToastrService) {}
 
   ngOnInit(): void {
     (document.querySelector('.auth-bg') as any).style.setProperty(
@@ -54,6 +53,8 @@ export class ResetPasswordComponent {
         },
         error: (err) => {
           console.error('Error resetting password', err);
+          this._ToastrService.error(err.error.message)
+
         },
         complete: () => {
           this._Router.navigate(['auth/login']);

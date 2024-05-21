@@ -36,6 +36,9 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -147,6 +150,7 @@ color: #fff;
   cursor: pointer;
 }
 
+
 .btnHover {
 
   &:hover {
@@ -160,6 +164,7 @@ color: #fff;
   font-weight: 500;
   color: rgba(79, 79, 79, 1);
 }
+
 
 .main-btn {
   background-color: rgba(239, 155, 40, 1);
@@ -197,10 +202,11 @@ color: #fff;
         background-color: #ef9b28;
       }
     }
+   }
+
+
+
   }
-}
-
-
 .statuses {
   &.ToDo {
     background-color: rgba(228, 225, 245, 1);
@@ -215,5 +221,33 @@ color: #fff;
   &.Done {
     background-color: rgba(0, 146, 71, 1);
     color: white;
+  }
+}
+
+
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.25s;
+  &.primary {
+    background-color: #ef9b28;
+    color: #fff;
+    border: 1px solid #ef9b28;
+    &:disabled{
+      background-color: #ef9c28b9;
+      color: #ffffffd5;
+      cursor: not-allowed;
+    }
+  }
+ 
+  &.outline-primary {
+    border-radius: 96px;
+    border: 1px solid #ef9b28;
+    color: #ef9b28;
+    &:hover {
+     color: #fff;
+      background-color: #ef9b28;
+    }
   }
 }

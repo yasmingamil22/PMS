@@ -1,0 +1,88 @@
+<!--  
+
+<div class="container pb-3">
+    <div class="w-100 text-end  p-3">
+      <span  (click)="onNoClick()" class=" cursor-pointer "><i class="fa-solid fa-close fs-4"></i></span>
+  
+    </div>
+
+      <div class="row justify-content-center align-items-center  ">
+          <div class="col-md-12">
+
+              
+
+              <div class="auth-card">
+                  <div class=" m-auto  text-center">
+                      <img src="../../../../assets/images/logo-dark.png" class="w-50" alt="">
+                  </div>
+
+                  <div class="mt-5 mb-3">
+                      <h1>Confirm Your Password?</h1>
+                  </div>
+
+                                       
+                      <div class="input-group ">
+                          <span class="input-group-text" id="basic-addon1">
+                              <i class="fa-solid fa-lock fs-5"></i>
+                          </span>
+                          <input [(ngModel)]="data" [type]="hide? 'password':'text'" class="form-control" placeholder="Confirm your password" aria-label="Username" aria-describedby="basic-addon1">
+                          <span> 
+                            <i (click)="hide=!hide" class="fa-regular  fs-5 pe-3 hide" [class]="hide? 'fa-eye-slash':'fa-eye' "></i>
+                        </span>
+                        
+                        </div>
+
+  
+                      
+
+                    
+  
+                        <button  [mat-dialog-close]="data" cdkFocusInitial  [disabled]="!data" class="primary w-100 mt-4">Confirm</button>
+                  
+
+
+
+              </div>
+
+
+          </div>
+      </div>
+
+  </div>
+
+  
+
+-->
+
+<section class="">
+    <div class="container ">
+        <div class="w-100 text-end  p-3">
+            <span  (click)="onNoClick()" class=" cursor-pointer "><i class="fa-solid fa-close fs-4"></i></span>
+        
+          </div>
+        <div class="row justify-content-center  align-items-center">
+            <div class="col-12">
+                <div class="d-flex justify-content-center mb-3"><img class="w-25" src="./assets/images/logo-dark.png" alt=""></div>
+                <div class=" p-5">
+                    <h3>Confirm Your Password?</h3>
+
+                    <form [formGroup]="passwordForm">
+                     
+                        <mat-form-field class="w-100">
+                            <mat-label class="lable">Password</mat-label>
+                            <input formControlName="confirmPassword" [(ngModel)]="data" class="inp " matInput placeholder="Confirm your password" [type]="hide ? 'password' : 'text'">
+                            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon class="">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="passwordForm.get('confirmPassword')?.getError('required')&&(passwordForm.get('confirmPassword')?.value!=''||passwordForm.get('confirmPassword')?.touched||passwordForm.invalid)">confirmPassword is required</mat-error>
+                            <mat-error *ngIf="passwordForm.get('confirmPassword')?.getError('pattern')">The confirmPassword format is invalid.</mat-error>                       
+                           </mat-form-field>  
+                         
+                          <button [mat-dialog-close]="data" cdkFocusInitial  [disabled]="passwordForm.invalid" class="primary  w-100 py-2 d-block mx-auto mt-4">Confirm </button>                  
+                        </form>
+              
+                        </div>
+            </div>
+        </div>
+    </div>
+    </section>

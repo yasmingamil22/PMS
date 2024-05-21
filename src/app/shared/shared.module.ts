@@ -26,6 +26,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { ConfirmPassComponent } from './components/confirm-pass/confirm-pass.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { ToastrModule } from 'ngx-toastr';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -41,10 +44,12 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     SharedHeaderComponent,
     AddEditHeaderComponent,
     DeleteComponent,
+    ConfirmPassComponent,
     ChangePasswordComponent,
     HomeComponent,
     NotFoundComponent,
     NoDataComponent
+
   ],
 
   imports: [
@@ -63,11 +68,13 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
-    
     FormsModule,
     MatSelectModule,
     MatDividerModule,
-     MatPaginatorModule
+    NgxFileDropModule,
+    ToastrModule.forRoot(), // ToastrModule added
+
+
   ],
   exports: [
     MatCardModule,
@@ -94,6 +101,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatDividerModule,
     HomeComponent,
     NoDataComponent
+
   ],
 
 })

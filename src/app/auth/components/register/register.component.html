@@ -3,29 +3,71 @@
         <div class="row justify-content-center align-items-center row1 m">
             <div class="col-md-10">
                 <div class="d-flex justify-content-center mb-2"><img src="./assets/images/logo.svg" alt=""></div>
-                <div class="reg-card mt-4 rounded-5 py-3 px-5">
+                <div class="reg-card mt-4 rounded-5 py-3 px-5 mb-3">
                  <div class="py-3">
                     <span class="sp">welcome to PMS</span>
                     <h2><span class="sp2">C</span>reate New Account</h2>
                  </div>
-                    <div class="d-flex justify-content-center">
-                        <ngx-dropzone (change)="onSelect($event)" class="drop" [multiple]="false">
-                            <ngx-dropzone-label>Select Your Profile Image</ngx-dropzone-label>
-                            <ngx-dropzone-image-preview class="h-100 m-0"  ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
-                                <ngx-dropzone-label><i class="fa-solid fa-camera fa-xl"></i></ngx-dropzone-label>
-                              </ngx-dropzone-image-preview>                          
-                        </ngx-dropzone>
+                    <div class="d-flex justify-content-center center">
+
+                        <ng-container *ngIf="imageUploaded">
+                            <div  class="edit  ">
+                          
+                              <ngx-file-drop dropZoneClassName=""   [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+                              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
+                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
+                
+                   <div >
+                     <button type="button" (click)="openFileSelector()" class="iconEdit">
+                       <i class="fa-solid fa-pen   "></i>
+                     </button>
+                   </div>
+                
+                  
+                
+                 </ng-template>
+                </ngx-file-drop>
+                
+                
+                          
+                            </div>
+                          </ng-container>
+                
+                
+                              <ngx-file-drop dropZoneClassName="drop-zone"  *ngIf="!imageUploaded " [multiple]="false" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" 
+                              (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" >
+                 <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" >
+                
+                   <div >
+                     <button type="button" (click)="openFileSelector()" class="bg-transparent d-flex flex-column align-items-center">
+                
+                      <i class="fa-solid fa-upload fs-4 mb-2 text-warning"></i>
+                       <span class=" upload text-light">
+                        Upload your profile image</span>
+                
+                     </button>
+                   </div>
+                
+                  
+                
+                 </ng-template>
+                </ngx-file-drop>
+
+                <div *ngIf="imageUploaded" class="drop-zone">
+                    <img [src]="imageUrl"  class="w-100 img-fluid photo" alt="Uploaded Image">
+                  </div>
                     </div>                    
                     <!-- registerForm  -->
                     <form action="" [formGroup]="registerForm" (ngSubmit)="handleRegister()">
                         <!-- userName -->
-                        <div class="row container mt-3">
+                        <div class="row container mt-3 g-2">
                             <div class="col-md-6">
                                 <mat-form-field class="w-100">
                                     <mat-label class="lable">User Name</mat-label>
                                     <input formControlName="userName" type="text" placeholder="Enter your name" class="inp text-white" matInput>
-                                    <mat-error>Name is require</mat-error>
-                                </mat-form-field>
+                                    <mat-hint class="text-danger" *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.hasError('required')">User name is required</mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="registerForm.get('userName')?.getError('pattern')">User name must containes from 4 to 8 characters and end with numbers without spaces</mat-hint>                         
+                                       </mat-form-field>
                             </div>
                             <!-- Email  -->
                             <!-- all  -->
@@ -33,25 +75,24 @@
                                 <mat-form-field class="w-100">
                                     <mat-label class="lable">E-mail</mat-label>
                                     <input [(ngModel)]="email" formControlName="email" type="email" placeholder="Enter your E-mail" class="inp text-white" matInput>
-                                    <mat-error *ngIf="registerForm.get('email')?.getError('required')&&(registerForm.get('email')?.value!=''||registerForm.get('email')?.touched||registerForm.invalid)">Email is required</mat-error>
-                                    <mat-error *ngIf="registerForm.get('email')?.getError('email')">Email is not Valid</mat-error>
+                                    <mat-hint class="text-danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')">Email is required</mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="registerForm.get('email')?.getError('email')">Email is not Valid</mat-hint>
                                 </mat-form-field>
                             </div>
                             <!-- country -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 " [class]="registerForm.get('userName')?.getError('pattern')? 'mt-4':''">
                                 <mat-form-field class="w-100">
                                     <mat-label class="lable">Country</mat-label>
                                     <input formControlName="country" type="text" placeholder="Enter your country" class="inp text-white" matInput>
-                                    <mat-error>Country name is required</mat-error>
+                                    <mat-error *ngIf="registerForm.get('country')?.touched && registerForm.get('country')?.hasError('required')">Country name is required</mat-error>
                                 </mat-form-field>
                             </div>
                             <!-- phone  -->
-                            <div class="col-md-6">
+                            <div class="col-md-6" [class]="registerForm.get('userName')?.getError('pattern')? 'mt-4':''">
                                 <mat-form-field class="w-100">
                                     <mat-label class="lable">Phone Number</mat-label>
                                     <input formControlName="phoneNumber" type="tel" placeholder="Enter your phone number" class="inp text-white" matInput>
                                     <mat-error *ngIf="registerForm.get('phoneNumber')?.getError('required')&&(registerForm.get('phoneNumber')?.value!=''||registerForm.get('phoneNumber')?.touched||registerForm.invalid)">Phone is required</mat-error>
-                                    <mat-error *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">Number is invalid</mat-error>
                                 </mat-form-field>
                             </div>
                             <!-- password  -->
@@ -63,7 +104,7 @@
                                       <mat-icon class="text-white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
                                     <mat-error *ngIf="registerForm.get('password')?.touched&&registerForm.get('password')?.getError('required')">Password is required</mat-error>
-                                    <mat-error *ngIf="registerForm.get('password')?.getError('pattern')&&registerForm.get('password')?.value!=''">your password is invalid</mat-error>
+                                    <mat-hint class="text-danger " *ngIf="registerForm.get('password')?.getError('pattern')">Password must contain at least one digit,one lowercase letter,one uppercase letter,one special character, and is at least 6 characters long.</mat-hint>
                                   </mat-form-field>
                             </div>
                             <div class="col-md-6">
@@ -74,14 +115,14 @@
                                       <mat-icon class="text-white">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
                                     <mat-error *ngIf="registerForm.get('confirmPassword')?.getError('required')&&(registerForm.get('confirmPassword')?.value!=''||registerForm.get('confirmPassword')?.touched||registerForm.invalid)">confirmPassword is required</mat-error>
-                                    <mat-error *ngIf="registerForm.get('confirmPassword')?.value!=''&&registerForm.get('confirmPassword')?.getError('compare')">Password not match</mat-error>
+                                    <mat-hint class="text-danger " *ngIf="registerForm.get('confirmPassword')?.value!=''&&registerForm.get('confirmPassword')?.getError('compare')">Password not match</mat-hint>
                                   </mat-form-field>
                             </div>
-                            <div class="d-flex justify-content-between container-fluid">
+                            <div class="d-flex justify-content-between container-fluid " [class]="registerForm.get('password')?.getError('pattern')? 'mt-5':''">
                                 <a class="text-decoration-none text-white cursor-pointer">you have an account? <span routerLink="/auth/login" class="text-warning">Sign in</span></a>
-                                <a class="text-decoration-none text-white cursor-pointer btn" (click)="openDialog('700ms','350ms','')">Verify Now</a>
+                                <a class="text-decoration-none text-white cursor-pointer btn" (click)="openDialog('700ms','350ms',registerForm.get('email')?.value)">Verify Now</a>
                               </div>
-                            <button class="reg-btn w-50 btn rounded-pill text-white d-block mx-auto py-2 mt-4">Save <i *ngIf="loading" class="fa-solid fa-spinner fa-spin-pulse"></i></button>
+                            <button [disabled]="registerForm.invalid" class="primary rounded-pill d-block mx-auto py-2 mt-2">Register <i *ngIf="loading" class="fa-solid fa-spinner fa-spin-pulse"></i></button>
                         </div>
                     </form>
                 </div>

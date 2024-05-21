@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
+
+import { iRequest, iReset } from '../auth';
+
 // import { decoded } from '../auth';
 
 @Injectable({
@@ -54,6 +57,19 @@ getRole(){
   }
   resetPass(data:object):Observable<any>{
     return this._HttpClient.post('Users/Reset',data)
+  }
+
+
+  
+
+
+  changePassword(data: any): Observable<any>  { //make interface
+    return this._HttpClient.put('Users/ChangePassword', data);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
   }
 
 }

@@ -1,0 +1,52 @@
+button {
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.25s;
+    &.primary {
+      background-color: #ef9b28;
+      color: #fff;
+      border: 1px solid #ef9b28;
+      &:disabled{
+        background-color: #ef9c28b9;
+        color: #ffffffd5;
+        cursor: not-allowed;
+      }
+    }
+    &:hover {
+      color: #ef9b28;
+      background-color: #fff;
+    }
+    &.outline-primary {
+      border-radius: 96px;
+      border: 1px solid #ef9b28;
+      color: #ef9b28;
+      &:hover {
+       color: #fff;
+        background-color: #ef9b28;
+      }
+    }
+  }
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+.inp{
+  &::placeholder{
+      color: gray !important;
+  }
+  background-color: transparent !important;
+}
+.log-btn{
+  background-color: rgba(239, 155, 40, 1) !important;
+}
+.lable{
+  color: rgba(239, 155, 40, 1)  ;
+}
+
+  
+  h3{
+      color: #0E382F;
+  }
+
+

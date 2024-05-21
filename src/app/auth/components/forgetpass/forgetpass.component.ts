@@ -29,7 +29,11 @@ verifyPass(){
     },
     error:err=>{
       this.loading=false
-      this._ToastrService.error(err.message)
+      this._ToastrService.error(err.error.message)
+      console.log(err)
+    },
+    complete: () => {
+      this._Router.navigate(['auth/reset-pass']);
     }
   })
 }
