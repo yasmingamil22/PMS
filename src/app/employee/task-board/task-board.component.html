@@ -9,7 +9,7 @@
           <h3 class="task-card-title mb-4 w-50">To Do</h3>
           <div class="task-card">
             <div cdkDropList [cdkDropListData]="todo" class="task-list" (cdkDropListDropped)="drop($event)" class="task-scroll d-flex justify-content-center">
-              <div class="mt-5 mb-4 overflow-y-scroll overflow-x-hidden scroller">
+              <div class="mt-5 mb-4 mx-2 overflow-y-scroll overflow-x-hidden scroller">
                   <div *ngFor="let item of todo" cdkDrag class="task">
                     {{ item.title }}
                   </div>
@@ -22,7 +22,7 @@
           <h3 class="task-card-title mb-4 w-50">In Progress</h3>
           <div class="task-card">
             <div cdkDropList [cdkDropListData]="inProgress" class="task-list" (cdkDropListDropped)="drop($event)" class="task-scroll d-flex justify-content-center">
-              <div class="mt-5 mb-4 overflow-y-scroll overflow-x-hidden scroller">
+              <div class="mt-5 mb-4 mx-2 overflow-y-scroll overflow-x-hidden scroller">
                   <div *ngFor="let item of inProgress" cdkDrag class="task">
                     {{ item.title }}
                   </div>
@@ -35,7 +35,7 @@
           <h3 class="task-card-title mb-4 w-50">Done</h3>
           <div  class="task-card">
             <div cdkDropList [cdkDropListData]="done" class="task-list" (cdkDropListDropped)="drop($event)" class="task-scroll d-flex justify-content-center">
-              <div class="mt-5 mb-4 overflow-y-scroll overflow-x-hidden scroller">
+              <div class="mt-5 mb-4 mx-2 overflow-y-scroll overflow-x-hidden scroller">
                   <div *ngFor="let item of done" cdkDrag class="task">
                     {{ item.title }}
                   </div>
