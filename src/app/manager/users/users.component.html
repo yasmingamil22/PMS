@@ -5,13 +5,13 @@
 </section>
 
 <section class="table-card mt-5 mx-3 mw-100">
-    <table class="table table-striped table-bordered text-center border border-1  shadow ">
+    <table *ngIf="listUsers?.length != 0 " class="table table-striped table-bordered text-center border border-1  shadow ">
         <thead class="">
-            <th>userName</th>
+            <th>User name</th>
             <th>Status</th>
-            <th>Phone Number</th>
+            <th>Phone number</th>
             <th>Email</th>
-            <th>Creation Date</th>
+            <th>Creation date</th>
             <th>Actions</th>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                 </td>
                 <td>{{users.phoneNumber}}</td>
                 <td>{{users.email | trimEmail}}</td>
-                <td>{{users.creationDate | date:'dd-mm-yyyy'}}</td>
+                <td>{{users.creationDate | date:'dd/MM/yyyy hh:mm a'}}</td>
                 <td>
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon class="secondary-color">more_vert</mat-icon>
@@ -44,13 +44,13 @@
         </tbody>
     </table>
     <app-no-data *ngIf="listUsers?.length == 0 "></app-no-data>
-    <div class="d-flex justify-content-center">
+    <div >
         <mat-paginator *ngIf="listUsers.length > 0"  #paginator
           (page)="handlePageEvent($event)"
           [length]="tableData?.totalNumberOfRecords"
           [pageSize]="pageSize"
           [pageIndex]="pageNumber"           
-          [pageSizeOptions]="[5, 10, 25 , 100]"
+          [pageSizeOptions]="[5, 10, 25 , 50]"
           aria-label="Select page">
 </mat-paginator>
     </div>

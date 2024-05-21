@@ -9,10 +9,14 @@
       <div class="row mt-3">
         <div class="col-md-8">
           <mat-form-field class="w-100" appearance="outline">
+            <button  matPrefix mat-icon-button 
+        (click)="getTasksForManagaer()">
+        <mat-icon>search</mat-icon>
+       </button>
             <mat-label>Search by title</mat-label>
-            <input type="text"  matInput [(ngModel)]="title" (keyup)="getTasksForManagaer()">
+            <input type="text"  matInput [(ngModel)]="title" (keyup.enter)="getTasksForManagaer()">
             <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title='';getTasksForManagaer()">
-              <mat-icon>arrow_back</mat-icon>
+              <mat-icon>close</mat-icon>
             </button>
           
           </mat-form-field>
@@ -29,13 +33,13 @@
           </mat-form-field>
         </div>
       </div>
-        <table class="table table-striped table-bordered text-center border border-1  shadow">
+        <table *ngIf="tasksData?.length != 0" class="table table-striped table-bordered text-center border border-1  shadow">
             <thead class="">
                 <th class="">Title</th>
                 <th class="">Statues</th>
                 <th class="">User</th>
                 <th class="">Project</th>
-                <th class="">Date Created</th>
+                <th class="">Creation date</th>
                 <th class="">Actions</th>
             </thead>
             <tbody>
@@ -71,15 +75,14 @@
             </tbody>
         </table>
         <app-no-data *ngIf="tasksData?.length == 0 "></app-no-data>
-        <div class="d-flex justify-content-center">
+        <div >
           <mat-paginator *ngIf="tasksData.length > 0 " #paginator
                class="demo-paginator bg-transparent"
                (page)="handlePageEvent($event)"
                [length]="total"
                [pageSize]="pageSize"
-               [disabled]="disabled"
-               [hidePageSize]="hidePageSize"
                [pageIndex]="pageNumber"
+               [pageSizeOptions]="[5, 10, 25 , 50]"
                aria-label="Select page">
        </mat-paginator>
 

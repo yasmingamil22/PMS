@@ -43,7 +43,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   projectTitle: string = '';
-  PageNumber: number = 1;
+  PageNumber: number = 0;
   PageSize: number = 10;
 
   public dataSource: any = [];
@@ -78,7 +78,7 @@ export class ProjectsComponent implements OnInit {
     let params: IProjectParams = {
       title: this.projectFiltrationValue,
       pageSize: this.PageSize,
-      pageNumber: this.PageNumber,
+      pageNumber: this.PageNumber+1,
     };
     this._ProjectsService.getManagerProject(params).subscribe({
       next: (res) => {

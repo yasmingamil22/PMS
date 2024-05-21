@@ -16,6 +16,10 @@
                               <mat-icon class="text-white">mail</mat-icon>
                           </button>
                       </mat-form-field>
+                       <div>
+                        <a routerLink="/auth/login"  class="text-decoration-none text-white cursor-pointer">Back to login ? </a>
+
+                       </div>
                         <button [disabled]="requestForm.invalid" class="primary rounded-pill  w-75 py-3 d-block mx-auto mt-3">Request Reset<i class="fa-solid fa-spinner fa-spin" *ngIf="loading"></i></button>
                   </form>
               </div>
