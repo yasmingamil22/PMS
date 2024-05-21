@@ -1,3 +1,6 @@
-// .search {
-//   border-radius: 18px;
-// }
+::ng-deep.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 25px !important
+ }
+::ng-deep.cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel{
+  border-radius: 18px !important;
+}  
