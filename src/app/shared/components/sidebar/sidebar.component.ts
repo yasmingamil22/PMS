@@ -54,7 +54,7 @@ menu:IMenu[] = [
       {
         text:'User Projects' ,
         icon: 'fa-solid fa-table-cells-large' ,
-        link:'dashboard/employee/projects',
+        link:'employee/projects',
         isActive: this.isEmployee(),
         } ,
         {

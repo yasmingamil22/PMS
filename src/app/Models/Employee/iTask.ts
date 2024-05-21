@@ -31,3 +31,20 @@ export interface iEmployee {
   creationDate: string
   modificationDate: string
 }
+
+export interface iEmployeeProjects {
+  id: number
+  title: string
+  description: string
+  creationDate: string
+  modificationDate: string
+  task: iTask[]
+}
+
+// export interface IPage {
+//   pageNumber: number
+//   pageSize: number
+//   data: iEmployeeProjects[]
+//   totalNumberOfRecords: number
+//   totalNumberOfPages: number
+// }
