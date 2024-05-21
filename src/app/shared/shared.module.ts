@@ -48,7 +48,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     ChangePasswordComponent,
     HomeComponent,
     NotFoundComponent,
-    NoDataComponent
+    NoDataComponent,
 
   ],
 

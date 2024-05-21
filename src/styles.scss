@@ -224,30 +224,3 @@ color: #fff;
   }
 }
 
-
-
-button {
-  border: none;
-  padding: 0.5rem 1rem;
-  transition: all 0.25s;
-  &.primary {
-    background-color: #ef9b28;
-    color: #fff;
-    border: 1px solid #ef9b28;
-    &:disabled{
-      background-color: #ef9c28b9;
-      color: #ffffffd5;
-      cursor: not-allowed;
-    }
-  }
- 
-  &.outline-primary {
-    border-radius: 96px;
-    border: 1px solid #ef9b28;
-    color: #ef9b28;
-    &:hover {
-     color: #fff;
-      background-color: #ef9b28;
-    }
-  }
-}
