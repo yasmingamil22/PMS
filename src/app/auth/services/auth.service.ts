@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { iChangePassword } from '../auth';
 
 import { iRequest, iReset } from '../auth';
+import { ToastrService } from 'ngx-toastr';
 
 // import { decoded } from '../auth';
 
@@ -14,7 +15,7 @@ import { iRequest, iReset } from '../auth';
 })
 export class AuthService {
 
-constructor(private _HttpClient:HttpClient) { }
+constructor(private _HttpClient:HttpClient , private _ToastrService:ToastrService) { }
 ngOnInit(): void {
 
   if(localStorage.getItem('tokenOfUserr')!==null){
@@ -71,6 +72,7 @@ getRole(){
   logout(): void {
     localStorage.clear();
     sessionStorage.clear();
+    this._ToastrService.success('Logged out Successfully' , 'Done!')
   }
 
 }

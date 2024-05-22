@@ -27,9 +27,9 @@ ngOnInit(): void {
 }
 
 
-  // onLogout() {
-  //   this._AuthService.logout();
-  // }
+  onLogout() {
+    this._AuthService.logout();
+  }
 
   getCurrentUser(): void {
     this._AuthService.currentUser().subscribe({

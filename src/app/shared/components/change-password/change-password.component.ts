@@ -49,9 +49,9 @@ export class ChangePasswordComponent {
 
 
   onChangePassword(data: FormGroup) {
-    this._AuthService.resetPass(data.value).subscribe({
+    this._AuthService.changePassword(data.value).subscribe({
       next: (res) => {
-        console.log(res);
+      //  console.log(res);
       },
       error: (err) => {
         this._ToastrService.error(err.error.message , 'Notify That!');
