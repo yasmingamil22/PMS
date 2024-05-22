@@ -31,22 +31,47 @@ button {
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: transparent !important;
 }
-.inp{
-  &::placeholder{
-      color: gray !important;
-  }
-  background-color: transparent !important;
-}
-.log-btn{
-  background-color: rgba(239, 155, 40, 1) !important;
-}
-.lable{
-  color: rgba(239, 155, 40, 1)  ;
-}
 
-  
-  h3{
-      color: #0E382F;
+
+  .update-pass {
+    background-color: #ef9b28;
+    color: #fff;
+    border-radius: 32px;
+    width: 200px;
   }
+  
+  .exit-pass {
+    border-radius: 32px;
+  }
+  
+  mat-form-field.mat-form-field .mat-input-element.inp {
+    background-color: transparent !important;
+  }
+  
+  .inp{
+    &::placeholder{
+        color: white !important;
+    }
+    background-color: transparent !important;
+  }
+  
+  h2 {
+    color: rgba(239, 155, 40, 1);
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .sp2 {
+    position: relative;
+    &::after {
+      content: "";
+      background-color: rgba(239, 155, 40, 1);
+      position: absolute;
+      inset-inline-start: 2px;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+    }
+  }
+  
 
 

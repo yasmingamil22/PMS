@@ -1,3 +1,57 @@
+<section class="p-4 bg-main block">
+    <div class="text-end close ">
+      <a class="cp"
+        ><i
+          class="fa-solid fa-xmark-circle main-color fa-2x pe-auto"
+          (click)="onNoClick()"
+        ></i
+      ></a>
+    </div>
+    <h2 class="pb-3"><span class="sp2">C</span>onfirm password</h2>
+    <form
+      [formGroup]="passwordForm"
+      
+    >
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label class="text-warning">Password</mat-label>
+        <input formControlName="confirmPassword" [(ngModel)]="data"            
+        class="inp text-white"
+        matInput placeholder="Confirm your password"
+         [type]="hide ? 'password' : 'text'">
+
+        
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          
+        >
+          <mat-icon class="text-white">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordForm.get('confirmPassword')?.getError('required')&&(passwordForm.get('confirmPassword')?.value!=''||passwordForm.get('confirmPassword')?.touched||passwordForm.invalid)">confirm password is required</mat-error>
+        <mat-error *ngIf="passwordForm.get('confirmPassword')?.getError('pattern')">invalid password</mat-error>                       
+       
+      </mat-form-field>
+  
+     
+  
+      <div mat-dialog-actions class="d-flex justify-content-between">
+        <button
+          class="outline-primary"
+          type="button"
+          (click)="onNoClick()"
+        >
+          Cancel
+        </button>
+  
+        <button [mat-dialog-close]="data" cdkFocusInitial  [disabled]="passwordForm.invalid" class="primary" type="submit" >Confirm password</button>
+      </div>
+    </form>
+  </section>
+
+
 <!--  
 
 <div class="container pb-3">
@@ -54,6 +108,8 @@
 
 -->
 
+<!--
+
 <section class="">
     <div class="container ">
         <div class="w-100 text-end  p-3">
@@ -86,3 +142,17 @@
         </div>
     </div>
     </section>
+
+
+-->
+
+
+
+
+
+
+
+
+
+   
+      
