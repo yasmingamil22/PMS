@@ -12,6 +12,9 @@ import { iEmployeeProjects, iProjectsResponse } from '../../Models/Employee/iTas
   styleUrls: ['./projects-table.component.scss'],
 })
 export class ProjectsTableComponent {
+
+  isShowCard:boolean=true
+
   employeeProjectsData: iEmployeeProjects[] = [];
   pageSize: number = 10;
   pageNumber: number = 0;

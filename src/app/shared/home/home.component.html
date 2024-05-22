@@ -1,7 +1,7 @@
 <section class="home d-flex align-items-center mx-4 overflow-x-hidden"> 
     <div class="home-content text-white px-5">
       <h1 class="">Welcome <span class="main-color">{{userName}}</span></h1>
-      <p>You can add project and assign tasks to your team</p>
+      <p>You can {{userRole == 'Manager' ? 'add project and assign tasks to your team':'show your projects and tasks'}}</p>
     </div>
 </section>
 
