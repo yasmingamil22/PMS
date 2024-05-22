@@ -18,6 +18,7 @@ export class ProjectsTableComponent {
   total: number = 0;
   listData!: iProjectsResponse;
   titleSearch: string = '';
+  mainTextHeader: string = 'Projects';
 
   pageSizeOptions = [5, 10, 25];
 
