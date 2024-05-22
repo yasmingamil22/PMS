@@ -52,7 +52,7 @@ changeInUserName(){
       this.currentUser.userName=val
     },
     error:(err)=>{
-      console.log(err)
+     // console.log(err)
     }
   })
  }

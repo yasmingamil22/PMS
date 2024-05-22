@@ -38,13 +38,13 @@ constructor(
 getUserById(id:number){
 this._UsersService.onGetUserById(id).subscribe({
   next: (res) => {
-console.log(res);
+//console.log(res);
 this.user=res;
 this.formattedCreationDate = this.datePipe.transform(this.user.creationDate, 'dd/MM/yyyy hh:mm a');
 
   },
   error: (err) => {
-    console.log(err.error.message);
+   // console.log(err.error.message);
   },
   complete: () => {
   }
@@ -56,7 +56,7 @@ openBlockDialog(item:IEmployee): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed',result);
+   // console.log('The dialog was closed',result);
     if(result){
       this.activateUser(result)
     }
