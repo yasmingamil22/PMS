@@ -1,5 +1,13 @@
-<section id="user-view" class="p-5 vh-100">
-    <div class="container">
+<section id="user-view" class=" ">
+
+  <app-add-edit-header [textHeader]=" noEdit ? 'View your profile':'Edit your profile'"
+  mainTxTHeaderLink="Go to home" [toDynamicPath]="'/dashboard/manager/users/'"></app-add-edit-header>
+
+
+  <div class=" main ">
+    <div class="view  ">
+  <mat-card class="p-5 rounded-5">
+
       <div *ngIf="noEdit" class="d-flex justify-content-end gap-2 my-4">
         <button class="iconEdit" (click)="toggleEdit()"><i class="fa-solid fa-pen"></i>
            </button>
@@ -135,7 +143,8 @@
            </button>
       </div>
 
-      
+    </mat-card>
+  </div>
     </div>
     </section>
     
