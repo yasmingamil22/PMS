@@ -30,8 +30,8 @@ menu:IMenu[] = [
   {
     text: 'Home',
     icon: 'fa-solid fa-house',
-    link: '/dashboard/manager/home',
-    isActive: this.isManager()
+    link: '/dashboard/home',
+    isActive: this.isManager() || this.isEmployee() 
   },
   {
   text:'Users' ,
