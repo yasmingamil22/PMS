@@ -1,0 +1,18 @@
+<section class="bg-main p-3 block">
+    <div class="d-flex justify-content-end"><i class="fa-solid fa-xmark-circle main-color fa-2x cursor-pointer fa-1x" (click)="dialogRef.close()"></i></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="d-flex justify-content-center "><img src="./assets/images/logo.svg" class="w-50" alt=""></div>
+                <h1 class="text-center title my-4 mt-5">Are you sure?</h1>
+
+                <div class="d-flex justify-content-between align-items-center my-3">
+                    <button class="outline-primary " type="button" (click)="dialogRef.close()">Cancel</button>
+                    <button class="primary" [mat-dialog-close]="data">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
