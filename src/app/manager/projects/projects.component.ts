@@ -43,8 +43,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   projectTitle: string = '';
-  PageNumber: number = 0;
-  PageSize: number = 10;
+  pageNumber: number = 0;
+  pageSize: number = 10;
 
   public dataSource: any = [];
 
@@ -77,8 +77,8 @@ export class ProjectsComponent implements OnInit {
   onGetManagerProjects() {
     let params: IProjectParams = {
       title: this.projectFiltrationValue,
-      pageSize: this.PageSize,
-      pageNumber: this.PageNumber+1,
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber+1,
     };
     this._ProjectsService.getManagerProject(params).subscribe({
       next: (res) => {
@@ -111,36 +111,33 @@ export class ProjectsComponent implements OnInit {
   }
 
   // Function To Open Project DeleteDialog ...
-  openDeleteDialog(id: number): void {
+  openDeleteDialog(id: number,projectName:string): void {
    // console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
-      data: { itemID: id },
-      width: '500px'
+      data: { itemID: id ,name:projectName,type:'project'},
+      width: '40%'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.onDeleteProject(result);
+        this.onDeleteProject(id);
       }
     });
   }
 
 
   // Handle Paginator ...
-  length = 50;
-  pageSize = 10;
-  pageIndex = 0;
-  pageSizeOptions = [1, 5, 10];
+  pageSizeOptions = [5, 10, 25];
   hidePageSize = false;
   showPageSizeOptions = true;
   showFirstLastButtons = true;
   disabled = false;
-
-  pageEvent: PageEvent | undefined;
+  
+  pageEvent!: PageEvent;
+  
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
-    this.length = e.length;
     this.pageSize = e.pageSize;
-    this.PageNumber = e.pageIndex;
+    this.pageNumber = e.pageIndex;
     this.onGetManagerProjects()
   }
 }

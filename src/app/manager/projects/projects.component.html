@@ -1,9 +1,9 @@
 <section class="project">
   <header class="project-header ">
     <!--? Import shared-header component to display main header and content -->
-    <div class="container">
+    <div class="container-fluid">
       <div class="row  justify-content-between align-items-center shadow py-3 mb-4 ">
-        <app-shared-header [mainTextHeader]="mainTextHeader" [mainTxTHeaderBtn]="mainTxTHeaderBtn"></app-shared-header>
+        <app-shared-header [mainTextHeader]="mainTextHeader" toDynamicPath="addProject" [mainTxTHeaderBtn]="mainTxTHeaderBtn"></app-shared-header>
       </div>
     </div>
   </header>
@@ -59,7 +59,7 @@
                 <mat-icon>edite_square</mat-icon>
                 <span>Edit</span>
               </button>
-              <button mat-menu-item (click)="openDeleteDialog(projects.id)">
+              <button mat-menu-item (click)="openDeleteDialog(projects.id,projects.title)">
                 <mat-icon>delete</mat-icon>
                 <span>Delete</span>
               </button>
@@ -71,10 +71,13 @@
     <app-no-data *ngIf="projectList.data.length == 0 "></app-no-data>
     <div class="  bg-transparent">
       <!-- ? paginator -->
-      <mat-paginator *ngIf="projectList.data.length > 0" #paginator class="demo-paginator  bg-transparent" (page)="handlePageEvent($event)"
-        [length]="projectList.totalNumberOfRecords" [pageSize]="pageSize"
+      <mat-paginator *ngIf="projectList.data.length > 0" 
+        #paginator class="demo-paginator  bg-transparent"
+       (page)="handlePageEvent($event)"
+        [length]="projectList.totalNumberOfRecords"
+        [pageSize]="pageSize"
+        [pageIndex]="pageNumber"
         [pageSizeOptions]="[5, 10, 25 , 50]"
-        [pageIndex]="PageNumber"
         aria-label="Select page">
       </mat-paginator>
     </div>

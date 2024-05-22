@@ -16,13 +16,13 @@ export class AddEditProjectComponent implements OnInit {
  
 
   // Main Text Add-Edit header  will be passed to the add-edit--shared-header component ...
-  editTextHeader: string = 'Update a New Project';
+  editTextHeader: string = 'Update this project';
 
-  addTextHeader: string = 'Add a New Project';
+  addTextHeader: string = 'Add a new project';
 
 
   // Main Text Add-Edit header Link  will be passed to the add-edit--shared-header component ...
-  mainTxTHeaderLink: string = 'View All Projects';
+  mainTxTHeaderLink: string = 'View all projects';
 
   // Initialize form group with title and description control ...
   addEditProjectForm = new FormGroup({
@@ -69,6 +69,7 @@ export class AddEditProjectComponent implements OnInit {
     if (this.moodPram == 'disabled') {
       this.addEditProjectForm.disable();
       this.isNonDisplay = false;
+      this.editTextHeader='View this project'
     } else {
       this.addEditProjectForm.enable()
       this.isNonDisplay = true;
