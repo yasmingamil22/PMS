@@ -1,6 +1,10 @@
 .main{
     min-height: 100vh;
     background-color:  rgba(128, 128, 128, 0.17);
+
+    .Add-Edit {
+        padding: 4rem;
+       }
     a{
         color: #0E382F;
     }
@@ -33,5 +37,11 @@ h3{
     font-size: 32px;
     font-weight: 500;
 }
+::ng-deep.mdc-text-field--filled.mdc-text-field--disabled .mdc-text-field__input{
+    color: #0E382F !important;
+}
 
+
+
+ 
 

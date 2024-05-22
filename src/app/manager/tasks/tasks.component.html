@@ -1,11 +1,14 @@
 <section class="main bg-light">
-    <div class="mb-2   py-3 shadow">
-        <div class="container d-flex justify-content-between align-items-center py-4 px-5">
-            <h2 class="title">Tasks</h2>
-           <button class="main-btn rounded-pill btn py-2 px-3" routerLink="add">Add New Task <i class="fa-solid fa-plus ps-2"></i></button>
-        </div>
+  <header class="project-header ">
+    <!--? Import shared-header component to display main header and content -->
+    <div class="container-fluid">
+      <div class="row  justify-content-between align-items-center shadow py-3 mb-4 ">
+        <app-shared-header mainTextHeader="Tasks" mainTxTHeaderBtn="Add new task" toDynamicPath="addTask"></app-shared-header>
+      </div>
     </div>
-    <div class="data container p-3"> 
+  </header>
+
+    <div class="data container-fluid p-3"> 
       <div class="row mt-3">
         <div class="col-md-8">
           <mat-form-field class="w-100" appearance="outline">
@@ -50,21 +53,21 @@
                     </td>
                     <td class="pt-3">{{item.employee.userName}}</td>
                     <td class="pt-3">{{item.project.title}}</td>
-                    <td class="pt-3">{{item.creationDate|date:'dd/mm/yyyy hh:mm a'}}</td>
+                    <td class="pt-3">{{item.creationDate| date:'dd/MM/yyyy hh:mm a'}}</td>
                     <td class="pt-2">
                         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                             <mat-icon>more_vert</mat-icon>
                           </button>
                           <mat-menu #menu="matMenu" class="rounded-4">
-                            <button mat-menu-item class="px-4" (click)="openViewDialog('700ms', '350ms',item)">
+                            <button mat-menu-item class="px-4" [routerLink]="['view',item.id,'disabled'] ">
                               <mat-icon>visibility</mat-icon>
                               <span>View</span>
                             </button>
-                            <button [routerLink]="['edit',item.id]" mat-menu-item class="px-4">
+                            <button [routerLink]="['editTask',item.id]" mat-menu-item class="px-4">
                               <mat-icon>edit_square</mat-icon>
                               <span>Edit</span>
                             </button>
-                            <button mat-menu-item class="px-4" (click)="openDeleteDialog('700ms', '400ms',item.id)">
+                            <button mat-menu-item class="px-4" (click)="openDeleteDialog(item.id,item.title)">
 
                               <mat-icon>delete</mat-icon>
                               <span>Delete</span>

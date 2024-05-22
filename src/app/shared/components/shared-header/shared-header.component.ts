@@ -13,4 +13,7 @@ export class SharedHeaderComponent {
   //? Input property to receive the Main Text Btn header
   @Input() mainTxTHeaderBtn!: string;
 
+  @Input() toDynamicPath!: string;
+
+
 }

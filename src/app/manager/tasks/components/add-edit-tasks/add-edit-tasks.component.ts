@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TasksService } from '../../core/tasks.service';
 import { Users, projects } from '../../core/users';
 import { ToastrService } from 'ngx-toastr';
@@ -12,21 +12,49 @@ import { Tasks } from '../../core/tasks';
   styleUrls: ['./add-edit-tasks.component.scss']
 })
 export class AddEditTasksComponent {
+
+  editTextHeader: string = 'Update this task';
+
+  addTextHeader: string = 'Add a new task';
+
+  mainTxTHeaderLink: string = 'View all tasks';
+
+
   constructor(private _FormBuilder:FormBuilder,private _TasksService:TasksService,private _ToastrService:ToastrService,private _Router:Router,private _ActivatedRoute:ActivatedRoute){}
   ngOnInit(): void {
+    this.id = this._ActivatedRoute.snapshot.params['id']
+    this.modeParam = this._ActivatedRoute.snapshot.params['mode'];
+
     this.getUsers()
     this.getProjects()
-   this.id = this._ActivatedRoute.snapshot.params['id']
-   this.getTaskByID()
+
+   if (this.id) {
+   // this.onGetProjectByID(this.id)
+    this.getTaskByID()
+
+  }
+
+  if (this.modeParam == 'disabled') {
+    this.addEditForm.disable();
+    this.isNonDisplay = false;
+    this.editTextHeader='View this task'
+  } else {
+    this.addEditForm.enable()
+    this.isNonDisplay = true;
+  }
+
   }
   id:number=0
+  modeParam:string=''
+  isNonDisplay:boolean=false
+
   allUsers:Users[]=[]
   allProjects:projects[]=[]
   addEditForm:FormGroup = this._FormBuilder.group({
-    title:[''],
-    description:[''],
-    employeeId:[''],
-    projectId:['']
+    title:['',[Validators.required]],
+    description:['',[Validators.required]],
+    employeeId:['',[Validators.required]],
+    projectId:['',[Validators.required]]
   })
   getUsers(){
     this._TasksService.getAllusers().subscribe({
@@ -48,7 +76,7 @@ export class AddEditTasksComponent {
   }
 
   addTask(){   
-    if(this.id!=null){
+    if(this.id){
       this._TasksService.updateTask(this.id,this.addEditForm.value).subscribe({
         next:res=>{
           
@@ -82,7 +110,7 @@ export class AddEditTasksComponent {
   
   task:Tasks={} as Tasks
   getTaskByID(){
-    if(this.id!=null){
+    if(this.id){
       this._TasksService.getTaskById(this.id).subscribe({
         next:res=>{
          // console.log(res);

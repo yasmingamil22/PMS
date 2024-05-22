@@ -24,7 +24,7 @@ ngOnInit(): void {
 
   this.getTasksForManagaer()
 }
-openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string , id:number): void {
+openDeleteDialo(enterAnimationDuration: string, exitAnimationDuration: string , id:number): void {
  const dialo= this.dialog.open(DeleteComponent, {
     width: '500px',
     enterAnimationDuration,
@@ -38,14 +38,18 @@ openDeleteDialog(enterAnimationDuration: string, exitAnimationDuration: string ,
   })
 }
 
-openViewDialog(enterAnimationDuration: string, exitAnimationDuration: string,data:object): void {
-  this.dialog.open(ViewtaskComponent, {
-    width: '550px',
-    enterAnimationDuration,
-    exitAnimationDuration,
-    data:data
-  });
-}
+openDeleteDialog(id: number,taskName:string): void {
+  // console.log(id);
+   const dialogRef = this.dialog.open(DeleteComponent, {
+     data: { itemID: id ,name:taskName,type:'task'},
+     width: '40%'
+   });
+   dialogRef.afterClosed().subscribe(result => {
+     if (result) {
+       this.delTask(id);
+     }
+   });
+ }
 
 status:string = ''
 title:string = ''
@@ -83,7 +87,6 @@ getTasksForManagaer(){
 }
 
 pageSizeOptions = [5, 10, 25];
-
 hidePageSize = false;
 showPageSizeOptions = true;
 showFirstLastButtons = true;
