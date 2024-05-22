@@ -20,6 +20,8 @@ export class TaskBoardComponent {
   todo: iTask[] = [];
   inProgress: iTask[] = [];
   done: iTask[] = [];
+  mainTextHeader: string = 'Tasks';
+
 
   constructor(private _TaskBoardService: TaskBoardService, private _ToastrService:ToastrService) {
     this.getAllTasks();
