@@ -1,4 +1,15 @@
 #user-view{
+
+  .main {
+    min-height: 100vh;
+    background-color: rgba(128, 128, 128, 0.17);
+
+    .view {
+      padding: 4rem;
+     }
+   }
+
+  
   button {
     border: none;
     padding: 0.5rem 1rem;
