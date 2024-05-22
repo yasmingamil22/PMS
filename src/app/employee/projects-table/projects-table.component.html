@@ -1,12 +1,12 @@
 <section class="main bg-light">
   <div class="row justify-content-between align-items-center shadow py-3 mb-4">
-    <div class="container d-flex justify-content-between align-items-center py-4 px-5">
+    <div class="container-fluid d-flex justify-content-between align-items-center py-4 px-5">
     <h2 class="title">{{ mainTextHeader }}</h2>
     </div>
   </div>
-  <div class="container">
-    <div class="data container p-3">
-      <div class="row mt-3">
+  
+    <div class="data container-fluid p-3">
+      <div class="row mt-3 align-items-center">
         <div class="col-md-8">
 
           <mat-form-field class="w-75 " appearance="outline">
@@ -25,9 +25,21 @@
           </mat-form-field>
 
         </div>
+        
+        <div class=" col-md-4 ">
+
+        <div class="  text-end">
+          <i (click)="isShowCard=true" class="fa-regular fa-square fa-2x cursor-pointer"></i>
+          <i (click)="isShowCard=false" class="fa-solid fa-bars fa-2x ms-3 me-5 cursor-pointer"></i>
+        </div>
       </div>
-      <table
-        class="table table-striped table-bordered text-center border border-1 shadow"
+
+      </div>
+
+      <app-no-data *ngIf="employeeProjectsData?.length == 0"></app-no-data>
+
+      <table *ngIf="employeeProjectsData?.length != 0 && !isShowCard"  
+        class="table table-striped table-bordered text-center border border-1 shadow "
       >
         <thead class="">
           <th class="border border-black">Title</th>
@@ -50,7 +62,39 @@
           </tr>
         </tbody>
       </table>
-      <app-no-data *ngIf="employeeProjectsData?.length == 0"></app-no-data>
+
+
+      <div class="row g-4 px-4"  *ngIf="employeeProjectsData?.length != 0 && isShowCard" >
+
+        <div class="col-xl-4 col-md-6" *ngFor="let item of employeeProjectsData">
+          <div class="chart-card  shadow pb-4">
+            <h4 class="seconary-color">{{item.title}}</h4>
+            <p class="text-muted description">{{item.description}}</p>
+           <div class="row gy-4">
+            <div class="col-md-12">
+              <div class="chart-item bg-white item-1 d-flex justify-content-between ">
+                <div class=""><h6 class="my-2">Number of tasks</h6>
+                  <span class="h2 fw-bolder seconary-color">{{item.task.length }}</span></div>  
+                  <div class="chart-icon chart-icon-1 mt-5">
+                    <i class="fa-solid fa-list-check"></i>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+                <div class=""><h6 class="my-2">Creation date</h6>
+                  <span class="h4 fw-bolder seconary-color">{{item.creationDate| date : "dd-MM-yyyy" }}</span></div>  
+                <div class="chart-icon chart-icon-2 mt-5">
+                  <i class="fa-solid fa-clock"></i>
+                                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>
+
+      </div>
+
     
       <div class="d-flex justify-content-end">
         <mat-paginator
@@ -66,5 +110,4 @@
         </mat-paginator>
       </div>
     </div>
-  </div>
 </section>
