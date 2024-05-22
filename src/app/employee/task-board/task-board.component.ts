@@ -6,6 +6,8 @@ import {
 import { Component } from '@angular/core';
 import { TaskBoardService } from '../services/task-board.service';
 import { iTask } from 'src/app/Models/Employee/iTask';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-task-board',
@@ -19,7 +21,7 @@ export class TaskBoardComponent {
   inProgress: iTask[] = [];
   done: iTask[] = [];
 
-  constructor(private _TaskBoardService: TaskBoardService) {
+  constructor(private _TaskBoardService: TaskBoardService, private _ToastrService:ToastrService) {
     this.getAllTasks();
   }
 
@@ -81,9 +83,11 @@ export class TaskBoardComponent {
                     item.status = newStatus;
                 },
                 error: (err) => {
-                    console.error('Error updating task status:', err);
+                    this._ToastrService.error('Error updating task status:' , err )
                 },
-                complete: () => {},
+                complete: () => {
+                  this._ToastrService.success('Status updated successfully!')
+                },
             });
     }
 }

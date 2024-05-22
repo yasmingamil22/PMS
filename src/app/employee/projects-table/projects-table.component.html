@@ -1,0 +1,69 @@
+<section class="main bg-light">
+  <div class="container">
+    <h2 class="title mb-2 py-4 px-5">Projects</h2>
+    <div class="data container p-3">
+      <div class="row mt-3">
+        <div class="col-md-8">
+
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label><i class="fa-solid fa-magnifying-glass px-1"></i>Search by title</mat-label>
+            <input
+              type="text"
+              matInput
+              [(ngModel)]="titleSearch"
+              (keyup.enter)="getProjectsForEmployee()"
+            />
+            <button
+              *ngIf="titleSearch"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="titleSearch = ''; getProjectsForEmployee()"
+            >
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <table
+        class="table table-striped table-bordered text-center border border-1 shadow"
+      >
+        <thead class="">
+          <th class="border border-black">Title</th>
+          <th class="border border-black">Description</th>
+          <th class="border border-black">Modification date</th>
+          <th class="border border-black">Number of tasks</th>
+          <th class="border border-black">Date created</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employeeProjectsData">
+            <td class="pt-3 text-start">{{ item.title }}</td>
+            <td class="pt-3 text-start">{{ item.description }}</td>
+            <td class="pt-3">
+              {{ item.modificationDate | date : "dd-MM-yyyy 'at' hh:mm a" }}
+            </td>
+            <td class="pt-3">{{ item.task.length }}</td>
+            <td class="pt-3">
+              {{ item.creationDate | date : "dd-MM-yyyy 'at' hh:mm a" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-no-data *ngIf="employeeProjectsData?.length == 0"></app-no-data>
+      <div class="d-flex justify-content-end">
+        <mat-paginator
+          #paginator
+          class="demo-paginator"
+          (page)="handlePageEvent($event)"
+          [length]="listData.totalNumberOfRecords"
+          [pageSize]="pageSize"
+          [pageIndex]="pageNumber"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</section>
