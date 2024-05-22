@@ -26,20 +26,21 @@ export class LoginComponent {
       this.loading = true
       this._AuthService.loginUser(this.loginForm.value).subscribe({
         next:res=>{
-          console.log(res);
+         // console.log(res);
           localStorage.setItem('tokenOfUserr',res.token)
           this._AuthService.tokenDecodeInfo()
           this.loading =false
         },
         error:err=>{
           this.loading = false
-          console.log(err);
+       //   console.log(err);
 
-          this.toastr.error(err.error.message)
+          this.toastr.error(err.error.message , 'Notify That')
           
         },
         complete:()=>{
         this._Router.navigate(['/dashboard']);
+        this.toastr.success('Logged in Successfully' , 'Done!')
         }
       })
     }

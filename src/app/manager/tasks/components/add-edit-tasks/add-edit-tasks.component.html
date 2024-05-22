@@ -44,10 +44,15 @@
                                 </div>
                             </div>
                             <mat-divider></mat-divider>
-                            <mat-card-actions *ngIf="isNonDisplay" class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mt-5">
+                              <div class="">
                                 <button type="button"  class="btn border-2 rounded-pill px-4  cancel" routerLink="/dashboard/manager/tasks">Cancel</button>
-                              <button [disabled]="addEditForm.invalid" type="submit"  class="primary rounded-pill px-4">Save</button>
-                            </mat-card-actions>
+                              </div>
+                              <mat-card-actions *ngIf="isNonDisplay" class="">
+                                <button [disabled]="addEditForm.invalid" type="submit"  class="primary rounded-pill px-4">Save</button>
+                              </mat-card-actions>
+                            </div>
+                           
                         </form>
                   </mat-card>
             </div>
