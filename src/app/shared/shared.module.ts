@@ -33,6 +33,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     HomeComponent,
     NotFoundComponent,
     NoDataComponent,
+    LogoutComponent,
 
   ],
 

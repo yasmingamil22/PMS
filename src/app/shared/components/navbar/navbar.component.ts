@@ -3,6 +3,8 @@ import { AuthService } from './../../../auth/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LogoutComponent } from '../logout/logout.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +16,9 @@ export class NavbarComponent implements OnInit{
   emptyImg:string = '../../../../assets/images/dummy-profile-pic-300x300-1.png';
   imgUrl:string = 'https://upskilling-egypt.com:3003/' ;
   currentUser:any;
-constructor(private _AuthService:AuthService,private _UsersService:UsersService, private dialog: MatDialog){
+constructor(private _AuthService:AuthService,private _UsersService:UsersService, private dialog: MatDialog,
+  private _Router:Router
+){
   this.getCurrentUser();
 }
 
@@ -88,4 +92,19 @@ changeInUserName(){
       }
     });
   }
+
+  openLogoutDialog(): void {
+    const dialogRef = this.dialog.open(LogoutComponent, {
+      data: 'logout',
+      width: '40%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+     this.onLogout()
+     this._Router.navigate(['/auth/login'])
+      }
+    });
+  }
+
 }
