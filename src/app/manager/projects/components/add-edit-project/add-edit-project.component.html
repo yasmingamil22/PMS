@@ -25,17 +25,21 @@
 
           </mat-form-field>
         </div>
-        <hr>
-
-        <mat-card-actions *ngIf="isNonDisplay" class="d-flex justify-content-between"
-          class="d-flex justify-content-between align-items-center">
-          <button type="button" class="btn border-2 rounded-pill px-4  cancel" routerLink="/dashboard/manager/projects">
-            Cancel
-          </button>
-          <button [disabled]="addEditProjectForm.invalid" type="submit" class="primary rounded-pill px-4">{{projectID
-            ?'Edit Project': 'Add Project' }}
-          </button>
-        </mat-card-actions>
+        <hr class="mt-4">
+        <div class="d-flex justify-content-between mt-5">
+          <div class="">
+            <button type="button" class="btn border-2 rounded-pill px-4  cancel " routerLink="/dashboard/manager/projects">
+              Cancel
+            </button>
+          </div>   
+          <mat-card-actions *ngIf="isNonDisplay" 
+            class="d-flex justify-content-end">      
+            <button [disabled]="addEditProjectForm.invalid" type="submit" class="primary rounded-pill px-4">{{projectID
+              ?'Edit Project': 'Add Project' }}
+            </button>
+          </mat-card-actions>
+        </div>
+       
       </form>
       <!-- End Form -->
     </mat-card>
