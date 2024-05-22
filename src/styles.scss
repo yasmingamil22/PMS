@@ -251,3 +251,6 @@ button {
   }
 }
 
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label--float-above{
+  color: #EF9B28 !important;
+}
