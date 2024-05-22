@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
 
-constructor(private _HttpClient:HttpClient , private _ToastrService:ToastrService) { }
+constructor(private _HttpClient:HttpClient) { }
 ngOnInit(): void {
 
   if(localStorage.getItem('tokenOfUserr')!==null){
@@ -72,7 +72,7 @@ getRole(){
   logout(): void {
     localStorage.clear();
     sessionStorage.clear();
-    this._ToastrService.success('Logged out Successfully' , 'Done!')
+   
   }
 
 }

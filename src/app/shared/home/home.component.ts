@@ -42,6 +42,7 @@ ngOnInit(): void {
   this.getUsersCount()
   this.getTasksForManagaer()
   this.onGetManagerProjects()
+  this.getTasksCountEmployee()
 }
 
 // Projects Number
@@ -80,7 +81,7 @@ getTasksForManagaer(){
     }
   })
 }
-// Tasks Status
+// Tasks Status (Manager)
 getTasksCount(){
   this._HelperService.onGetTasksCount().subscribe({
     next: (res)=>{
@@ -96,9 +97,35 @@ getTasksCount(){
           labels: [
             'To Do','In Progress','Done'],
           datasets: [{
-            label: 'My First Dataset',
+            label: 'Status',
             data: [this.tasksCount?.toDo, this.tasksCount?.inProgress, this.tasksCount?.done],
             backgroundColor: ['#CE93D8','#EF9B28A3','#009247'],
+            hoverOffset: 4
+          }]
+        }
+      })
+    }
+  })
+}
+// Tasks Status (Employee)
+getTasksCountEmployee(){
+  this._HelperService.onGetTasksCount().subscribe({
+    next: (res)=>{
+    // console.log(res);
+      this.tasksCount = res;
+     
+    }, error: (err)=>{
+      console.log(err);
+    }, complete: ()=>{
+      this.chart = new Chart('employeeStat', {
+        type: 'doughnut',
+        data: {
+          labels: [
+            'To Do','In Progress','Done'],
+          datasets: [{
+            label: 'Status',
+            data: [this.tasksCount?.toDo, this.tasksCount?.inProgress, this.tasksCount?.done],
+            backgroundColor: ['#CFD1EC','#E4E4BC','#E7C3D7'],
             hoverOffset: 4
           }]
         }

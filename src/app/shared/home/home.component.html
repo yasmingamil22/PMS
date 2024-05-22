@@ -5,11 +5,11 @@
     </div>
 </section>
 
+
+<!-- ========================= Manager =============================== -->
 <section *ngIf="userRole == 'Manager'" class="bg-white overflow-x-hidden">
   <div class="container mt-3">
-
     <div class="row justify-content-center align-items-center">
-
       <div class="col-md-3">
         <div class="chart-card bg-light shadow pb-4">
           <h4 class="seconary-color">Users</h4>
@@ -36,7 +36,6 @@
          </div>
         </div>
       </div>
-
       <div class="col-md-3">
         <div class="chart-card bg-light shadow pb-4">
           <h4 class="seconary-color">Latest Transaction</h4>
@@ -63,16 +62,68 @@
          </div>
         </div>
       </div>
-
-
-
-
       <div class="col-md-5">
         <div class="chart-card bg-light shadow">
           <h3 class="seconary-color">Tasks Status</h3>
           <p class="text-muted">Lorem ipsum dolor sit amet,consecteture</p>
           <div class="w-75 mx-auto text-center">
             <canvas id="status">{{chart}}</canvas>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======================== Employee ================================ -->
+<section *ngIf="userRole =='Employee'" class="bg-white overflow-x-hidden ">
+  <div class="container mt-3">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-7">
+        <div class="chart-card bg-light shadow pb-4">
+          <h4 class="seconary-color">Latest Transaction</h4>
+          <p class="text-muted">Lorem ipsum dolor sit amet,consecteture</p>
+         <div class="row gy-4">
+          <div class="col-md-4">
+            <div class="chart-item bg-white item-1 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">ToDo</h6>
+                <span class="h2 fw-bolder seconary-color">{{tasksCount?.toDo}}</span></div>  
+              <div class="chart-icon chart-icon-1 mt-5">
+               <i> <img src="../../../assets/images/8396402_graph_chart_data_analytics_statistic_icon 1.png" alt="">
+               </i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">In Progress</h6>
+                <span class="h2 fw-bolder seconary-color">{{tasksCount?.inProgress}}</span></div>  
+              <div class="chart-icon chart-icon-2 mt-5">
+                <i>
+                  <img src="../../../assets/images/Group 48102727.png" alt="">
+                </i>
+              </div>
+            </div>
+          </div>
+<div class="col-md-4">
+            <div class="chart-item bg-white item-3 d-flex justify-content-between ">
+              <div class=""><h6 class="my-2">Done</h6>
+                <span class="h2 fw-bolder seconary-color">{{tasksCount?.done}}</span></div>  
+              <div class="chart-icon chart-icon-3 mt-5">
+                <i>
+                  <img src="../../../assets/images/8396416_job_employment_business_recuitment_seeker_icon 1.png" alt="">
+                </i>
+              </div>
+            </div>
+          </div>
+        
+         </div>
+        </div>
+      </div>
+  <div class="col-md-4">
+        <div class="chart-card">
+          <div class="w-100 mx-auto text-center">
+            <canvas id="employeeStat">{{chart}}</canvas>
             
           </div>
         </div>
