@@ -1,26 +1,26 @@
 <section class="main bg-light">
+  <div class="row justify-content-between align-items-center shadow py-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center py-4 px-5">
+    <h2 class="title">{{ mainTextHeader }}</h2>
+    </div>
+  </div>
   <div class="container">
-    <h2 class="title mb-2 py-4 px-5">Projects</h2>
     <div class="data container p-3">
       <div class="row mt-3">
         <div class="col-md-8">
 
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label><i class="fa-solid fa-magnifying-glass px-1"></i>Search by title</mat-label>
-            <input
-              type="text"
-              matInput
-              [(ngModel)]="titleSearch"
-              (keyup.enter)="getProjectsForEmployee()"
-            />
-            <button
-              *ngIf="titleSearch"
-              matSuffix
-              mat-icon-button
-              aria-label="Clear"
-              (click)="titleSearch = ''; getProjectsForEmployee()"
-            >
-              <mat-icon>arrow_back</mat-icon>
+          <mat-form-field class="w-75 " appearance="outline">
+            <button  matPrefix mat-icon-button
+            (click)="getProjectsForEmployee()">
+            <mat-icon>search</mat-icon>
+           </button>
+            <mat-label class="lable">Search</mat-label>
+
+            <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
+              [(ngModel)]="titleSearch"  (keyup.enter)="getProjectsForEmployee()" matInput>
+            <button *ngIf="titleSearch" matSuffix mat-icon-button aria-label="Clear"
+              (click)="titleSearch='';getProjectsForEmployee()">
+              <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
 
