@@ -7,7 +7,7 @@
       <div class="Add-Edit ">
       
                 <mat-card class="rounded-5 p-5">
-                        <form action="" [formGroup]="addEditForm" (ngSubmit)="addTask()" >
+                        <form action="" [formGroup]="addEditForm" (ngSubmit)="addOrEditTask()" >
                             <mat-form-field class="w-100"  >
                                 <mat-label >Title</mat-label>
                                 <input formControlName="title" type="text" placeholder="Enter the title" matInput>
@@ -26,6 +26,8 @@
                                         <mat-label>User</mat-label>
                                         <mat-select formControlName="employeeId">
                                             <mat-option *ngFor="let item of allUsers" [value]="item.id">{{item.userName}}</mat-option>
+                                            <mat-option *ngIf="role=='isEmployee'" [value]="task.employee.id">{{task.employee.userName}}</mat-option>
+
                                           </mat-select>
                                           <mat-error *ngIf="addEditForm.get('employeeId')?.touched && addEditForm.get('employeeId')?.hasError('required')">user is required</mat-error>
 
@@ -36,6 +38,8 @@
                                         <mat-label>Project</mat-label>
                                         <mat-select formControlName="projectId">
                                             <mat-option *ngFor="let item of allProjects" [value]="item.id">{{item.title}}</mat-option>
+                                            <mat-option *ngIf="role=='isEmployee'" [value]="task.project.id">{{task.project.title}}</mat-option>
+
                                           </mat-select>
                                           <mat-error *ngIf="addEditForm.get('projectId')?.touched && addEditForm.get('projectId')?.hasError('required')">project is required</mat-error>
    

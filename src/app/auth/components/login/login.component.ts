@@ -33,14 +33,12 @@ export class LoginComponent {
         },
         error:err=>{
           this.loading = false
-       //   console.log(err);
 
           this.toastr.error(err.error.message , 'Notify That')
           
         },
         complete:()=>{
         this._Router.navigate(['/dashboard']);
-        this.toastr.success('Logged in Successfully' , 'Done!')
         }
       })
     }

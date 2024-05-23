@@ -52,13 +52,13 @@ menu:IMenu[] = [
       isActive: this.isManager(),
       } ,
       {
-        text:'User Projects' ,
+        text:'Projects' ,
         icon: 'fa-solid fa-table-cells-large' ,
         link:'employee/projects',
         isActive: this.isEmployee(),
         } ,
         {
-          text:'User Task' ,
+          text:'Tasks' ,
           icon: 'fa-solid fa-list-check' ,
           link: '/dashboard/employee/task-board',
           isActive: this.isEmployee(),

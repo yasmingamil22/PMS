@@ -59,7 +59,7 @@
                             <mat-icon>more_vert</mat-icon>
                           </button>
                           <mat-menu #menu="matMenu" class="rounded-4">
-                            <button mat-menu-item class="px-4" [routerLink]="['view',item.id,'disabled'] ">
+                            <button mat-menu-item class="px-4" [routerLink]="['/dashboard/viewTask',item.id,'isManager','disabled'] ">
                               <mat-icon>visibility</mat-icon>
                               <span>View</span>
                             </button>
