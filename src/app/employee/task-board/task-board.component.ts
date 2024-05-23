@@ -3,10 +3,11 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskBoardService } from '../services/task-board.service';
 import { iTask } from 'src/app/Models/Employee/iTask';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './task-board.component.html',
   styleUrls: ['./task-board.component.scss'],
 })
-export class TaskBoardComponent {
+export class TaskBoardComponent implements OnInit{
 
   employeeTasksData: iTask[] = [];
   todo: iTask[] = [];
@@ -23,8 +24,7 @@ export class TaskBoardComponent {
   mainTextHeader: string = 'Tasks';
 
 
-  constructor(private _TaskBoardService: TaskBoardService, private _ToastrService:ToastrService) {
-    this.getAllTasks();
+  constructor(private _TaskBoardService: TaskBoardService, private _ToastrService:ToastrService,private _Router:Router) {
   }
 
   ngOnInit() {
@@ -93,4 +93,13 @@ export class TaskBoardComponent {
             });
     }
 }
+
+viewTaskDetails(item:iTask):void{
+  console.log(item)
+
+  this._Router.navigate(['/dashboard/viewTask',item.id,'isEmployee','disabled'])
+
+}
+
+
 }

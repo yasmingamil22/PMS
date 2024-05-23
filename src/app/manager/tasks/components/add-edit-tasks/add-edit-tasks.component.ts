@@ -14,22 +14,42 @@ import { Tasks } from '../../core/tasks';
 export class AddEditTasksComponent {
 
   editTextHeader: string = 'Update this task';
-
   addTextHeader: string = 'Add a new task';
-
   mainTxTHeaderLink: string = 'View all tasks';
+  id:number=0
+  modeParam:string=''
+  role:string=''
+  isNonDisplay:boolean=false
+
+
+  allUsers:Users[]=[]
+  allProjects:projects[]=[]
+  task:Tasks={} as Tasks
+
+
+  addEditForm:FormGroup = this._FormBuilder.group({
+    title:['',[Validators.required]],
+    description:['',[Validators.required]],
+    employeeId:['',[Validators.required]],
+    projectId:['',[Validators.required]]
+  })
+
 
 
   constructor(private _FormBuilder:FormBuilder,private _TasksService:TasksService,private _ToastrService:ToastrService,private _Router:Router,private _ActivatedRoute:ActivatedRoute){}
   ngOnInit(): void {
     this.id = this._ActivatedRoute.snapshot.params['id']
     this.modeParam = this._ActivatedRoute.snapshot.params['mode'];
+    this.role=this._ActivatedRoute.snapshot.params['role'];
 
-    this.getUsers()
-    this.getProjects()
+    if(this.role!='isEmployee' ){
+      console.log("manger")
+      this.getUsers()
+      this.getProjects()
+    }
+  
 
    if (this.id) {
-   // this.onGetProjectByID(this.id)
     this.getTaskByID()
 
   }
@@ -44,18 +64,7 @@ export class AddEditTasksComponent {
   }
 
   }
-  id:number=0
-  modeParam:string=''
-  isNonDisplay:boolean=false
 
-  allUsers:Users[]=[]
-  allProjects:projects[]=[]
-  addEditForm:FormGroup = this._FormBuilder.group({
-    title:['',[Validators.required]],
-    description:['',[Validators.required]],
-    employeeId:['',[Validators.required]],
-    projectId:['',[Validators.required]]
-  })
   getUsers(){
     this._TasksService.getAllusers().subscribe({
       next:res=>{
@@ -75,12 +84,11 @@ export class AddEditTasksComponent {
     })
   }
 
-  addTask(){   
+  addOrEditTask(){   
     if(this.id){
       this._TasksService.updateTask(this.id,this.addEditForm.value).subscribe({
         next:res=>{
-          
-         
+ 
         },
         error:err=>{
           this._ToastrService.error(err)
@@ -91,6 +99,7 @@ export class AddEditTasksComponent {
         }
       })
     }
+
     else{
       this._TasksService.addTask(this.addEditForm.value).subscribe({
         next:res=>{
@@ -108,24 +117,28 @@ export class AddEditTasksComponent {
     }
    }
   
-  task:Tasks={} as Tasks
   getTaskByID(){
     if(this.id){
       this._TasksService.getTaskById(this.id).subscribe({
         next:res=>{
-         // console.log(res);
+          console.log(res);
           this.task=res
+         
+        },
+        error:err=>{
+          console.log(err);
+          
+        },
+        complete:()=>{
+
           this.addEditForm.patchValue({
             title:this.task.title,
             description:this.task.description,
             employeeId:this.task.employee.id,
             projectId:this.task.project.id
           })
-        },
-        error:err=>{
-          console.log(err);
-          
-        },
+
+        }
       })
     }
   }

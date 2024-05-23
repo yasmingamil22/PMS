@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit{
 
-  emptyImg:string = '../../../../assets/images/dummy-profile-pic-300x300-1.png';
+  emptyImg:string = './assets/images/dummy-profile-pic-300x300-1.png';
   imgUrl:string = 'https://upskilling-egypt.com:3003/' ;
   currentUser:any;
 constructor(private _AuthService:AuthService,private _UsersService:UsersService, private dialog: MatDialog,
