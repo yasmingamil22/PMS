@@ -1,3 +1,4 @@
+
 button {
     border: none;
     padding: 0.5rem 1rem;
@@ -11,11 +12,13 @@ button {
         color: #ffffffd5;
         cursor: not-allowed;
       }
+      &:hover {
+        color: #ef9b28;
+        background-color: #fff;
+      }
+    
     }
-    &:hover {
-      color: #ef9b28;
-      background-color: #fff;
-    }
+  
     &.outline-primary {
       border-radius: 96px;
       border: 1px solid #ef9b28;

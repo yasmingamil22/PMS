@@ -38,10 +38,14 @@ constructor(private _HelperService:HelperService , private _TasksService:TasksSe
   , private _ProjectsService:ProjectsService) { }
 
 ngOnInit(): void {
+
+  if(this.userRole=='Manager'){
   this.getTasksCount()
   this.getUsersCount()
   this.getTasksForManagaer()
   this.onGetManagerProjects()
+  }
+  
   this.getTasksCountEmployee()
 }
 

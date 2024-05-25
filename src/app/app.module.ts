@@ -21,7 +21,7 @@ import { LoadingInterceptor } from './core/interceptor/loading.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), 
     NgxSpinnerModule,
 
 

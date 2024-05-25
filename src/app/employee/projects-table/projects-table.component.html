@@ -96,7 +96,7 @@
       </div>
 
     
-      <div class="d-flex justify-content-end">
+      <div *ngIf="employeeProjectsData?.length != 0" class="d-flex justify-content-end">
         <mat-paginator
           #paginator
           class="demo-paginator"

@@ -4,7 +4,9 @@
     <h2 class="title">{{ mainTextHeader }}</h2>
     </div>
   </div>
-  <div cdkDropListGroup class="content px-5">
+  <app-no-data *ngIf="employeeTasksData?.length == 0"></app-no-data>
+
+  <div *ngIf="employeeTasksData?.length != 0" cdkDropListGroup class="content px-5">
     <div class="container-fluid py-5">
       <div class="row g-4 justify-content-center">
         <div class="col-xl-4 col-md-6 d-flex justify-content-center">
